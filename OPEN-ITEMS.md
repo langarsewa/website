@@ -104,6 +104,15 @@ are accepted gaps until the move to Cloudflare Pages:
 Moving to Cloudflare Pages later needs: the project connected to the repo, the canonical host
 decided (apex or `www`), and the DNS steps in `docs/dns-before.md`.
 
+## Security clean-up after launch
+
+- The Cloudflare token used from Hardeep's laptop for the migration (`langarsewa-deploy`) was
+  created with far more permission than needed. Reduce it to Account › Cloudflare Pages › Edit
+  plus DNS Edit and Zone Read on `langarsewa.org` with an expiry, and delete it once the domain
+  is live and stable. CI uses a separate token with Pages Write only.
+- The dedicated SSH key and the `~/.config/langarsewa/cloudflare.env` file stay on the laptop;
+  remove the env file when the token is deleted.
+
 ## Analytics
 
 Off by default. Turning it on needs the Cloudflare Web Analytics token in `site.json` and
