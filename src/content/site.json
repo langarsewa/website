@@ -1,9 +1,18 @@
 {
-  "name": { "en": "Dhan Guru Ramdas Langar Sewa", "pa": "ਧੰਨ ਗੁਰੂ ਰਾਮਦਾਸ ਲੰਗਰ ਸੇਵਾ" },
-  "url": "https://langarsewa.org",
+  "name": {
+    "en": "Dhan Guru Ramdas Langar Sewa",
+    "pa": "ਧੰਨ ਗੁਰੂ ਰਾਮਦਾਸ ਲੰਗਰ ਸੇਵਾ"
+  },
+  "url": "https://www.langarsewa.org",
   "email": "info@langarsewa.org",
-  "phone": { "display": "+91 99143 35125", "tel": "+919914335125" },
-  "ambulance": { "display": "+91 75088 77717", "tel": "+917508877717" },
+  "phone": {
+    "display": "+91 99143 35125",
+    "tel": "+919914335125"
+  },
+  "ambulance": {
+    "display": "+91 75088 77717",
+    "tel": "+917508877717"
+  },
   "address": {
     "en": "Hoshiarpur Bypass, Pur Heeran, Hoshiarpur, Punjab",
     "pa": "ਹੁਸ਼ਿਆਰਪੁਰ ਬਾਈਪਾਸ, ਪੁਰਹੀਰਾਂ, ਹੁਸ਼ਿਆਰਪੁਰ, ਪੰਜਾਬ"
@@ -15,9 +24,16 @@
   },
   "founded": 2019,
   "copyrightYear": 2026,
-  "analytics": { "enabled": false, "cloudflareToken": "" },
+  "analytics": {
+    "enabled": false,
+    "cloudflareToken": ""
+  },
   "donations": {
-    "india": { "paymentPageUrl": "" },
-    "international": { "paymentPageUrl": "" }
+    "india": {
+      "paymentPageUrl": ""
+    },
+    "international": {
+      "paymentPageUrl": ""
+    }
   }
 }

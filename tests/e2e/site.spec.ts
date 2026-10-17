@@ -60,6 +60,27 @@ test.describe('legacy links', () => {
     await expect(page).toHaveURL(/\/pa\/our-work\/$/);
   });
 
+  test('legacy paths have redirect pages for hosts without server redirects', async ({
+    request,
+  }) => {
+    const legacy: [string, string][] = [
+      ['/about/', '/our-story/'],
+      ['/sewa/', '/our-work/'],
+      ['/media-gallery/', '/impact/'],
+      ['/donate/', '/join-the-sewa/'],
+      ['/covid/', '/join-the-sewa/'],
+      ['/punjabi/', '/pa/'],
+    ];
+    for (const [from, to] of legacy) {
+      const res = await request.get(from);
+      expect(res.status(), from).toBe(200);
+      const html = await res.text();
+      expect(html, `${from} → ${to}`).toMatch(
+        new RegExp(`http-equiv="refresh"[^>]*url=${to.replace(/\//g, '\\/')}`),
+      );
+    }
+  });
+
   test('legacy paths in _redirects map to the new pages', async ({ request }) => {
     const text = await (await request.get('/_redirects')).text();
     const legacy: [string, string][] = [
