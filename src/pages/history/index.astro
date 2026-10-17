@@ -1,0 +1,178 @@
+---
+import App from '../../layouts/App.astro';
+import Skeleton from '../../components/Skeleton.astro';
+---
+
+<App title="History" active="history" back="/" deskTitle="History and restore">
+  <p class="lede">
+    Every publish is kept. Restoring puts an earlier version live within a minute and records who
+    did it.
+  </p>
+
+  <section class="card card--ok" id="restored" hidden aria-live="polite">
+    <span class="label label--ok">Restored</span>
+    <h2 class="headline" id="restored-title">
+      langarsewa.org is back on that version
+    </h2>
+    <span class="sub" id="restored-body"></span>
+    <a class="link" id="restored-link" href="https://langarsewa.org">
+      Open the live site
+    </a>
+  </section>
+
+  <div id="history-skeleton" class="history-item">
+    <Skeleton lines={2} />
+  </div>
+  <ol class="plain-list" id="history-list" style="gap: 10px" aria-label="Published versions"></ol>
+  <p class="sub" id="history-empty" hidden>
+    No publishes yet.
+  </p>
+  <p class="note" id="editor-note" hidden>
+    Only an owner can restore a version. Ask Hardeep if the live site needs to go back.
+  </p>
+</App>
+
+<script>
+  import { api } from '../../lib/api';
+  import { boot, whoAmI, showErrorBanner } from '../../lib/shell';
+  import { titleOf } from '../../lib/derive';
+  import { after, byId, h, replaceChildren, show } from '../../lib/dom';
+  import { firstName } from '../../lib/people';
+  import { formatWhen, formatDay } from '../../lib/time';
+  import type { HistoryDeployment } from '../../lib/types';
+
+  let canRestore = false;
+  let busy = false;
+
+  function closeConfirms(): void {
+    for (const el of document.querySelectorAll('[data-confirm]')) el.remove();
+    for (const b of document.querySelectorAll<HTMLButtonElement>('[data-restore]')) {
+      b.disabled = false;
+      b.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function dayLabel(d: HistoryDeployment): string {
+    const day = new Date(d.at).getDay();
+    const names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return names[day] ?? formatDay(d.at);
+  }
+
+  function confirmCard(
+    d: HistoryDeployment,
+    anchor: HTMLElement,
+    restoreButton: HTMLButtonElement,
+  ) {
+    closeConfirms();
+    restoreButton.setAttribute('aria-expanded', 'true');
+    const keep = h('button', { type: 'button', class: 'btn' }, 'Keep current');
+    const yes = h('button', { type: 'button', class: 'btn btn--primary' }, 'Yes, restore');
+    const card = h(
+      'li',
+      {
+        class: 'card card--warn',
+        'data-confirm': '',
+        role: 'group',
+        'aria-label': 'Confirm restore',
+        style: 'gap: 10px',
+      },
+      h('b', { style: 'font-size: 15px' }, `Restore ${dayLabel(d)}'s version?`),
+      h(
+        'span',
+        { class: 'sub' },
+        `The live site goes back to how it was on ${formatWhen(d.at)}. Unpublished changes on the test site are kept. You can restore forward again at any time.`,
+      ),
+      h('div', { class: 'btn-row' }, keep, yes),
+    );
+    keep.addEventListener('click', () => {
+      closeConfirms();
+      restoreButton.focus();
+    });
+    yes.addEventListener('click', () => void doRestore(d, yes, keep));
+    after(anchor, card);
+    card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    yes.focus();
+  }
+
+  async function doRestore(d: HistoryDeployment, yes: HTMLButtonElement, keep: HTMLButtonElement) {
+    if (busy) return;
+    busy = true;
+    yes.disabled = true;
+    keep.disabled = true;
+    yes.textContent = 'Restoring…';
+    try {
+      const result = await api.restore(d.id);
+      closeConfirms();
+      byId('restored-body').textContent =
+        `Restored the version from ${formatWhen(d.at)} (${titleOf(d.message)}). Visitors see it within a minute. The record shows who restored it.`;
+      byId<HTMLAnchorElement>('restored-link').href = 'https://langarsewa.org';
+      show(byId('restored'));
+      byId('restored').scrollIntoView({ block: 'start', behavior: 'smooth' });
+      await load(result.deploymentId);
+    } catch (err) {
+      yes.disabled = false;
+      keep.disabled = false;
+      yes.textContent = 'Yes, restore';
+      showErrorBanner(err, () => void doRestore(d, yes, keep));
+    } finally {
+      busy = false;
+    }
+  }
+
+  function item(d: HistoryDeployment, restoredId: string | null): HTMLElement {
+    const isCurrent = restoredId ? d.id === restoredId : d.isCurrent;
+    const who = firstName(d.by);
+    if (isCurrent) {
+      return h(
+        'li',
+        { class: 'history-item history-item--current' },
+        h(
+          'div',
+          { class: 'history-item__head' },
+          h('b', {}, formatWhen(d.at)),
+          h('span', { class: 'pill' }, 'Live now'),
+        ),
+        h('span', { class: 'sub' }, `Published${who ? ` by ${who}` : ''}. ${titleOf(d.message)}.`),
+      );
+    }
+    const restore = h(
+      'button',
+      { type: 'button', class: 'btn btn--sm', 'data-restore': d.id, 'aria-expanded': 'false' },
+      'Restore this',
+    ) as HTMLButtonElement;
+    const li = h(
+      'li',
+      { class: 'history-item' },
+      h(
+        'div',
+        { class: 'history-item__head' },
+        h('b', {}, formatWhen(d.at)),
+        h('span', { class: 'sub', style: 'font-size: 12px' }, who),
+      ),
+      h('span', { class: 'sub' }, `${titleOf(d.message)}.`),
+      h(
+        'div',
+        { class: 'btn-row' },
+        h('a', { class: 'btn btn--sm', href: d.url, target: '_blank', rel: 'noopener' }, 'Look'),
+        canRestore ? restore : null,
+      ),
+    );
+    restore.addEventListener('click', () => confirmCard(d, li, restore));
+    return li;
+  }
+
+  async function load(restoredId: string | null = null): Promise<void> {
+    const [me, history] = await Promise.all([whoAmI(), api.history()]);
+    canRestore = me?.role === 'owner';
+    show(byId('editor-note'), me !== null && me.role !== 'owner');
+    const list = byId('history-list');
+    replaceChildren(
+      list,
+      history.deployments.map((d) => item(d, restoredId)),
+    );
+    show(byId('history-skeleton'), false);
+    show(byId('history-empty'), history.deployments.length === 0);
+  }
+
+  void boot(() => load());
+</script>

@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { requireIdentity, requireOwner } from './auth';
 import { createCloudflareClient } from './cloudflare';
-import type { AppEnv } from './env';
+import { missingUpstreamConfig, type AppEnv } from './env';
 import { HttpError, type ApiError, type ErrorStatus } from './errors';
 import { createGitHubClient } from './github';
 import type { People } from './people';
@@ -32,6 +32,20 @@ export function createApp(options: AppOptions = {}) {
 
   const api = new Hono<AppEnv>();
   api.use('*', requireIdentity(options.people));
+
+  // Everything except /me talks to GitHub or Cloudflare; say plainly when that is not set up yet.
+  api.use('*', async (c, next) => {
+    if (c.req.path.endsWith('/api/me')) return next();
+    const missing = missingUpstreamConfig(c.env);
+    if (missing.length) {
+      throw new HttpError(
+        503,
+        'not_configured',
+        `The control room is not connected yet. Missing: ${missing.join(', ')}.`,
+      );
+    }
+    await next();
+  });
 
   api.get('/me', (c) => {
     const actor = c.get('actor');

@@ -1,0 +1,164 @@
+---
+import App from '../../layouts/App.astro';
+import Skeleton from '../../components/Skeleton.astro';
+
+const checkNames = [
+  'Both languages complete',
+  'Looks right on phone',
+  'Looks right on laptop',
+  'No broken links',
+  'Accessible',
+  'Fast on mobile',
+  'Buttons and forms work',
+];
+---
+
+<App title="Review and publish" active="home" back="/">
+  <p class="lede">
+    These changes are on the test site now. Publishing puts them on langarsewa.org for everyone.
+  </p>
+
+  <section class="card card--flush" aria-label="Changes waiting to publish">
+    <div id="changes-skeleton" class="change-row">
+      <Skeleton lines={2} />
+    </div>
+    <div id="changes-list"></div>
+    <div class="change-row sub" id="changes-empty" hidden>
+      Nothing is waiting. Changes saved to the test site show up here.
+    </div>
+  </section>
+
+  <section class="card card--tight" aria-labelledby="checks-label">
+    <div class="card__row">
+      <span class="label" id="checks-label">
+        Checks on the test site
+      </span>
+      <span class="badge badge--muted" id="checks-status">
+        Loading
+      </span>
+    </div>
+    <ul class="checks-grid" id="checks-grid">
+      {checkNames.map((name) => (
+        <li>
+          <span class="dot dot--muted" data-check-dot />
+          {name}
+        </li>
+      ))}
+    </ul>
+    <span class="sub" id="checks-sub">
+      One run covers all seven.
+    </span>
+  </section>
+
+  <a
+    class="btn"
+    id="open-test"
+    href="https://dev.langarsewa.pages.dev"
+    target="_blank"
+    rel="noopener"
+  >
+    Open the test site to look first
+  </a>
+
+  <p class="note" id="editor-note" hidden>
+    Only an owner can publish. Ask Hardeep to review and publish these changes.
+  </p>
+
+  <div class="page-footer" slot="footer">
+    <button class="btn btn--accent" type="button" id="publish" disabled>
+      Publish to langarsewa.org
+    </button>
+    <span class="center-note" id="publish-note">
+      Takes about 6 minutes. You can undo from History.
+    </span>
+  </div>
+</App>
+
+<script>
+  import { ApiError, api } from '../../lib/api';
+  import { boot, whoAmI, showErrorBanner } from '../../lib/shell';
+  import { filesLabel, summarizeCi } from '../../lib/derive';
+  import { byId, h, replaceChildren, show } from '../../lib/dom';
+  import { firstName } from '../../lib/people';
+  import { dayWord, formatWhen, relativeTime } from '../../lib/time';
+  import type { Pending, Status } from '../../lib/types';
+
+  const publishButton = byId<HTMLButtonElement>('publish');
+  let canPublish = false;
+  let pendingCount = 0;
+
+  function paintChanges(pending: Pending): void {
+    pendingCount = pending.count;
+    replaceChildren(
+      byId('changes-list'),
+      pending.changes.map((c) =>
+        h(
+          'div',
+          { class: 'change-row' },
+          h(
+            'div',
+            { class: 'change-row__head' },
+            h('b', {}, c.title),
+            h('span', { class: 'change-row__meta' }, `${firstName(c.author)}, ${dayWord(c.at)}`),
+          ),
+          c.files.length > 0 ? h('span', { class: 'sub' }, filesLabel(c.files)) : null,
+        ),
+      ),
+    );
+    show(byId('changes-skeleton'), false);
+    show(byId('changes-empty'), pending.count === 0);
+  }
+
+  function paintChecks(status: Status): void {
+    const dev = summarizeCi(status.ci.dev);
+    const badge = byId('checks-status');
+    badge.className = `badge badge--${dev.tone}`;
+    badge.textContent = dev.label;
+    for (const dot of document.querySelectorAll<HTMLElement>('[data-check-dot]')) {
+      dot.className = `dot dot--${dev.tone}`;
+    }
+    const when = status.ci.dev.at ? ` Last run ${relativeTime(status.ci.dev.at)}.` : '';
+    const sub = byId('checks-sub');
+    replaceChildren(
+      sub,
+      `One run covers all seven.${when} `,
+      status.ci.dev.url
+        ? h('a', { href: status.ci.dev.url, target: '_blank', rel: 'noopener' }, 'See the run')
+        : null,
+    );
+    byId<HTMLAnchorElement>('open-test').href = status.test.url;
+    document.title = `Review and publish · ${formatWhen(status.test.at)}`;
+  }
+
+  function updatePublishButton(): void {
+    publishButton.disabled = !(canPublish && pendingCount > 0);
+    if (pendingCount === 0) byId('publish-note').textContent = 'Nothing to publish yet.';
+  }
+
+  publishButton.addEventListener('click', async () => {
+    publishButton.disabled = true;
+    publishButton.textContent = 'Starting the publish…';
+    try {
+      await api.publish();
+      location.href = '/publishing/';
+    } catch (err) {
+      publishButton.textContent = 'Publish to langarsewa.org';
+      publishButton.disabled = false;
+      if (err instanceof ApiError && err.status === 409) {
+        // A publish is already running; take the person to it.
+        location.href = '/publishing/';
+        return;
+      }
+      showErrorBanner(err, () => publishButton.click());
+    }
+  });
+
+  void boot(async () => {
+    const [me, status, pending] = await Promise.all([whoAmI(), api.status(), api.pending()]);
+    paintChecks(status);
+    paintChanges(pending);
+    canPublish = me?.role === 'owner';
+    show(byId('editor-note'), me !== null && me.role !== 'owner');
+    updatePublishButton();
+  });
+</script>

@@ -9,8 +9,10 @@
     "skipLibCheck": true,
     "noEmit": true,
     "baseUrl": ".",
-    "paths": { "@functions/*": ["functions/*"] },
+    "paths": {
+      "@functions/*": ["functions/*"]
+    },
     "types": ["@cloudflare/workers-types"]
   },
-  "include": ["functions/**/*", "tests/**/*", "config/*.json"]
+  "include": ["functions/**/*", "tests/api/**/*", "config/*.json"]
 }

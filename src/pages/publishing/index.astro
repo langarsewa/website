@@ -1,0 +1,202 @@
+---
+import App from '../../layouts/App.astro';
+import Skeleton from '../../components/Skeleton.astro';
+---
+
+<App title="Publishing" active="home" back="/">
+  <section class="card" id="status-card" aria-live="polite">
+    <div id="status-skeleton">
+      <Skeleton lines={2} />
+    </div>
+    <span class="label" id="status-kicker" hidden></span>
+    <h2 class="headline headline--lg" id="status-title" hidden></h2>
+    <span class="sub" id="status-body" hidden></span>
+    <div class="progress" id="status-progress" hidden>
+      <div class="progress__bar" id="status-bar" style="width: 0%"></div>
+    </div>
+    <a
+      class="btn btn--primary"
+      id="status-link"
+      href="https://langarsewa.org"
+      hidden
+      style="align-self: flex-start; margin-top: 6px; min-height: 44px"
+    >
+      Open the live site
+    </a>
+  </section>
+
+  <ol class="steps" id="steps" aria-label="Publishing steps"></ol>
+
+  <p class="note" id="closing-note">
+    You can close this. Come back any time; this page shows where the publish is. If a check fails,
+    nothing changes on the live site.
+  </p>
+
+  <div class="page-footer" slot="footer">
+    <a class="btn btn--primary" id="footer-link" href="/">
+      Back to home
+    </a>
+  </div>
+</App>
+
+<script>
+  import { api } from '../../lib/api';
+  import { boot } from '../../lib/shell';
+  import { isTerminal, publishView, type PublishView } from '../../lib/derive';
+  import { byId, checkIcon, crossIcon, h, replaceChildren, show } from '../../lib/dom';
+  import { formatTime } from '../../lib/time';
+  import type { PublishCurrent } from '../../lib/types';
+
+  const POLL_MS = 5000;
+  let timer: number | null = null;
+  let productionUrl = 'https://langarsewa.org';
+  let pendingCount: number | undefined;
+
+  function paintSteps(view: PublishView): void {
+    replaceChildren(
+      byId('steps'),
+      view.steps.map((step) =>
+        h(
+          'li',
+          { class: `step step--${step.state}` },
+          h(
+            'span',
+            { class: 'step__mark', 'aria-hidden': 'true' },
+            step.state === 'done' ? checkIcon() : step.state === 'failed' ? crossIcon() : null,
+          ),
+          h(
+            'span',
+            {},
+            h('b', {}, step.title),
+            h('br'),
+            h('span', { class: 'sub' }, step.detail),
+            h(
+              'span',
+              { class: 'sr-only' },
+              step.state === 'done'
+                ? ' (done)'
+                : step.state === 'current'
+                  ? ' (in progress)'
+                  : step.state === 'failed'
+                    ? ' (failed)'
+                    : ' (not started)',
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  function paintCard(view: PublishView, current: PublishCurrent): void {
+    const card = byId('status-card');
+    const kicker = byId('status-kicker');
+    const title = byId('status-title');
+    const body = byId('status-body');
+    const progress = byId('status-progress');
+    const link = byId<HTMLAnchorElement>('status-link');
+    const footer = byId<HTMLAnchorElement>('footer-link');
+    show(byId('status-skeleton'), false);
+    show(kicker);
+    show(title);
+    show(body);
+    card.className = 'card';
+    kicker.className = 'label';
+    show(progress, false);
+    show(link, false);
+
+    switch (view.state) {
+      case 'idle':
+        kicker.textContent = 'Nothing publishing';
+        title.textContent = 'No publish is running';
+        body.textContent = 'Start one from Review and publish when the test site looks right.';
+        footer.textContent = 'Go to Review and publish';
+        footer.href = '/review/';
+        break;
+      case 'waiting':
+      case 'ready': {
+        kicker.textContent = `Step ${view.stepIndex} of 4`;
+        const step = view.steps[view.stepIndex - 1];
+        title.textContent =
+          view.state === 'ready'
+            ? 'Putting it live'
+            : (step?.title.replace(/^Built/, 'Building').replace(/^Checked/, 'Checking') ??
+              'Working');
+        body.textContent =
+          view.state === 'ready'
+            ? 'Every check passed. The new version is going worldwide now.'
+            : 'The live site is untouched until every check passes.';
+        byId('status-bar').style.width = `${view.progress}%`;
+        show(progress);
+        footer.textContent = 'Back to home';
+        footer.href = '/';
+        break;
+      }
+      case 'merged':
+        card.className = 'card card--ok';
+        kicker.className = 'label label--ok';
+        kicker.textContent = 'Done';
+        title.textContent = 'langarsewa.org is updated';
+        body.textContent = `Published ${formatTime(new Date())}. Visitors see the change now; some phones may take a few minutes.`;
+        link.href = productionUrl;
+        show(link);
+        footer.textContent = 'Back to home';
+        footer.href = '/';
+        break;
+      case 'failed': {
+        card.className = 'card card--bad';
+        kicker.className = 'label label--bad';
+        kicker.textContent = 'A check failed';
+        title.textContent = 'Nothing changed on the live site';
+        const which = view.failedCheck
+          ? `"${view.failedCheck}" did not pass.`
+          : 'One of the checks did not pass.';
+        body.textContent = `${which} Visitors still see the previous version. Fix the change on the test site, then publish again.`;
+        if (current.pr) {
+          replaceChildren(link, 'See what failed');
+          link.href = current.pr.url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.className = 'btn';
+          link.style.alignSelf = 'flex-start';
+          show(link);
+        }
+        footer.textContent = 'Back to Review and publish';
+        footer.href = '/review/';
+        break;
+      }
+    }
+  }
+
+  function stopPolling(): void {
+    if (timer !== null) {
+      window.clearTimeout(timer);
+      timer = null;
+    }
+  }
+
+  async function tick(): Promise<void> {
+    const current = await api.publishCurrent();
+    const view = publishView(current, pendingCount);
+    paintCard(view, current);
+    paintSteps(view);
+    if (isTerminal(view.state) || view.state === 'idle') {
+      stopPolling();
+      show(byId('closing-note'), view.state !== 'idle');
+      return;
+    }
+    timer = window.setTimeout(() => void boot(tick), POLL_MS);
+  }
+
+  void boot(async () => {
+    // Status and pending are best effort; the publish state is what matters here.
+    const [status, pending] = await Promise.all([
+      api.status().catch(() => null),
+      api.pending().catch(() => null),
+    ]);
+    if (status) productionUrl = status.production.url;
+    if (pending) pendingCount = pending.count;
+    await tick();
+  });
+
+  window.addEventListener('pagehide', stopPolling);
+</script>

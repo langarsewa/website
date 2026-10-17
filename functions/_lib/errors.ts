@@ -1,4 +1,4 @@
-export type ErrorStatus = 400 | 401 | 403 | 404 | 409 | 500 | 502;
+export type ErrorStatus = 400 | 401 | 403 | 404 | 409 | 500 | 502 | 503;
 
 export type ApiError = { error: { code: string; message: string } };
 
