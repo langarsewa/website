@@ -82,6 +82,10 @@ test.describe('legacy links', () => {
   });
 
   test('legacy paths in _redirects map to the new pages', async ({ request }) => {
+    test.skip(
+      !!process.env.BASE_URL,
+      'checks the build artefact; a live host consumes these files',
+    );
     const text = await (await request.get('/_redirects')).text();
     const legacy: [string, string][] = [
       ['/about', '/our-story/'],
@@ -163,6 +167,7 @@ test.describe('galleries and videos', () => {
 });
 
 test('security headers and CSP are declared', async ({ request }) => {
+  test.skip(!!process.env.BASE_URL, 'checks the build artefact; a live host consumes these files');
   const text = await (await request.get('/_headers')).text();
   expect(text).toContain("Content-Security-Policy: default-src 'self'");
   expect(text).toContain("script-src 'self'");

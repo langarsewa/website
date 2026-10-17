@@ -85,7 +85,10 @@ function pad(png, width, height) {
 }
 
 const ref = await serve(resolve(root, 'reference'));
-const site = await serve(resolve(root, 'dist'));
+// SITE_URL=https://langarsewa.pages.dev compares a live deployment instead of the local dist/.
+const site = process.env.SITE_URL
+  ? { url: process.env.SITE_URL.replace(/\/$/, ''), server: { close() {} } }
+  : await serve(resolve(root, 'dist'));
 console.log(`reference ${ref.url}  site ${site.url}`);
 const browser = await chromium.launch();
 

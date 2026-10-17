@@ -14,15 +14,18 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : [['list']],
   use: {
-    baseURL: 'http://127.0.0.1:4321',
+    // BASE_URL=https://langarsewa.pages.dev runs the suites against a live deployment instead of dist/.
+    baseURL: process.env.BASE_URL || 'http://127.0.0.1:4321',
     trace: 'retain-on-failure',
   },
-  webServer: {
-    command: 'node tests/lib/static-server.mjs dist 4321',
-    url: 'http://127.0.0.1:4321/',
-    reuseExistingServer: !process.env.CI,
-    timeout: 20_000,
-  },
+  webServer: process.env.BASE_URL
+    ? undefined
+    : {
+        command: 'node tests/lib/static-server.mjs dist 4321',
+        url: 'http://127.0.0.1:4321/',
+        reuseExistingServer: !process.env.CI,
+        timeout: 20_000,
+      },
   projects: [
     {
       name: 'e2e',
