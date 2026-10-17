@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+      - name: Content and i18n parity
+        run: pnpm test:content
+
+      - name: Link check
+        run: pnpm test:links
+
+      - name: Redirects and headers under wrangler pages dev
+        run: pnpm test:redirects
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Interaction tests
+        run: pnpm test:e2e
+
+      - name: Accessibility (axe)
+        run: pnpm test:a11y
+
+      - name: Visual parity against the reference
+        run: pnpm test:visual
+
+      - name: Lighthouse CI
+        run: pnpm lhci
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            tests/visual/__diff__/
+            playwright-report/
+            .lighthouseci/report/
+          retention-days: 14
