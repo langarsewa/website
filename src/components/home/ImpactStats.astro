@@ -1,0 +1,89 @@
+---
+/** The navy "By the numbers" band on Home. Figures come from src/content/impact-stats.json. */
+import T from '@/components/T.astro';
+import Bi, { type BiText } from '@/components/home/Bi.astro';
+import StatIcon from '@/components/home/StatIcon.astro';
+import stats from '@/content/impact-stats.json';
+
+type Value = string | BiText;
+interface Row {
+  icon: string;
+  value: Value;
+  label: BiText;
+}
+const isBi = (v: Value): v is BiText => typeof v !== 'string';
+const feature = stats.feature;
+const cards = stats.cards as { chip: BiText; rows: Row[] }[];
+---
+
+<section class="istat">
+  <div class="is-in">
+    <div class="is-head">
+      <div>
+        <div class="is-k">
+          <span></span>
+          <T k="home.stats.kicker" />
+        </div>
+        <h2>
+          <T k="home.stats.title" />
+        </h2>
+      </div>
+      <p>
+        <T k="home.stats.lede" />
+      </p>
+    </div>
+    <div class="is-grid">
+      <div class="is-card is-feature">
+        <span class="is-chip">
+          <Bi v={feature.chip} />
+        </span>
+        <div class="is-big">
+          <StatIcon name={feature.big.icon} />
+          <div>
+            <div class="is-bn">{feature.big.value}</div>
+            <div class="is-bl">
+              <Bi v={feature.big.label} />
+            </div>
+          </div>
+        </div>
+        <div class="is-bs">
+          <Bi v={feature.note} />
+        </div>
+        <div class="is-split">
+          {feature.split.map((row) => (
+            <div class="is-row">
+              <StatIcon name={row.icon} />
+              <div>
+                <div class="is-n">{row.value}</div>
+                <div class="is-l">
+                  <Bi v={row.label} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {cards.map((card) => (
+        <div class="is-card">
+          <span class="is-chip is-chip-o">
+            <Bi v={card.chip} />
+          </span>
+          {card.rows.map((row) => (
+            <div class="is-row">
+              <StatIcon name={row.icon} />
+              <div>
+                <div class="is-n">{isBi(row.value) ? <Bi v={row.value} /> : row.value}</div>
+                <div class="is-l">
+                  <Bi v={row.label} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+    <p class="is-note">
+      <T k="home.stats.note" />
+    </p>
+  </div>
+</section>

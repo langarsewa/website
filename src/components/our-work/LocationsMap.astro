@@ -1,0 +1,161 @@
+---
+/**
+ * The "Current network" map card and list card on Our Work. Pins and list rows are rendered
+ * from src/content/locations.json in reference order (data-i is the array index); the
+ * behaviour (filter, search, select, pin-to-list sync) lives in src/scripts/map.ts, which reads
+ * the same data back from the #locdata JSON block and the labels from data-label-* here.
+ */
+import T from '@/components/T.astro';
+import Bi from '@/components/home/Bi.astro';
+import { getLocale, t } from '@/lib/i18n';
+import locations from '@/content/locations.json';
+import outline from './punjab-outline.html?raw';
+
+const locale = getLocale(Astro.currentLocale);
+const k = (key: string) => t(locale, `ourWork.locations.${key}`);
+
+type LocType = 'Hospital' | 'Kitchen' | 'Community';
+const typed = locations as {
+  name: { en: string; pa: string };
+  region: { en: string; pa: string };
+  type: LocType;
+  x: number;
+  y: number;
+}[];
+
+/** What the reference's map script read: English and Punjabi name and region, plus the type. */
+const locdata = typed.map((l) => ({
+  n: l.name.en,
+  r: l.region.en,
+  t: l.type,
+  pn: l.name.pa,
+  pr: l.region.pa,
+}));
+
+const chips = [
+  { r: 'All', key: 'all' },
+  { r: 'Doaba', key: 'doaba' },
+  { r: 'Majha', key: 'majha' },
+  { r: 'Malwa', key: 'malwa' },
+  { r: 'Chandigarh', key: 'chandigarh' },
+];
+const coord = (n: number) => n.toFixed(1);
+---
+
+<div
+  class="locwrap"
+  data-label-hospital={k('labels.hospital')}
+  data-label-kitchen={k('labels.kitchen')}
+  data-label-community={k('labels.community')}
+  data-label-fresh={k('labels.fresh')}
+  data-label-hours={k('labels.hours')}
+  data-label-one={k('labels.one')}
+  data-label-many={k('labels.many')}
+>
+  <div class="mapcard">
+    <svg aria-label={k('mapLabel')} class="pmap" role="group" viewBox="-20 -20 594 660">
+      <Fragment set:html={outline} />
+      {typed.map((l, i) => (
+        <g
+          aria-label={l.name[locale]}
+          class="pin"
+          data-i={i}
+          data-r={l.region.en}
+          data-t={l.type}
+          role="button"
+          tabindex="0"
+          transform={`translate(${coord(l.x)} ${coord(l.y)})`}
+        >
+          <circle class="halo" fill="#F4C430" opacity="0" r="16"></circle>
+          <circle fill="transparent" r="11"></circle>
+          {l.type === 'Kitchen' ? (
+            <rect
+              fill="#102B4E"
+              height="18"
+              rx="4"
+              stroke="#F4C430"
+              stroke-width="3"
+              width="18"
+              x="-9"
+              y="-9"
+            ></rect>
+          ) : l.type === 'Community' ? (
+            <circle fill="#FFFFFF" r="7" stroke="#102B4E" stroke-width="3"></circle>
+          ) : (
+            <circle fill="#F4C430" r="8" stroke="#102B4E" stroke-width="2.5"></circle>
+          )}
+        </g>
+      ))}
+    </svg>
+    <div aria-live="polite" class="mapinfo" id="mapinfo">
+      <div class="mi-k">
+        <T k="ourWork.locations.mapinfo.kicker" />
+      </div>
+      <div class="mi-n">
+        <T k="ourWork.locations.mapinfo.title" />
+      </div>
+      <div class="mi-d">
+        <T k="ourWork.locations.mapinfo.body" />
+      </div>
+    </div>
+    <div class="mapnote">
+      <T k="ourWork.locations.mapnote" />
+    </div>
+  </div>
+  <div class="listcard">
+    <div class="lc-top">
+      <div aria-label={k('chips.label')} class="rchips" role="group">
+        {chips.map((c) => (
+          <button class={c.r === 'All' ? 'rchip on' : 'rchip'} data-r={c.r} type="button">
+            <T k={`ourWork.locations.chips.${c.key}`} />
+          </button>
+        ))}
+      </div>
+      <label class="search">
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="16"
+          stroke="#4A5568"
+          stroke-linecap="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="16"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+        <input
+          aria-label={k('search.label')}
+          id="locq"
+          placeholder={k('search.placeholder')}
+          type="search"
+        />
+      </label>
+      <div class="lc-count" id="loccount">
+        <T k="ourWork.locations.countInitial" />
+      </div>
+    </div>
+    <div class="loclist" id="loclist">
+      {typed.map((l, i) => (
+        <button class="loc" data-i={i} data-r={l.region.en} data-t={l.type} type="button">
+          <span class={`dot dot-${l.type.toLowerCase()}`}></span>
+          <span class="ln">
+            <Bi v={l.name} />
+          </span>
+          <span class="lt">
+            {l.type === 'Hospital' ? (
+              <Bi v={l.region} />
+            ) : (
+              <T k={`ourWork.locations.listType.${l.type.toLowerCase()}`} />
+            )}
+          </span>
+        </button>
+      ))}
+    </div>
+    <button class="more" id="locmore" type="button">
+      <T k="ourWork.locations.showAll" />
+    </button>
+  </div>
+</div>
+<script id="locdata" type="application/json" set:html={JSON.stringify(locdata)} />

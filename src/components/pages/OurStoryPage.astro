@@ -1,0 +1,292 @@
+---
+/**
+ * Our Story (reference: <main id="page-our-story">). Markup, class names and inline styles
+ * follow the reference one for one; strings come from i18n (ourStory.*) and the list-like
+ * content from src/content/{milestones,values,kitchens}.json.
+ */
+import { getImage } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import T from '@/components/T.astro';
+import Photo from '@/components/Photo.astro';
+import NextBand from '@/components/NextBand.astro';
+import { getLocale, localePath, t } from '@/lib/i18n';
+import { image } from '@/lib/images';
+import milestones from '@/content/milestones.json';
+import values from '@/content/values.json';
+import kitchens from '@/content/kitchens.json';
+
+const locale = getLocale(Astro.currentLocale);
+
+/** Same wrapper the reference used around each language's text, for strings read from content JSON. */
+const lcls = locale === 'pa' ? 'l-pa' : 'l-en';
+const llang = locale === 'pa' ? 'pa' : undefined;
+
+const journey = milestones.journey;
+
+/** Full-size URLs for the gallery thumbnails (data-full), so the main image and the lightbox never upscale a thumb. */
+const galleries = await Promise.all(
+  kitchens.map(async (k) => ({
+    ...k,
+    photos: await Promise.all(
+      k.photos.map(async (p) => {
+        const meta = image(p.file);
+        const full = await getImage({ src: meta, format: 'webp' });
+        return { ...p, meta, full: full.src };
+      }),
+    ),
+  })),
+);
+
+const serif = "font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif;";
+const kickerStyle =
+  'display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568';
+const barStyle = 'width: 32px; height: 3px; background: #F4C430; flex: none';
+const h2Style = (margin: string, maxWidth: string) =>
+  `${serif} font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: ${margin}; max-width: ${maxWidth}; color: #102B4E`;
+const h3Style = `${serif} font-weight: 500; font-size: 24px; line-height: 1.2; margin: 0 0 8px; color: #102B4E`;
+const kitchenH3Style = `${serif} font-weight: 500; font-size: 28px; line-height: 1.2; margin: 0 0 8px; color: #102B4E`;
+const dateStyle =
+  'font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #4A5568';
+---
+
+<Base
+  slug="our-story"
+  pageName={t(locale, 'nav.ourStory.label')}
+  description={t(locale, 'ourStory.meta.description')}
+>
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 56px) 24px clamp(24px, 3.5vw, 40px); display: flex; flex-wrap: wrap; gap: 24px 56px; align-items: center">
+      <div style="flex: 1 1 420px; min-width: 0">
+        <div style={kickerStyle}>
+          <span style={barStyle}></span>
+          <T k="ourStory.hero.kicker" />
+        </div>
+        <h1
+          style={`${serif} font-weight: 500; font-size: clamp(48px, 8vw, 84px); line-height: 1.02; letter-spacing: -0.02em; margin: 16px 0 18px; max-width: 900px`}
+        >
+          <T k="ourStory.hero.title" />
+        </h1>
+        <p style="font-size: clamp(17px, 2vw, 20px); color: #334155; margin: 0 0 28px; max-width: 640px">
+          <T k="ourStory.hero.body" />
+        </p>
+      </div>
+      <div style="flex: 1 1 420px; min-width: 0">
+        <figure style="margin: 0 auto; max-width: 380px">
+          <div
+            class="ph-img"
+            style="height: clamp(360px, 40vw, 470px); border-radius: 20px; overflow: hidden; background: #E7E3D8"
+          >
+            <Photo
+              src={image('painting-of-sri-guru-ram-das-ji.webp')}
+              alt={t(locale, 'ourStory.hero.photoAlt')}
+              loading="eager"
+              fetchpriority="high"
+              style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block"
+            />
+          </div>
+          <figcaption style="margin-top: 10px; font-size: 13px; color: #4A5568; text-align: center">
+            <T k="ourStory.hero.caption" />
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; flex-wrap: wrap; gap: 56px">
+        <div style="flex: 1 1 300px; min-width: 0">
+          <div style={kickerStyle}>
+            <span style={barStyle}></span>
+            <T k="ourStory.journey.kicker" />
+          </div>
+          <h2 style={h2Style('14px 0 20px', '420px')}>
+            <T k="ourStory.journey.title" />
+          </h2>
+          <p style="font-size: 17px; color: #334155; margin: 0 0 16px">
+            <T k="ourStory.journey.body" />
+          </p>
+          <a href={localePath(locale, '/impact/')} style="font-weight: 600">
+            <T k="ourStory.journey.link" />
+          </a>
+        </div>
+        <div style="flex: 2 1 480px; min-width: 0">
+          <div style="display: flex; flex-direction: column">
+            {journey.map((m, i) => (
+              <div style="display: flex; gap: 20px">
+                <div style="display: flex; flex-direction: column; align-items: center; flex: none">
+                  <span
+                    style={`width: 16px; height: 16px; border-radius: 50%; background: ${m.highlight ? '#F4C430' : '#102B4E'}; margin-top: 6px`}
+                  />
+                  <span
+                    style={`flex: 1; width: 2px; background: ${i === journey.length - 1 ? '#E6E3DA' : '#CBD2DC'}`}
+                  />
+                </div>
+                <div style="padding-bottom: 32px; min-width: 0">
+                  <div style={dateStyle}>
+                    {m.date.en === m.date.pa ? (
+                      m.date.en
+                    ) : (
+                      <span class={lcls} lang={llang}>
+                        {m.date[locale]}
+                      </span>
+                    )}
+                  </div>
+                  <h3 style={h3Style}>
+                    <span class={lcls} lang={llang}>
+                      {m.title[locale]}
+                    </span>
+                  </h3>
+                  <p style="margin: 0; color: #334155">
+                    <span class={lcls} lang={llang}>
+                      {m.body[locale]}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #FFFFFF; border-top: 1px solid #E6E3DA; border-bottom: 1px solid #E6E3DA;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style={kickerStyle}>
+        <span style={barStyle}></span>
+        <T k="ourStory.tradition.kicker" />
+      </div>
+      <h2 style={h2Style('14px 0 12px', '760px')}>
+        <T k="ourStory.tradition.title" />
+      </h2>
+      <p style="font-size: 17px; color: #334155; margin: 0 0 40px">
+        <T k="ourStory.tradition.body" />
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 24px">
+        {values.map((v) => (
+          <div style="background: #FBFAF6; border: 1px solid #E6E3DA; border-radius: 18px; padding: 26px">
+            <h3 style={h3Style}>
+              <span class={lcls} lang={llang}>
+                {v.title[locale]}
+              </span>
+            </h3>
+            <p style="margin: 0; color: #334155">
+              <span class={lcls} lang={llang}>
+                {v.body[locale]}
+              </span>
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style={kickerStyle}>
+        <span style={barStyle}></span>
+        <T k="ourStory.kitchens.kicker" />
+      </div>
+      <h2 style={h2Style('12px 0 28px', '760px')}>
+        <T k="ourStory.kitchens.title" />
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 24px">
+        {galleries.map((k) => (
+          <div style="display: flex; flex-direction: column; gap: 16px">
+            <div class="kgal" data-active="0">
+              <div
+                class="ph-img kmain"
+                style="height: 280px; border-radius: 20px; overflow: hidden; background: #E7E3D8"
+              >
+                <Photo
+                  src={k.photos[0]!.meta}
+                  alt={k.photos[0]!.alt[locale]}
+                  class="kmain-img"
+                  sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 564px"
+                />
+                <span class="kcount">
+                  <span class={lcls} lang={llang}>
+                    {k.photoCount[locale]}
+                  </span>
+                </span>
+              </div>
+              <div class="kthumbs">
+                {k.photos.map((p, i) => (
+                  <button
+                    aria-label={p.alt[locale]}
+                    aria-pressed={i === 0 ? 'true' : 'false'}
+                    class={i === 0 ? 'kthumb on' : 'kthumb'}
+                    data-i={String(i)}
+                    data-full={p.full}
+                    type="button"
+                  >
+                    <Photo
+                      src={p.meta}
+                      alt={p.alt[locale]}
+                      widths={[240, 480]}
+                      sizes="(max-width: 700px) 20vw, 120px"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+            <h3 style={kitchenH3Style}>
+              <span class={lcls} lang={llang}>
+                {k.name[locale]}
+              </span>
+            </h3>
+            <p style="margin: 0; color: #334155">
+              <span class={lcls} lang={llang}>
+                {k.description[locale]}
+              </span>
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div style={kickerStyle}>
+            <span style={barStyle}></span>
+            <T k="ourStory.visit.kicker" />
+          </div>
+          <h2 style={h2Style('14px 0 20px', '760px')}>
+            <T k="ourStory.visit.title" />
+          </h2>
+          <p style="font-size: 17px; color: #334155; margin: 0 0 16px">
+            <T k="ourStory.visit.body" />
+          </p>
+          <a
+            href={localePath(locale, '/contact/')}
+            style="text-decoration: none; background: #102B4E; color: #FFFFFF; font-weight: 600; padding: 14px 24px; border-radius: 999px; display: inline-block"
+          >
+            <T k="ourStory.visit.cta" />
+          </a>
+        </div>
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div
+            class="ph-img"
+            style="height: clamp(260px, 30vw, 380px); border-radius: 20px; overflow: hidden; background: #E7E3D8"
+          >
+            <Photo
+              src={image('pur-heeran-kitchen-grounds-and-entrance.webp')}
+              alt={t(locale, 'ourStory.visit.photoAlt')}
+              style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <NextBand
+    to="our-work"
+    titleKey="ourStory.next.title"
+    descriptionKey="ourStory.next.description"
+  />
+</Base>

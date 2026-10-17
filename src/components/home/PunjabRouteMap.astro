@@ -1,0 +1,466 @@
+---
+/**
+ * The hero map of Punjab: daily Langar routes from the Pur Heeran and Madhir kitchens to the
+ * 31 hospitals. SVG copied from the reference verbatim; only the labels are localised.
+ */
+import { getLocale, t } from '@/lib/i18n';
+const locale = getLocale(Astro.currentLocale);
+---
+
+<div aria-label={t(locale, 'home.hero.mapLabel')} class="hero-opts" data-opt="c" role="img">
+  <div class="hopt hopt-c">
+    <div class="hmap">
+      <svg
+        aria-hidden="true"
+        style="display:block;width:100%;height:auto;overflow:visible"
+        viewBox="-6 -24 594 660"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polygon
+          fill="#102B4E"
+          fill-opacity=".035"
+          points="358.4,25.7 369.0,39.8 354.2,47.2 336.1,67.8 325.9,69.7 316.9,75.4 316.5,85.1 323.5,89.1 318.3,97.9 309.5,105.3 312.8,108.4 321.4,106.2 328.2,109.3 344.0,122.5 362.5,131.3 375.3,156.9 367.1,157.3 380.6,190.7 387.5,199.3 405.8,236.3 402.7,246.5 408.0,250.5 409.1,257.3 429.8,254.9 429.8,250.4 436.6,248.3 433.1,238.6 440.4,236.0 441.1,231.0 445.6,239.6 443.8,240.8 455.3,257.5 452.5,262.1 458.4,256.7 462.1,263.9 466.4,262.0 467.1,266.1 470.3,261.9 469.9,267.5 475.9,262.6 481.1,268.4 477.5,275.1 485.2,273.1 486.7,275.8 479.2,281.7 479.0,292.5 485.1,295.9 480.6,307.0 482.4,316.7 491.2,323.2 499.6,324.7 522.1,358.2 519.0,363.8 514.5,364.0 513.9,359.6 511.1,361.8 506.0,357.3 495.9,364.5 495.9,367.1 503.9,378.4 513.3,382.3 517.6,379.1 517.4,384.0 520.1,384.9 524.7,380.4 524.1,387.9 533.3,395.9 530.8,398.1 532.0,404.0 528.5,407.5 534.4,411.9 533.0,416.7 529.1,418.5 529.1,427.0 535.5,437.2 528.8,443.2 525.0,433.3 519.6,428.4 515.6,432.7 509.2,431.4 508.0,427.2 501.6,431.0 501.8,434.0 497.4,436.2 500.4,439.5 499.3,441.8 503.8,442.9 499.9,448.1 493.1,449.5 491.0,454.6 484.3,456.2 482.2,460.3 471.7,461.4 469.2,468.8 477.8,463.0 482.5,468.0 481.2,471.1 487.0,472.9 487.5,476.2 484.4,484.0 469.3,497.0 463.8,498.2 462.1,494.2 455.6,493.5 448.6,473.6 443.7,477.3 447.1,482.3 444.3,484.6 445.2,488.2 434.4,484.0 438.3,488.2 433.9,492.0 421.8,489.9 413.9,482.0 415.3,486.7 411.7,486.7 422.5,492.7 413.0,505.7 415.8,507.8 411.7,509.9 413.9,524.1 409.7,523.6 407.5,527.1 410.2,528.2 410.6,534.9 420.3,538.8 399.1,553.0 392.6,551.1 392.0,555.9 386.5,562.3 382.5,560.8 373.6,565.6 366.6,564.9 362.3,560.9 359.3,562.5 353.3,556.9 350.8,549.7 345.3,550.8 341.2,547.2 330.2,550.4 328.7,560.9 321.8,556.8 316.6,557.3 314.6,562.6 307.1,563.3 305.0,558.8 300.6,557.4 297.5,559.9 286.2,550.5 286.1,554.7 278.3,559.6 275.1,569.4 267.8,572.8 270.4,579.5 264.9,577.3 263.1,584.8 258.6,589.1 262.6,593.4 261.2,597.4 249.0,601.6 246.9,594.5 248.6,589.8 240.6,585.2 238.0,578.8 244.3,573.9 244.0,566.6 250.3,561.3 244.8,552.7 245.3,546.1 242.2,544.3 237.6,548.0 237.4,555.6 234.3,555.8 232.5,550.8 226.7,550.6 229.5,546.7 225.2,542.2 229.1,537.6 225.8,529.3 222.5,536.4 217.8,535.9 209.8,540.8 197.4,522.6 192.3,524.6 193.8,521.9 191.7,518.8 186.3,520.6 178.2,514.1 165.2,520.1 159.6,518.6 151.0,527.7 151.0,531.3 141.9,529.2 131.7,522.0 25.2,518.0 23.5,512.9 25.9,503.0 38.0,488.5 36.5,461.0 22.7,441.5 37.3,427.6 30.3,426.6 31.1,416.7 35.2,422.6 40.1,412.6 45.4,412.0 44.1,408.4 50.2,406.6 51.4,410.3 55.0,409.4 57.6,404.8 55.1,403.6 59.3,399.6 59.0,392.3 62.1,393.6 63.6,388.5 67.3,388.7 75.4,381.7 81.1,371.0 90.2,368.6 86.3,361.2 93.8,359.1 91.8,355.8 97.0,346.4 106.5,343.7 103.1,340.6 104.5,337.4 113.6,334.0 111.4,331.2 114.0,331.1 113.3,328.0 119.3,326.1 119.1,322.8 127.0,323.4 134.0,318.2 133.2,314.2 136.9,306.2 141.3,305.4 143.7,308.8 154.1,306.1 160.6,298.1 157.7,291.2 150.0,293.0 148.4,289.9 143.5,290.6 143.5,299.6 136.7,299.9 135.2,292.8 128.7,289.5 128.2,281.1 131.7,268.2 129.9,263.3 133.4,257.3 131.0,255.0 143.1,234.2 148.0,232.7 151.4,235.2 149.8,229.7 151.9,226.3 149.3,221.4 139.2,218.6 145.5,212.1 145.9,205.3 135.6,197.2 132.0,183.7 123.6,175.6 136.9,169.2 137.5,154.6 141.7,151.5 144.8,143.4 149.5,143.8 155.1,136.9 163.4,136.7 163.1,133.6 169.5,130.4 180.2,129.8 181.7,121.5 189.6,116.3 189.1,112.2 197.9,108.3 212.1,114.4 222.0,108.9 227.7,109.5 231.8,104.9 239.9,107.8 245.1,98.3 250.1,103.5 254.4,101.7 257.4,93.3 263.9,87.1 262.5,82.9 264.9,79.4 273.3,75.3 274.0,68.6 264.8,63.1 267.0,54.1 282.1,57.8 291.7,54.7 290.9,59.1 294.7,60.5 296.2,67.4 301.3,53.0 331.9,39.5 337.7,28.1 347.5,26.0 359.0,8.6 355.5,19.3"
+          stroke="#102B4E"
+          stroke-linejoin="round"
+          stroke-opacity=".45"
+          stroke-width="1.6"
+        ></polygon>
+        <polygon
+          fill="none"
+          points="519.0,363.8 518.1,368.4 520.3,373.5 517.8,376.9 517.6,379.1 516.0,379.2 513.3,382.3 505.0,378.1 503.9,378.4 503.0,376.8 501.9,377.0 501.7,374.3 500.0,373.6 500.2,370.7 497.7,367.4 495.9,367.1 495.9,364.5 498.8,362.5 501.3,362.4 504.1,359.4 503.9,358.7 507.4,356.9 510.5,359.5 509.1,361.2 511.1,361.8 513.6,359.5 514.9,360.8 512.8,362.7 513.1,363.3 514.5,364.0 516.3,363.2"
+          stroke="#102B4E"
+          stroke-opacity=".45"
+          stroke-width="1.2"
+        ></polygon>
+        <g
+          fill="none"
+          stroke="#F4C430"
+          stroke-linecap="round"
+          stroke-opacity=".9"
+          stroke-width="1.6"
+        >
+          <path d="M377.7 228.8 Q421.6 317.5 512.0 357.9"></path>
+          <path d="M377.7 228.8 Q408.2 326.0 493.6 381.4"></path>
+          <path d="M377.7 228.8 Q343.0 272.7 344.2 328.6"></path>
+          <path d="M377.7 228.8 Q348.1 282.2 359.3 342.3"></path>
+          <path d="M377.7 228.8 Q290.4 176.4 189.7 191.7"></path>
+          <path d="M377.7 228.8 Q287.9 196.5 198.1 228.8"></path>
+          <path d="M377.7 228.8 Q323.6 168.5 243.4 156.5"></path>
+          <path d="M377.7 228.8 Q348.1 153.0 277.0 113.4"></path>
+          <path d="M377.7 228.8 Q316.7 198.0 250.1 213.2"></path>
+          <path d="M377.7 228.8 Q372.1 218.0 360.9 213.2"></path>
+          <path d="M377.7 228.8 Q361.4 182.1 319.0 156.5"></path>
+          <path d="M377.7 228.8 Q363.4 168.4 313.9 131.0"></path>
+          <path d="M377.7 228.8 Q381.3 255.5 401.2 273.8"></path>
+          <path d="M377.7 228.8 Q376.2 264.7 397.9 293.4"></path>
+          <path d="M377.7 228.8 Q350.3 244.4 339.1 273.8"></path>
+          <path d="M377.7 228.8 Q338.2 227.9 307.2 252.3"></path>
+          <path d="M377.7 228.8 Q322.8 244.4 290.4 291.4"></path>
+          <path d="M377.7 228.8 Q344.1 264.2 340.8 312.9"></path>
+          <path d="M377.7 228.8 Q412.3 264.5 461.7 269.9"></path>
+          <path d="M377.7 228.8 Q405.3 291.8 466.7 322.7"></path>
+          <path d="M377.7 228.8 Q369.8 308.8 414.7 375.5"></path>
+          <path d="M377.7 228.8 Q382.3 318.8 443.2 385.3"></path>
+          <path d="M142.7 442.0 Q242.9 490.2 350.9 463.5"></path>
+          <path d="M142.7 442.0 Q196.8 502.4 277.0 514.4"></path>
+          <path d="M142.7 442.0 Q166.8 467.3 201.5 471.4"></path>
+          <path d="M142.7 442.0 Q118.5 443.2 100.7 459.6"></path>
+          <path d="M142.7 442.0 Q142.1 459.5 152.8 473.3"></path>
+          <path d="M142.7 442.0 Q139.9 428.8 129.3 420.5"></path>
+          <path d="M142.7 442.0 Q96.3 420.9 47.0 434.2"></path>
+          <path d="M142.7 442.0 Q167.1 416.5 169.6 381.4"></path>
+          <path d="M142.7 442.0 Q163.6 386.6 144.4 330.5"></path>
+        </g>
+        <circle
+          cx="512.0"
+          cy="357.9"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="493.6"
+          cy="381.4"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="344.2"
+          cy="328.6"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="359.3"
+          cy="342.3"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="189.7"
+          cy="191.7"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="198.1"
+          cy="228.8"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="243.4"
+          cy="156.5"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="277.0"
+          cy="113.4"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="250.1"
+          cy="213.2"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="360.9"
+          cy="213.2"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="319.0"
+          cy="156.5"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="313.9"
+          cy="131.0"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="401.2"
+          cy="273.8"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="397.9"
+          cy="293.4"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="339.1"
+          cy="273.8"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="307.2"
+          cy="252.3"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="290.4"
+          cy="291.4"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="340.8"
+          cy="312.9"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="461.7"
+          cy="269.9"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="466.7"
+          cy="322.7"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="414.7"
+          cy="375.5"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="443.2"
+          cy="385.3"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="350.9"
+          cy="463.5"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="277.0"
+          cy="514.4"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="201.5"
+          cy="471.4"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="100.7"
+          cy="459.6"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="152.8"
+          cy="473.3"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="129.3"
+          cy="420.5"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="47.0"
+          cy="434.2"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="169.6"
+          cy="381.4"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle
+          cx="144.4"
+          cy="330.5"
+          fill="#FBFAF6"
+          r="4.2"
+          stroke="#102B4E"
+          stroke-width="2"
+        ></circle>
+        <circle cx="377.7" cy="228.8" fill="#F4C430" fill-opacity=".3" r="13"></circle>
+        <circle
+          cx="377.7"
+          cy="228.8"
+          fill="#F4C430"
+          r="7"
+          stroke="#102B4E"
+          stroke-width="2.2"
+        ></circle>
+        {locale === 'pa' ? (
+          <text
+            class="l-pa"
+            fill="#102B4E"
+            font-family="'Noto Sans Gurmukhi', sans-serif"
+            font-size="18.5"
+            font-weight="800"
+            text-anchor="start"
+            x="393.7"
+            y="215.8"
+          >
+            {t(locale, 'home.map.purHeeran')}
+          </text>
+        ) : (
+          <text
+            class="l-en"
+            fill="#102B4E"
+            font-family="'Public Sans', Arial, sans-serif"
+            font-size="17"
+            font-weight="800"
+            letter-spacing="0"
+            text-anchor="start"
+            x="393.7"
+            y="214.8"
+          >
+            {t(locale, 'home.map.purHeeran')}
+          </text>
+        )}
+        <circle cx="142.7" cy="442.0" fill="#F4C430" fill-opacity=".3" r="13"></circle>
+        <circle
+          cx="142.7"
+          cy="442.0"
+          fill="#F4C430"
+          r="7"
+          stroke="#102B4E"
+          stroke-width="2.2"
+        ></circle>
+        {locale === 'pa' ? (
+          <text
+            class="l-pa"
+            fill="#102B4E"
+            font-family="'Noto Sans Gurmukhi', sans-serif"
+            font-size="18.5"
+            font-weight="800"
+            text-anchor="start"
+            x="158.7"
+            y="429.0"
+          >
+            {t(locale, 'home.map.madhir')}
+          </text>
+        ) : (
+          <text
+            class="l-en"
+            fill="#102B4E"
+            font-family="'Public Sans', Arial, sans-serif"
+            font-size="17"
+            font-weight="800"
+            letter-spacing="0"
+            text-anchor="start"
+            x="158.7"
+            y="428.0"
+          >
+            {t(locale, 'home.map.madhir')}
+          </text>
+        )}
+        <g transform="translate(0 628)">
+          <circle cx="6" cy="-4" fill="#F4C430" r="6" stroke="#102B4E" stroke-width="2"></circle>
+          {locale === 'pa' ? (
+            <text
+              class="l-pa"
+              fill="#102B4E"
+              font-family="'Noto Sans Gurmukhi', sans-serif"
+              font-size="16.5"
+              font-weight="600"
+              text-anchor="start"
+              x="18"
+              y="1"
+            >
+              {t(locale, 'home.map.legendKitchen')}
+            </text>
+          ) : (
+            <text
+              class="l-en"
+              fill="#102B4E"
+              font-family="'Public Sans', Arial, sans-serif"
+              font-size="15"
+              font-weight="600"
+              letter-spacing="0"
+              text-anchor="start"
+              x="18"
+              y="0"
+            >
+              {t(locale, 'home.map.legendKitchen')}
+            </text>
+          )}
+          <circle
+            cx="100"
+            cy="-4"
+            fill="#FBFAF6"
+            r="4.2"
+            stroke="#102B4E"
+            stroke-width="2"
+          ></circle>
+          {locale === 'pa' ? (
+            <text
+              class="l-pa"
+              fill="#102B4E"
+              font-family="'Noto Sans Gurmukhi', sans-serif"
+              font-size="16.5"
+              font-weight="600"
+              text-anchor="start"
+              x="110"
+              y="1"
+            >
+              {t(locale, 'home.map.legendHospital')}
+            </text>
+          ) : (
+            <text
+              class="l-en"
+              fill="#102B4E"
+              font-family="'Public Sans', Arial, sans-serif"
+              font-size="15"
+              font-weight="600"
+              letter-spacing="0"
+              text-anchor="start"
+              x="110"
+              y="0"
+            >
+              {t(locale, 'home.map.legendHospital')}
+            </text>
+          )}
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>

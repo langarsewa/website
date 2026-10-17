@@ -1,0 +1,138 @@
+---
+/** Our Work: daily Langar from two kitchens, the locations map and list, and the programs beyond Langar. */
+import Base from '@/layouts/Base.astro';
+import T from '@/components/T.astro';
+import Photo from '@/components/Photo.astro';
+import NextBand from '@/components/NextBand.astro';
+import LocationsMap from '@/components/our-work/LocationsMap.astro';
+import Programs from '@/components/our-work/Programs.astro';
+import { getLocale, t } from '@/lib/i18n';
+import { image } from '@/lib/images';
+
+const locale = getLocale(Astro.currentLocale);
+const steps = [
+  { n: '01', key: 'source' },
+  { n: '02', key: 'prepare' },
+  { n: '03', key: 'deliver' },
+  { n: '04', key: 'serve' },
+];
+---
+
+<Base
+  slug="our-work"
+  pageName={t(locale, 'nav.ourWork.label')}
+  description={t(locale, 'ourWork.meta.description')}
+>
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 56px) 24px clamp(24px, 3.5vw, 40px)">
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568">
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
+        <T k="ourWork.hero.kicker" />
+      </div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(48px, 8vw, 84px); line-height: 1.02; letter-spacing: -0.02em; margin: 16px 0 18px; max-width: 900px">
+        <T k="ourWork.hero.title" />
+      </h1>
+      <p style="font-size: clamp(17px, 2vw, 20px); color: #334155; margin: 0 0 28px; max-width: 640px">
+        <T k="ourWork.hero.lede" />
+      </p>
+    </div>
+  </section>
+  <section
+    id="langar"
+    style="background: #FFFFFF; border-top: 1px solid #E6E3DA; border-bottom: 1px solid #E6E3DA"
+  >
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568">
+            <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
+            <T k="ourWork.langar.kicker" />
+          </div>
+          <h2 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 20px; max-width: 760px; color: #102B4E">
+            <T k="ourWork.langar.title" />
+          </h2>
+          <p style="font-size: 17px; color: #334155; margin: 0 0 16px">
+            <T k="ourWork.langar.body" />
+          </p>
+        </div>
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div
+            class="ph-img"
+            style="height: clamp(280px, 30vw, 380px); border-radius: 20px; overflow: hidden; background: #E7E3D8"
+          >
+            <Photo
+              src={image('cooking-hall-with-large-langar-cauldrons.webp')}
+              alt={t(locale, 'ourWork.langar.imageAlt')}
+              loading="eager"
+              style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block"
+            />
+          </div>
+        </div>
+      </div>
+      <div style="height: 32px"></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 16px">
+        {steps.map((s) => (
+          <div style="background: #FBFAF6; border: 1px solid #E6E3DA; border-radius: 18px; padding: 24px">
+            <div style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-size: 36px; color: #B08A00; line-height: 1">
+              {s.n}
+            </div>
+            <div style="height: 10px"></div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: 22px; line-height: 1.2; margin: 0 0 8px; color: #102B4E">
+              <T k={`ourWork.langar.steps.${s.key}.title`} />
+            </h3>
+            <p style="margin: 0; color: #334155; font-size: 15px">
+              <T k={`ourWork.langar.steps.${s.key}.text`} />
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section id="locations">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568">
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
+        <T k="ourWork.locations.kicker" />
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 28px">
+        <h2 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 12px 0 0; max-width: 620px; color: #102B4E">
+          <T k="ourWork.locations.title" />
+        </h2>
+        <div class="legend">
+          <span>
+            <i class="dot dot-hospital"></i>
+            <T k="ourWork.locations.legend.hospital" />
+          </span>
+          <span>
+            <i class="dot dot-kitchen"></i>
+            <T k="ourWork.locations.legend.kitchen" />
+          </span>
+          <span>
+            <i class="dot dot-community"></i>
+            <T k="ourWork.locations.legend.community" />
+          </span>
+        </div>
+      </div>
+      <LocationsMap />
+    </div>
+  </section>
+  <section
+    id="programs"
+    style="background: #FFFFFF; border-top: 1px solid #E6E3DA; border-bottom: 1px solid #E6E3DA"
+  >
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568">
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
+        <T k="ourWork.programs.kicker" />
+      </div>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 12px 0 28px; max-width: 760px; color: #102B4E">
+        <T k="ourWork.programs.title" />
+      </h2>
+      <Programs />
+    </div>
+  </section>
+  <NextBand to="impact" titleKey="ourWork.next.title" descriptionKey="ourWork.next.description" />
+  <script>
+    import '@/scripts/map';
+  </script>
+</Base>

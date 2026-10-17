@@ -1,0 +1,44 @@
+---
+/** The four "Get to know the sewa" door cards. Content from src/content/home-doors.json. */
+import T from '@/components/T.astro';
+import Photo from '@/components/Photo.astro';
+import Bi from '@/components/home/Bi.astro';
+import { getLocale, localePath } from '@/lib/i18n';
+import { image } from '@/lib/images';
+import { pathFor, type Slug } from '@/lib/routes';
+import doors from '@/content/home-doors.json';
+
+const locale = getLocale(Astro.currentLocale);
+---
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px">
+  {doors.map((d) => (
+    <a
+      class="door"
+      href={localePath(locale, pathFor(d.slug as Slug))}
+      style="text-decoration: none; display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E6E3DA; border-radius: 20px; overflow: hidden"
+    >
+      <div
+        class="ph-img"
+        style="height: 190px; border-radius: 0; overflow: hidden; background: #E7E3D8"
+      >
+        <Photo
+          src={image(d.image)}
+          alt={d.alt[locale]}
+          style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block"
+        />
+      </div>
+      <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1">
+        <h3 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.2; margin: 0 0 8px; color: #102B4E">
+          <Bi v={d.title} />
+        </h3>
+        <p style="margin: 0; color: #334155; font-size: 15px; flex: 1">
+          <Bi v={d.description} />
+        </p>
+        <span style="font-weight: 600; color: #B08A00">
+          <T k="home.explore.cta" />
+        </span>
+      </div>
+    </a>
+  ))}
+</div>

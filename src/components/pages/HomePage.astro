@@ -1,0 +1,131 @@
+---
+/** Home: hero with the Punjab route map, the numbers band, door cards, a voice of the sangat, press and the join CTA. */
+import Base from '@/layouts/Base.astro';
+import T from '@/components/T.astro';
+import NextBand from '@/components/NextBand.astro';
+import PunjabRouteMap from '@/components/home/PunjabRouteMap.astro';
+import ImpactStats from '@/components/home/ImpactStats.astro';
+import DoorCards from '@/components/home/DoorCards.astro';
+import PressBand from '@/components/home/PressBand.astro';
+import { getLocale, localePath, t } from '@/lib/i18n';
+const locale = getLocale(Astro.currentLocale);
+const href = (p: string) => localePath(locale, p);
+---
+
+<Base slug="" pageName={null} description={t(locale, 'common.metaDescription')}>
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 56px) 24px clamp(24px, 3.5vw, 40px)">
+      <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568">
+            <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
+            <T k="home.hero.kicker" />
+          </div>
+          <h1 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(48px, 8vw, 84px); line-height: 1.02; letter-spacing: -0.02em; margin: 16px 0 18px; max-width: 900px">
+            <T k="home.hero.title" />
+          </h1>
+          <p style="font-size: clamp(17px, 2vw, 20px); color: #334155; margin: 0 0 28px; max-width: 540px">
+            <T k="home.hero.lede" />
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px">
+            <a
+              href={href('/our-work/')}
+              style="text-decoration: none; background: #102B4E; color: #FFFFFF; font-weight: 600; padding: 14px 24px; border-radius: 999px; display: inline-block"
+            >
+              <T k="home.hero.ctaWork" />
+            </a>
+            <a
+              href={href('/our-story/')}
+              style="text-decoration: none; border: 1.5px solid #102B4E; color: #102B4E; font-weight: 600; padding: 14px 24px; border-radius: 999px; display: inline-block"
+            >
+              <T k="home.hero.ctaStory" />
+            </a>
+          </div>
+        </div>
+        <div style="flex: 1 1 400px; min-width: 0">
+          <PunjabRouteMap />
+        </div>
+      </div>
+    </div>
+  </section>
+  <ImpactStats />
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568">
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
+        <T k="home.explore.kicker" />
+      </div>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 28px; max-width: 640px; color: #102B4E">
+        <T k="home.explore.title" />
+      </h2>
+      <DoorCards />
+    </div>
+  </section>
+  <section style="background: #FFFFFF; border-top: 1px solid #E6E3DA; border-bottom: 1px solid #E6E3DA;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div style="height: clamp(240px, 26vw, 340px); border-radius: 20px; background: #1B3A5F; display: flex; align-items: center; justify-content: center; position: relative">
+            <span style="width: 72px; height: 72px; border-radius: 50%; background: #F4C430; display: flex; align-items: center; justify-content: center">
+              <svg aria-hidden="true" fill="#0A1E37" height="26" viewBox="0 0 24 24" width="26">
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+            </span>
+            <span style="position: absolute; left: 18px; bottom: 14px; right: 18px; font-size: 13px; color: #DCE3EC">
+              <T k="home.voices.videoCaption" />
+            </span>
+          </div>
+        </div>
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568">
+            <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
+            <T k="home.voices.kicker" />
+          </div>
+          <p style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-size: clamp(24px, 3vw, 32px); line-height: 1.3; margin: 16px 0 14px">
+            <T k="home.voices.quote" />
+          </p>
+          <b style="display: block; margin-bottom: 20px">
+            <T k="home.voices.name" />
+          </b>
+          <a href={href('/impact/')} style="font-weight: 600">
+            <T k="home.voices.cta" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <PressBand />
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between; border: 1px solid #E6E3DA; background: #FFFFFF; border-radius: 24px; padding: clamp(28px, 4vw, 48px)">
+        <div style="flex: 1 1 420px; min-width: 0">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568">
+            <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
+            <T k="home.cta.kicker" />
+          </div>
+          <h2 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 10px; max-width: 640px; color: #102B4E">
+            <T k="home.cta.title" />
+          </h2>
+          <p style="margin: 0; color: #334155; font-size: 17px">
+            <T k="home.cta.lede" />
+          </p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px">
+          <a
+            href={href('/join-the-sewa/')}
+            style="text-decoration: none; background: #102B4E; color: #FFFFFF; font-weight: 600; padding: 14px 24px; border-radius: 999px; display: inline-block"
+          >
+            <T k="home.cta.join" />
+          </a>
+          <a
+            href={href('/contact/')}
+            style="text-decoration: none; border: 1.5px solid #102B4E; color: #102B4E; font-weight: 600; padding: 14px 24px; border-radius: 999px; display: inline-block"
+          >
+            <T k="home.cta.visit" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <NextBand to="our-story" titleKey="home.next.title" descriptionKey="home.next.description" />
+</Base>

@@ -1,0 +1,285 @@
+---
+/**
+ * Impact: metrics strip, milestones, crisis response, voices, photo stories and the video
+ * gallery. Markup, class names and inline styles follow reference/index.html (#page-impact)
+ * one for one; strings come from src/content/i18n/parts/impact.*.json and the structured
+ * lists from src/content/{milestones,crisis,photo-stories,videos}.json.
+ */
+import Base from '@/layouts/Base.astro';
+import T from '@/components/T.astro';
+import Photo from '@/components/Photo.astro';
+import NextBand from '@/components/NextBand.astro';
+import { getLocale, t } from '@/lib/i18n';
+import { image } from '@/lib/images';
+import site from '@/content/site.json';
+import milestones from '@/content/milestones.json';
+import crisis from '@/content/crisis.json';
+import photos from '@/content/photo-stories.json';
+import videos from '@/content/videos.json';
+
+type Bi = { en: string; pa: string };
+const locale = getLocale(Astro.currentLocale);
+/** The same wrapper span `<T />` renders, for strings that live in structured JSON. */
+const L = locale === 'pa' ? 'l-pa' : 'l-en';
+const lang = locale === 'pa' ? 'pa' : undefined;
+const bi = (v: string | Bi): string => (typeof v === 'string' ? v : v[locale]);
+
+const kicker =
+  'display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568';
+const wrap = 'max-width: 1200px; margin: 0 auto; padding: clamp(36px, 4.5vw, 60px) 24px';
+const serif = "'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif";
+const accent = { navy: '#102B4E', gold: '#F4C430' } as const;
+
+const metrics = [
+  { key: 'meals', paths: ['M4 11h16a8 8 0 0 1-16 0z', 'M9 7c-1-1.3 1-2.3 0-3.6M15 7c-1-1.3 1-2.3 0-3.6'] },
+  { key: 'hospitals', paths: ['M3 21h18M5 21V7l7-4 7 4v14', 'M12 9v6M9 12h6'] },
+  { key: 'clinic', rect: true, paths: ['M12 8v8M8 12h8'] },
+  { key: 'ration', paths: ['M6 8h12l1 12H5z', 'M9 8V6a3 3 0 0 1 6 0v2'] },
+] as const;
+---
+
+<Base slug="impact" pageName={t(locale, 'nav.impact.label')} description={t(locale, 'impact.meta.description')}>
+  <section style="">
+    <div style={wrap}>
+      <div style={kicker}>
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span><T k="impact.hero.kicker" />
+      </div>
+      <h1
+        style={`font-family: ${serif}; font-weight: 500; font-size: clamp(48px, 8vw, 84px); line-height: 1.02; letter-spacing: -0.02em; margin: 16px 0 18px; max-width: 900px`}
+      >
+        <T k="impact.hero.title" />
+      </h1>
+      <p style="font-size: clamp(17px, 2vw, 20px); color: #334155; margin: 0 0 28px; max-width: 640px">
+        <T k="impact.hero.lede" />
+      </p>
+    </div>
+  </section>
+
+  <section class="imet">
+    <div class="imet-in">
+      <div class="imet-card">
+        {
+          metrics.map((m) => (
+            <div class="imet-t">
+              <span class="is-ic" style="background:#F4C430">
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="20"
+                  stroke="#0A1E37"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                >
+                  {'rect' in m && m.rect && <rect height="16" rx="3" width="16" x="4" y="4" />}
+                  {m.paths.map((d) => (
+                    <path d={d} />
+                  ))}
+                </svg>
+              </span>
+              <div>
+                <div class="imet-n">{t(locale, `impact.metrics.${m.key}.value`)}</div>
+                <div class="imet-l">
+                  <T k={`impact.metrics.${m.key}.label`} />
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="imet-foot">
+        <span><T k="impact.metrics.note" /></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="milestones">
+    <div style={wrap}>
+      <div style={kicker}>
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span><T k="impact.milestones.kicker" />
+      </div>
+      <h2
+        style={`font-family: ${serif}; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 12px 0 28px; max-width: 760px; color: #102B4E`}
+      >
+        <T k="impact.milestones.title" />
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 28px">
+        {
+          milestones.impact.map((m) => (
+            <div style={`border-left: 3px solid ${accent[m.accent as keyof typeof accent]}; padding: 4px 0 4px 18px`}>
+              <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4A5568">
+                {typeof m.date === 'string' ? (
+                  m.date
+                ) : (
+                  <span class={L} lang={lang}>
+                    {bi(m.date)}
+                  </span>
+                )}
+              </div>
+              <div style={`font-family: ${serif}; font-size: 21px; line-height: 1.25; margin-top: 4px`}>
+                <span class={L} lang={lang}>
+                  {bi(m.title)}
+                </span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="crisis" style="background: #FFFFFF; border-top: 1px solid #E6E3DA; border-bottom: 1px solid #E6E3DA">
+    <div style={wrap}>
+      <div style={kicker}>
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span><T k="impact.crisis.kicker" />
+      </div>
+      <h2
+        style={`font-family: ${serif}; font-weight: 500; font-size: clamp(30px, 4.4vw, 44px); line-height: 1.1; margin: 12px 0 24px; max-width: 760px; color: #102B4E`}
+      >
+        <T k="impact.crisis.title" />
+      </h2>
+      <div class="cr-grid">
+        {
+          crisis.map((c) => (
+            <article class="cr">
+              <span class="cr-chip">
+                {typeof c.chip === 'string' ? (
+                  c.chip
+                ) : (
+                  <span class={L} lang={lang}>
+                    {bi(c.chip)}
+                  </span>
+                )}
+              </span>
+              <h3>
+                <span class={L} lang={lang}>
+                  {bi(c.title)}
+                </span>
+              </h3>
+              <dl>
+                {c.items.map((it) => (
+                  <>
+                    <dt>
+                      <span class={L} lang={lang}>
+                        {bi(it.dt)}
+                      </span>
+                    </dt>
+                    <dd>
+                      <span class={L} lang={lang}>
+                        {bi(it.dd)}
+                      </span>
+                    </dd>
+                  </>
+                ))}
+              </dl>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="voices">
+    <div style={wrap}>
+      <div style={kicker}>
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span><T k="impact.voices.kicker" />
+      </div>
+      <h2
+        style={`font-family: ${serif}; font-weight: 500; font-size: clamp(30px, 4.4vw, 44px); line-height: 1.1; margin: 12px 0 24px; max-width: 760px; color: #102B4E`}
+      >
+        <T k="impact.voices.title" />
+      </h2>
+      <div class="vo-row">
+        <figure class="vo vo-main">
+          <div class="vo-v">
+            <span aria-hidden="true" class="vo-play"
+              ><svg fill="#0A1E37" height="24" viewBox="0 0 24 24" width="24"><path d="M8 5v14l11-7z"></path></svg></span
+            ><span class="vo-cap"><T k="impact.voices.main.caption" /></span>
+          </div>
+          <figcaption>
+            <p class="vo-q"><T k="impact.voices.main.quote" /></p>
+            <b><T k="impact.voices.main.name" /></b>
+          </figcaption>
+        </figure>
+        <figure class="vo">
+          <div class="vo-v">
+            <span aria-hidden="true" class="vo-play"
+              ><svg fill="#0A1E37" height="24" viewBox="0 0 24 24" width="24"><path d="M8 5v14l11-7z"></path></svg></span
+            ><span class="vo-cap"><T k="impact.voices.dc.caption" /></span>
+          </div>
+          <figcaption>
+            <b><T k="impact.voices.dc.name" /></b><span><T k="impact.voices.dc.role" /></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section style="">
+    <div style={wrap}>
+      <div style={kicker}>
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span><T k="impact.photos.kicker" />
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 24px">
+        <h2
+          style={`font-family: ${serif}; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 12px 0 0; max-width: 600px; color: #102B4E`}
+        >
+          <T k="impact.photos.title" />
+        </h2>
+        <a href={site.social.instagram} rel="noopener" style="font-weight: 600" target="_blank"><T k="impact.photos.more" /></a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 16px">
+        {
+          photos.map((p) => (
+            <div class="ph-img" style="height: 240px; border-radius: 14px; overflow: hidden; background: #e7e3d8">
+              <Photo
+                src={image(p.image)}
+                alt={bi(p.alt)}
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="videos" style="background: #FFFFFF; border-top: 1px solid #E6E3DA; border-bottom: 1px solid #E6E3DA">
+    <div style={wrap}>
+      <div style={kicker}>
+        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span><T k="impact.videos.kicker" />
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 24px">
+        <h2
+          style={`font-family: ${serif}; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 12px 0 0; max-width: 640px; color: #102B4E`}
+        >
+          <T k="impact.videos.title" />
+        </h2>
+        <a href={site.social.youtube} rel="noopener" style="font-weight: 600" target="_blank"><T k="impact.videos.more" /></a>
+      </div>
+      <div class="vgrid">
+        {
+          videos.gallery.map((v) => (
+            <a aria-label={bi(v.label)} class="vcard" href={v.url} rel="noopener" target="_blank">
+              <Photo src={image(v.thumb)} alt={bi(v.alt)} />
+              <span aria-hidden="true" class="vplay">
+                <svg fill="#0A1E37" height="18" viewBox="0 0 24 24" width="18">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+      <div class="vmore">
+        <button class="vmore-btn" data-vmore="" type="button"
+          ><span class="vm-a"><T k="impact.videos.showMore" /></span><span class="vm-b"><T k="impact.videos.showFewer" /></span></button
+        >
+      </div>
+    </div>
+  </section>
+
+  <NextBand to="future-vision" titleKey="impact.next.title" descriptionKey="impact.next.description" />
+</Base>

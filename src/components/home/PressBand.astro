@@ -1,0 +1,22 @@
+---
+/** "As featured in" band. Tiles from src/content/press.json; a name identical in both languages renders without a language span, as in the reference. */
+import T from '@/components/T.astro';
+import Bi from '@/components/home/Bi.astro';
+import press from '@/content/press.json';
+---
+
+<section class="press">
+  <div class="press-in">
+    <div class="press-l">
+      <span class="press-bar"></span>
+      <T k="home.press.label" />
+    </div>
+    <div class="press-row">
+      {press.map((p) => (
+        <div class="press-t">
+          <span>{p.name.en === p.name.pa ? p.name.en : <Bi v={p.name} />}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

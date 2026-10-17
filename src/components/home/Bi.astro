@@ -1,0 +1,28 @@
+---
+/**
+ * Renders one bilingual value from a structured content JSON ({ en, pa }) for the page
+ * language, in the same `.l-en` / `.l-pa` span the reference used (see T.astro for strings
+ * that live in the i18n dictionaries instead).
+ */
+import { getLocale } from '@/lib/i18n';
+
+export interface BiText {
+  en: string;
+  pa: string;
+}
+
+interface Props {
+  v: BiText;
+}
+
+const { v } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+---
+
+{locale === 'pa' ? (
+  <span class="l-pa" lang="pa">
+    {v.pa}
+  </span>
+) : (
+  <span class="l-en">{v.en}</span>
+)}

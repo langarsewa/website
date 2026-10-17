@@ -1,0 +1,321 @@
+---
+/**
+ * Future Vision: the five-point timeline, the three projects underway (the dairy farm with
+ * its kitchen gallery), the October 2034 hospital and the "follow the progress" band.
+ * Markup, class names and inline styles mirror reference/index.html#page-future-vision.
+ */
+import { getImage } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import T from '@/components/T.astro';
+import Photo from '@/components/Photo.astro';
+import NextBand from '@/components/NextBand.astro';
+import { getLocale, t, type Locale } from '@/lib/i18n';
+import { image } from '@/lib/images';
+import site from '@/content/site.json';
+import projects from '@/content/projects.json';
+
+type Text = Record<Locale, string>;
+interface TimelineNode {
+  state: string;
+  date: string | Text;
+  title: Text;
+  items: Text[];
+}
+interface Chip {
+  variant: string;
+  label: Text;
+}
+interface GalleryPhoto {
+  image: string;
+  alt: Text;
+}
+interface Project {
+  id: string;
+  direction: string;
+  gallery?: { count: Text; photos: GalleryPhoto[] };
+  image?: string;
+  alt?: Text;
+  chips: Chip[];
+  title: Text;
+  body: Text;
+  note: Text;
+}
+interface ProjectsData {
+  timeline: TimelineNode[];
+  key: { class: string; label: Text }[];
+  projects: Project[];
+  hospital: { image: string; alt: Text };
+}
+
+const data: ProjectsData = projects;
+const locale = getLocale(Astro.currentLocale);
+/* The same `.l-en` / `.l-pa` wrapper <T> uses, for strings that come from projects.json. */
+const cls = locale === 'pa' ? 'l-pa' : 'l-en';
+const lang = locale === 'pa' ? 'pa' : undefined;
+
+/* Status chip styles, verbatim from the reference. */
+const chipStyle: Record<string, string> = {
+  development:
+    'display: inline-block; background: #F4C430; color: #0A1E37; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px',
+  planned:
+    'display: inline-block; border: 1px solid #102B4E; color: #102B4E; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px',
+  service:
+    'display: inline-block; background: #102B4E; color: #FFFFFF; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px',
+  tag: 'display: inline-block; background: #FFFFFF; color: #102B4E; border: 1px solid #CBD2DC; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px',
+};
+
+const kicker =
+  'display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568';
+const kickerBar = 'width: 32px; height: 3px; background: #F4C430; flex: none';
+const serif = "'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif";
+const h2Style = `font-family: ${serif}; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 14px; max-width: 560px; color: #102B4E`;
+const photoBox =
+  'height: clamp(240px, 26vw, 320px); border-radius: 20px; overflow: hidden; background: #E7E3D8';
+const photoImg =
+  'width: 100%; height: 100%; object-fit: cover; object-position: center; display: block';
+const noteRow = 'display: flex; gap: 10px; align-items: center; font-size: 14px; color: #4A5568';
+const noteDot = 'width: 8px; height: 8px; border-radius: 50%; background: #F4C430';
+
+/* Full-size URLs for the gallery thumbnails (`data-full`), as src/scripts/gallery.ts expects. */
+const galleries = new Map<string, string[]>();
+for (const p of data.projects) {
+  if (!p.gallery) continue;
+  const fulls = await Promise.all(
+    p.gallery.photos.map(
+      async (ph) => (await getImage({ src: image(ph.image), format: 'webp' })).src,
+    ),
+  );
+  galleries.set(p.id, fulls);
+}
+---
+
+<Base
+  slug="future-vision"
+  pageName={t(locale, 'nav.futureVision.label')}
+  description={t(locale, 'futureVision.meta.description')}
+>
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 56px) 24px clamp(24px, 3.5vw, 40px)">
+      <div style={kicker}>
+        <span style={kickerBar}></span>
+        <T k="futureVision.hero.kicker" />
+      </div>
+      <h1
+        style={`font-family: ${serif}; font-weight: 500; font-size: clamp(48px, 8vw, 84px); line-height: 1.02; letter-spacing: -0.02em; margin: 16px 0 18px; max-width: 900px`}
+      >
+        <T k="futureVision.hero.title" />
+      </h1>
+      <p style="font-size: clamp(17px, 2vw, 20px); color: #334155; margin: 0 0 28px; max-width: 640px">
+        <T k="futureVision.hero.lede" />
+      </p>
+    </div>
+  </section>
+  <section class="vtl">
+    <div class="vtl-in">
+      <div class="vt-track">
+        {data.timeline.map((n) => (
+          <div class={`vt-n ${n.state}`}>
+            <span aria-hidden="true" class="vt-dot"></span>
+            <div class="vt-d">
+              {typeof n.date === 'string' ? (
+                n.date
+              ) : (
+                <span class={cls} lang={lang}>
+                  {n.date[locale]}
+                </span>
+              )}
+            </div>
+            <div class="vt-t">
+              <span class={cls} lang={lang}>
+                {n.title[locale]}
+              </span>
+            </div>
+            <ul>
+              {n.items.map((it) => (
+                <li>
+                  <span class={cls} lang={lang}>
+                    {it[locale]}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="vt-key">
+        {data.key.map((k) => (
+          <span>
+            <i class={k.class}></i>
+            <span class={cls} lang={lang}>
+              {k.label[locale]}
+            </span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style={kicker}>
+        <span style={kickerBar}></span>
+        <T k="futureVision.projects.kicker" />
+      </div>
+      {data.projects.map((p, i) => (
+        <div
+          style={
+            i === 0 ? 'padding: 16px 0 32px' : 'padding: 32px 0; border-top: 1px solid #E6E3DA'
+          }
+        >
+          <div
+            style={`display: flex; flex-direction: ${p.direction}; flex-wrap: wrap; gap: 56px; align-items: center`}
+          >
+            <div style="flex: 1 1 400px; min-width: 0">
+              {p.gallery ? (
+                <div class="kgal" data-active="0">
+                  <div class="ph-img kmain" style={photoBox}>
+                    <Photo
+                      src={image(p.gallery.photos[0]!.image)}
+                      alt={p.gallery.photos[0]!.alt[locale]}
+                      class="kmain-img"
+                      loading="eager"
+                    />
+                    <span class="kcount">
+                      <span class={cls} lang={lang}>
+                        {p.gallery.count[locale]}
+                      </span>
+                    </span>
+                  </div>
+                  <div class="kthumbs">
+                    {p.gallery.photos.map((ph, n) => (
+                      <button
+                        aria-label={ph.alt[locale]}
+                        aria-pressed={n === 0 ? 'true' : 'false'}
+                        class={n === 0 ? 'kthumb on' : 'kthumb'}
+                        data-i={String(n)}
+                        data-full={galleries.get(p.id)![n]}
+                        type="button"
+                      >
+                        <Photo
+                          src={image(ph.image)}
+                          alt={ph.alt[locale]}
+                          widths={[320, 640]}
+                          sizes="(max-width: 700px) 20vw, 120px"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div class="ph-img" style={photoBox}>
+                  <Photo src={image(p.image!)} alt={p.alt![locale]} style={photoImg} />
+                </div>
+              )}
+            </div>
+            <div style="flex: 1 1 400px; min-width: 0">
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px">
+                {p.chips.map((c) => (
+                  <span style={chipStyle[c.variant]}>
+                    <span class={cls} lang={lang}>
+                      {c.label[locale]}
+                    </span>
+                  </span>
+                ))}
+              </div>
+              <h2 style={h2Style}>
+                <span class={cls} lang={lang}>
+                  {p.title[locale]}
+                </span>
+              </h2>
+              <p style="font-size: 17px; color: #334155; margin: 0 0 16px">
+                <span class={cls} lang={lang}>
+                  {p.body[locale]}
+                </span>
+              </p>
+              <div style={noteRow}>
+                <span style={noteDot}></span>
+                <span class={cls} lang={lang}>
+                  {p.note[locale]}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <section style="background: #102B4E;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #F4C430">
+            <span style={kickerBar}></span>
+            <T k="futureVision.hospital.kicker" />
+          </div>
+          <div
+            style={`font-family: ${serif}; font-size: clamp(80px, 12vw, 140px); line-height: 0.9; color: #F4C430; margin: 18px 0`}
+          >
+            2034
+          </div>
+          <h2
+            style={`font-family: ${serif}; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 20px; max-width: 560px; color: #FFFFFF`}
+          >
+            <T k="futureVision.hospital.title" />
+          </h2>
+          <p style="font-size: 17px; color: #DCE3EC; margin: 0 0 16px">
+            <T k="futureVision.hospital.body" />
+          </p>
+          <p style="font-size: 15px; color: #B9C4D2; margin: 0 0 16px">
+            <T k="futureVision.hospital.note" />
+          </p>
+        </div>
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div
+            class="ph-img"
+            style="height: clamp(300px, 36vw, 480px); border-radius: 20px; overflow: hidden; background: #E7E3D8"
+          >
+            <Photo
+              src={image(data.hospital.image)}
+              alt={data.hospital.alt[locale]}
+              style={photoImg}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between">
+        <div style="flex: 1 1 420px; min-width: 0">
+          <div style={kicker}>
+            <span style={kickerBar}></span>
+            <T k="futureVision.follow.kicker" />
+          </div>
+          <h2
+            style={`font-family: ${serif}; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 10px; max-width: 600px; color: #102B4E`}
+          >
+            <T k="futureVision.follow.title" />
+          </h2>
+          <p style="margin: 0; color: #334155">
+            <T k="futureVision.follow.body" />
+          </p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px">
+          <a
+            href={site.social.youtube}
+            rel="noopener"
+            style="text-decoration: none; border: 1.5px solid #102B4E; color: #102B4E; font-weight: 600; padding: 14px 24px; border-radius: 999px; display: inline-block"
+            target="_blank"
+          >
+            <T k="futureVision.follow.youtube" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <NextBand
+    to="join-the-sewa"
+    titleKey="futureVision.next.title"
+    descriptionKey="futureVision.next.description"
+  />
+</Base>

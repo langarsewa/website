@@ -1,0 +1,510 @@
+---
+/**
+ * Join the Sewa: India bank transfer and cheque details, the three-step path for everyone
+ * else (outside India, volunteering, visits), and the FAQ. Ported one for one from
+ * reference/index.html (#page-join-the-sewa); section ids drop the page prefix.
+ */
+import Base from '@/layouts/Base.astro';
+import T from '@/components/T.astro';
+import NextBand from '@/components/NextBand.astro';
+import { getLocale, t } from '@/lib/i18n';
+import bank from '@/content/bank-india.json';
+import site from '@/content/site.json';
+
+const locale = getLocale(Astro.currentLocale);
+const email = site.email;
+const mailto = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+
+/** Prepared, off by default: payment pages render only once a URL is configured in site.json. */
+const donateIndiaUrl = site.donations.india.paymentPageUrl.trim();
+const donateInternationalUrl = site.donations.international.paymentPageUrl.trim();
+
+const ways = [
+  { key: 'langar', subject: 'Sewa: Langar' },
+  { key: 'healthcare', subject: 'Sewa: Healthcare' },
+  { key: 'emergency', subject: 'Sewa: Emergency response' },
+  { key: 'volunteer', subject: 'Sewa: Volunteer' },
+  { key: 'visit', subject: 'Sewa: Visit the kitchen' },
+] as const;
+
+const faq = ['india', 'outside', 'receipt', 'visit', 'volunteer'] as const;
+
+const kickerStyle =
+  'display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568';
+const barStyle = 'width: 32px; height: 3px; background: #F4C430; flex: none';
+const h2Style =
+  "font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 10px; max-width: 760px; color: #102B4E";
+const stepH2Style =
+  "font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 10px; max-width: 680px; color: #102B4E";
+const h3Style =
+  "font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.2; margin: 0 0 8px; color: #102B4E";
+const ledeStyle = 'font-size: 17px; color: #334155; margin: 0 0 28px; max-width: 640px';
+---
+
+<Base
+  slug="join-the-sewa"
+  pageName={t(locale, 'nav.joinTheSewa.label')}
+  description={t(locale, 'joinTheSewa.meta.description')}
+>
+  <section class="jhero">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 56px) 24px clamp(24px, 3.5vw, 40px)">
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #F4C430">
+        <span style={barStyle}></span>
+        <T k="joinTheSewa.hero.kicker" />
+      </div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(44px, 7.5vw, 80px); line-height: 1.03; letter-spacing: -0.02em; margin: 16px 0 18px; max-width: 900px; color: #FFFFFF">
+        <T k="joinTheSewa.hero.title" />
+      </h1>
+      <p style="font-size: clamp(17px, 2vw, 20px); color: #DCE3EC; margin: 0 0 28px; max-width: 660px">
+        <T k="joinTheSewa.hero.lede" />
+      </p>
+      <div class="jumps">
+        <span class="jump-l">
+          <T k="joinTheSewa.hero.jumpsLabel" />
+        </span>
+        <a class="jump" href="#india">
+          <b>
+            <T k="joinTheSewa.hero.jumpIndia.title" />
+          </b>
+          <span>
+            <T k="joinTheSewa.hero.jumpIndia.sub" />
+          </span>
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="16"
+            stroke="#F4C430"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.4"
+            viewBox="0 0 24 24"
+            width="16"
+          >
+            <path d="M12 5v14M6 13l6 6 6-6"></path>
+          </svg>
+        </a>
+        <a class="jump" href="#reach">
+          <b>
+            <T k="joinTheSewa.hero.jumpOutside.title" />
+          </b>
+          <span>
+            <T k="joinTheSewa.hero.jumpOutside.sub" />
+          </span>
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="16"
+            stroke="#F4C430"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.4"
+            viewBox="0 0 24 24"
+            width="16"
+          >
+            <path d="M12 5v14M6 13l6 6 6-6"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="india" style="background: #FFFFFF; border-bottom: 1px solid #E6E3DA">
+    <div style="max-width: 1100px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style={kickerStyle}>
+        <span style={barStyle}></span>
+        <T k="joinTheSewa.india.kicker" />
+      </div>
+      <h2 style={h2Style}>
+        <T k="joinTheSewa.india.title" />
+      </h2>
+      <p style={ledeStyle}>
+        <T k="joinTheSewa.india.lede" />
+      </p>
+      <div class="india">
+        <div class="pay">
+          <div class="pay-h">
+            <span class="pay-ic">
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="22"
+                stroke="#0A1E37"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="22"
+              >
+                <path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"></path>
+              </svg>
+            </span>
+            <h3 style={h3Style}>
+              <T k="joinTheSewa.india.bank.title" />
+            </h3>
+          </div>
+          <dl class="acc">
+            <div class="acc-r">
+              <dt>
+                <T k="joinTheSewa.india.bank.accountName" />
+              </dt>
+              <dd>
+                <span class="acc-v notr">{bank.bank.accountName}</span>
+                <button
+                  aria-label={t(locale, 'joinTheSewa.india.bank.copyAccountName')}
+                  class="copy"
+                  data-copy={bank.bank.accountName}
+                  data-copied={t(locale, 'common.copied')}
+                  data-field="account-name"
+                  type="button"
+                >
+                  <T k="common.copy" />
+                </button>
+              </dd>
+            </div>
+            <div class="acc-r">
+              <dt>
+                <T k="joinTheSewa.india.bank.bank" />
+              </dt>
+              <dd>
+                <span class="acc-v notr">{bank.bank.bank}</span>
+              </dd>
+            </div>
+            <div class="acc-r">
+              <dt>
+                <T k="joinTheSewa.india.bank.accountNumber" />
+              </dt>
+              <dd>
+                <span class="acc-v notr">{bank.bank.accountNumber}</span>
+                <button
+                  aria-label={t(locale, 'joinTheSewa.india.bank.copyAccountNumber')}
+                  class="copy"
+                  data-copy={bank.bank.accountNumber}
+                  data-copied={t(locale, 'common.copied')}
+                  data-field="account-number"
+                  type="button"
+                >
+                  <T k="common.copy" />
+                </button>
+              </dd>
+            </div>
+            <div class="acc-r">
+              <dt>
+                <T k="joinTheSewa.india.bank.ifsc" />
+              </dt>
+              <dd>
+                <span class="acc-v notr">{bank.bank.ifsc}</span>
+                <button
+                  aria-label={t(locale, 'joinTheSewa.india.bank.copyIfsc')}
+                  class="copy"
+                  data-copy={bank.bank.ifsc}
+                  data-copied={t(locale, 'common.copied')}
+                  data-field="ifsc"
+                  type="button"
+                >
+                  <T k="common.copy" />
+                </button>
+              </dd>
+            </div>
+          </dl>
+          <div class="pay-note">
+            <b>
+              <T k="joinTheSewa.india.bank.noteStrong" />
+            </b>
+            <T k="joinTheSewa.india.bank.noteRest" />
+          </div>
+          {donateIndiaUrl && (
+            <div style="margin-top: 14px">
+              <a class="cbtn cbtn-y" href={donateIndiaUrl} target="_blank" rel="noopener">
+                <T k="joinTheSewa.donateOnline" />
+              </a>
+            </div>
+          )}
+        </div>
+        <div class="pay">
+          <div class="pay-h">
+            <span class="pay-ic">
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="22"
+                stroke="#0A1E37"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="22"
+              >
+                <rect height="12" rx="2" width="19" x="2.5" y="6"></rect>
+                <path d="M6 14h7M6 10.5h4M16 14h2"></path>
+              </svg>
+            </span>
+            <h3 style={h3Style}>
+              <T k="joinTheSewa.india.cheque.title" />
+            </h3>
+          </div>
+          <p style="margin: 0 0 14px; color: #334155">
+            <T k="joinTheSewa.india.cheque.payableTo" />
+            <b class="notr">{bank.cheque.payee}</b>
+            <T k="joinTheSewa.india.cheque.mailTo" />
+          </p>
+          <address class="addr notr">
+            {bank.cheque.address.line1}
+            <br />
+            {bank.cheque.address.line2}
+            <br />
+            {bank.cheque.address.line3}
+          </address>
+        </div>
+      </div>
+      <div class="receipt">
+        <span>
+          <T k="joinTheSewa.india.receipt.text" />
+        </span>
+        <a target="_blank" rel="noopener" class="cbtn cbtn-y" href={mailto('Contribution receipt')}>
+          <T k="joinTheSewa.india.receipt.cta" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps" style="background: #FBFAF6">
+    <div style="max-width: 1000px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style={kickerStyle}>
+        <span style={barStyle}></span>
+        <T k="joinTheSewa.steps.kicker" />
+      </div>
+      <h2 style={h2Style}>
+        <T k="joinTheSewa.steps.title" />
+      </h2>
+      <p style="font-size: 17px; color: #334155; margin: 0 0 40px; max-width: 640px">
+        <T k="joinTheSewa.steps.lede" />
+      </p>
+
+      <div class="step" id="reach">
+        <div class="rail">
+          <span class="num num-y">1</span>
+          <span class="line"></span>
+        </div>
+        <div class="sbody">
+          <div class="sk">
+            <T k="joinTheSewa.steps.reach.kicker" />
+          </div>
+          <h2 style={stepH2Style}>
+            <T k="joinTheSewa.steps.reach.title" />
+          </h2>
+          <p style={ledeStyle}>
+            <T k="joinTheSewa.steps.reach.lede" />
+          </p>
+          <div class="reach">
+            <a
+              target="_blank"
+              rel="noopener"
+              class="ract ract-y"
+              href={mailto('I would like to be part of the sewa')}
+            >
+              <span class="ri">
+                <svg
+                  fill="none"
+                  height="22"
+                  stroke="#0A1E37"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="22"
+                >
+                  <rect height="14" rx="2" width="18" x="3" y="5"></rect>
+                  <path d="M3 7l9 6 9-6"></path>
+                </svg>
+              </span>
+              <span>
+                <b>
+                  <T k="joinTheSewa.steps.reach.email" />
+                </b>
+                <span>{email}</span>
+              </span>
+            </a>
+            <a target="_blank" rel="noopener" class="ract ract-n" href={`tel:${site.phone.tel}`}>
+              <span class="ri">
+                <svg
+                  fill="none"
+                  height="22"
+                  stroke="#0A1E37"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="22"
+                >
+                  <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path>
+                </svg>
+              </span>
+              <span>
+                <b>
+                  <T k="joinTheSewa.steps.reach.call" />
+                </b>
+                <span>
+                  <T k="joinTheSewa.steps.reach.callSub" />
+                </span>
+              </span>
+            </a>
+            <div class="ract ract-off">
+              <span class="ri">
+                <svg
+                  fill="none"
+                  height="22"
+                  stroke="#0A1E37"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="22"
+                >
+                  <path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"></path>
+                </svg>
+              </span>
+              <span>
+                <b>
+                  <T k="joinTheSewa.steps.reach.whatsapp" />
+                </b>
+                <span>
+                  <T k="joinTheSewa.steps.reach.whatsappSub" />
+                </span>
+              </span>
+            </div>
+          </div>
+          <div class="tip">
+            <b>
+              <T k="joinTheSewa.steps.reach.tipStrong" />
+            </b>
+            <T k="joinTheSewa.steps.reach.tipRest" />
+          </div>
+        </div>
+      </div>
+
+      <div class="step" id="choose">
+        <div class="rail">
+          <span class="num">2</span>
+          <span class="line"></span>
+        </div>
+        <div class="sbody">
+          <div class="sk">
+            <T k="joinTheSewa.steps.choose.kicker" />
+          </div>
+          <h2 style={stepH2Style}>
+            <T k="joinTheSewa.steps.choose.title" />
+          </h2>
+          <p style={ledeStyle}>
+            <T k="joinTheSewa.steps.choose.lede" />
+          </p>
+          <div class="ways">
+            {ways.map((w) => (
+              <a target="_blank" rel="noopener" class="way" href={mailto(w.subject)}>
+                <b>
+                  <T k={`joinTheSewa.steps.choose.ways.${w.key}.title`} />
+                </b>
+                <span>
+                  <T k={`joinTheSewa.steps.choose.ways.${w.key}.description`} />
+                </span>
+                <em>
+                  <T k="joinTheSewa.steps.choose.ask" />
+                </em>
+              </a>
+            ))}
+          </div>
+          <p style="margin: 16px 0 0; color: #4A5568; font-size: 15px">
+            <T k="joinTheSewa.steps.choose.notSure" />
+          </p>
+        </div>
+      </div>
+
+      <div class="step" id="guide">
+        <div class="rail">
+          <span class="num">3</span>
+        </div>
+        <div class="sbody">
+          <div class="sk">
+            <T k="joinTheSewa.steps.guide.kicker" />
+          </div>
+          <h2 style={stepH2Style}>
+            <T k="joinTheSewa.steps.guide.title" />
+          </h2>
+          <p style={ledeStyle}>
+            <T k="joinTheSewa.steps.guide.lede" />
+          </p>
+          <div class="guide">
+            <div class="g-item">
+              <span class="g-n">a</span>
+              <div>
+                <b>
+                  <T k="joinTheSewa.steps.guide.a.title" />
+                </b>
+                <span>
+                  <T k="joinTheSewa.steps.guide.a.description" />
+                </span>
+              </div>
+            </div>
+            <div class="g-item">
+              <span class="g-n">b</span>
+              <div>
+                <b>
+                  <T k="joinTheSewa.steps.guide.b.title" />
+                </b>
+                <span>
+                  <T k="joinTheSewa.steps.guide.b.description" />
+                </span>
+              </div>
+            </div>
+          </div>
+          <a
+            target="_blank"
+            rel="noopener"
+            class="cbtn cbtn-y"
+            href={mailto('Contributing to the sewa from outside India')}
+          >
+            <T k="joinTheSewa.steps.guide.cta" />
+          </a>
+          {donateInternationalUrl && (
+            <a
+              class="cbtn"
+              href={donateInternationalUrl}
+              target="_blank"
+              rel="noopener"
+              style="margin-left: 10px"
+            >
+              <T k="joinTheSewa.donateOnline" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="questions" style="background: #FFFFFF; border-top: 1px solid #E6E3DA">
+    <div style="max-width: 1000px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
+      <div style={kickerStyle}>
+        <span style={barStyle}></span>
+        <T k="joinTheSewa.questions.kicker" />
+      </div>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 24px; max-width: 760px; color: #102B4E">
+        <T k="joinTheSewa.questions.title" />
+      </h2>
+      {faq.map((key) => (
+        <details class="qa">
+          <summary>
+            <T k={`joinTheSewa.questions.faq.${key}.q`} />
+          </summary>
+          <p>
+            <T k={`joinTheSewa.questions.faq.${key}.a`} />
+          </p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <NextBand
+    to="contact"
+    titleKey="joinTheSewa.next.title"
+    descriptionKey="joinTheSewa.next.description"
+  />
+</Base>
