@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
 
 concurrency:
@@ -168,8 +168,8 @@ jobs:
       - name: Lighthouse CI
         run: pnpm lhci
         env:
-          # Pull requests measure Home and Our Work; main measures every route.
-          LHCI_SCOPE: ${{ github.event_name == 'pull_request' && 'quick' || 'all' }}
+          # main measures every route; dev and pull requests measure Home and Our Work.
+          LHCI_SCOPE: ${{ github.ref == 'refs/heads/main' && 'all' || 'quick' }}
       - if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -178,9 +178,12 @@ jobs:
           retention-days: 14
 
   deploy-cloudflare:
-    # Cloudflare Pages: production on pushes to main, a preview URL for every pull request.
-    # Direct upload from CI, so a deploy only ever follows green gates. Skips cleanly until the
-    # CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets exist.
+    # Cloudflare Pages environments, all from CI so a deploy only ever follows green gates:
+    #   main          -> production (langarsewa.org)
+    #   dev           -> https://dev.langarsewa.pages.dev (the shared test site)
+    #   pull requests -> a preview URL per branch, posted on the PR
+    # Skips cleanly until the CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets exist.
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     needs: [quick-gates, interaction-and-a11y, visual-parity, lighthouse]
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -205,6 +208,18 @@ jobs:
           command: pages deploy dist --project-name=langarsewa --branch=${{ github.head_ref || github.ref_name }} --commit-hash=${{ github.sha }}
       - if: steps.secrets.outputs.present == 'true'
         run: echo "Deployed to ${{ steps.cf.outputs.deployment-url }}"
+      - name: Post the preview link on the pull request
+        if: steps.secrets.outputs.present == 'true' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = '${{ steps.cf.outputs.deployment-url }}';
+            const marker = '<!-- cloudflare-preview -->';
+            const body = `${marker}\nPreview for this pull request: ${url}\n\nEvery gate passed before this deploy. Production is unchanged until the merge to \`main\`.`;
+            const { data: comments } = await github.rest.issues.listComments({ ...context.repo, issue_number: context.issue.number });
+            const existing = comments.find((c) => c.body && c.body.startsWith(marker));
+            if (existing) await github.rest.issues.updateComment({ ...context.repo, comment_id: existing.id, body });
+            else await github.rest.issues.createComment({ ...context.repo, issue_number: context.issue.number, body });
       - if: steps.secrets.outputs.present != 'true'
         run: echo "Cloudflare secrets not configured; skipping."
 

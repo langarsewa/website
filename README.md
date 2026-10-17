@@ -73,11 +73,20 @@ pnpm lhci             # Lighthouse CI budgets (mobile)
 
 Playwright needs its browser once: `pnpm exec playwright install chromium`.
 
-## Deploys
+## Deploys and environments
 
-Every push to `main` deploys to production through Cloudflare Pages' Git integration; every
-pull request gets a preview URL. Build command `pnpm build`, output `dist`, `NODE_VERSION`
-from `.nvmrc`. CI (`.github/workflows/ci.yml`) must be green before merging.
+CI (`.github/workflows/ci.yml`) builds once, runs every gate, and only then deploys with
+`wrangler pages deploy`:
+
+| Branch        | Environment                                          |
+| ------------- | ---------------------------------------------------- |
+| `main`        | production, https://langarsewa.org                   |
+| `dev`         | test site, https://dev.langarsewa.pages.dev          |
+| pull requests | a preview URL per branch, posted on the pull request |
+
+`main` accepts changes only through pull requests with green checks. See
+[CONTRIBUTING.md](./CONTRIBUTING.md) for the branch flow and
+[docs/deploy-cloudflare.md](./docs/deploy-cloudflare.md) for the hosting runbook.
 
 ## Analytics and donations
 
