@@ -1,3 +1,6 @@
+# www is an alias of the apex (both are custom domains of the Pages project).
+https://www.langarsewa.org/*  https://langarsewa.org/:splat  301
+
 # Addresses from the previous langarsewa.org site. All permanent.
 /about          /our-story/      301
 /sewa           /our-work/       301

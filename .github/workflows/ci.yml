@@ -177,6 +177,37 @@ jobs:
           path: .lighthouseci/report/
           retention-days: 14
 
+  deploy-cloudflare:
+    # Cloudflare Pages: production on pushes to main, a preview URL for every pull request.
+    # Direct upload from CI, so a deploy only ever follows green gates. Skips cleanly until the
+    # CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets exist.
+    needs: [quick-gates, interaction-and-a11y, visual-parity, lighthouse]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    steps:
+      - id: secrets
+        run: echo "present=${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}" >> "$GITHUB_OUTPUT"
+      - if: steps.secrets.outputs.present == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - if: steps.secrets.outputs.present == 'true'
+        id: cf
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=langarsewa --branch=${{ github.head_ref || github.ref_name }} --commit-hash=${{ github.sha }}
+      - if: steps.secrets.outputs.present == 'true'
+        run: echo "Deployed to ${{ steps.cf.outputs.deployment-url }}"
+      - if: steps.secrets.outputs.present != 'true'
+        run: echo "Cloudflare secrets not configured; skipping."
+
   deploy:
     # Production deploy to GitHub Pages, only after every gate passed on main.
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
