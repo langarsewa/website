@@ -1,0 +1,33 @@
+name: Production check
+
+# Runs the smoke test against the live site every 30 minutes. A failure fails the workflow,
+# and GitHub emails the repository owner (info@langarsewa.org). Also runnable by hand.
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Site to check
+        default: https://langarsewa.org
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tests/smoke.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Smoke test the live site
+        env:
+          SITE_URL: ${{ github.event.inputs.url || vars.PRODUCTION_URL || 'https://langarsewa.pages.dev' }}
+        run: node tests/smoke.mjs "$SITE_URL"
