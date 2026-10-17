@@ -1,0 +1,88 @@
+[
+  {
+    "id": "pur-heeran",
+    "name": { "en": "Pur Heeran, Hoshiarpur", "pa": "ਪੁਰਹੀਰਾਂ, ਹੁਸ਼ਿਆਰਪੁਰ" },
+    "description": {
+      "en": "Our main kitchen prepares about 65,000 meals a day, with roti machines, dough and biscuit equipment and commercial cooking utensils.",
+      "pa": "ਸਾਡੀ ਮੁੱਖ ਰਸੋਈ ਰੋਟੀ ਮਸ਼ੀਨਾਂ, ਆਟਾ ਅਤੇ ਬਿਸਕੁਟ ਮਸ਼ੀਨਾਂ ਅਤੇ ਵੱਡੇ ਭਾਂਡਿਆਂ ਨਾਲ ਹਰ ਰੋਜ਼ ਲਗਭਗ 65,000 ਪਲੇਟਾਂ ਲੰਗਰ ਤਿਆਰ ਕਰਦੀ ਹੈ।"
+    },
+    "photoCount": { "en": "5 photos", "pa": "5 ਤਸਵੀਰਾਂ" },
+    "photos": [
+      {
+        "file": "front-of-the-pur-heeran-kitchen-hoshiarp.webp",
+        "alt": {
+          "en": "Front of the Pur Heeran kitchen, Hoshiarpur",
+          "pa": "ਪੁਰਹੀਰਾਂ ਰਸੋਈ, ਹੁਸ਼ਿਆਰਪੁਰ ਦਾ ਸਾਹਮਣਾ"
+        }
+      },
+      {
+        "file": "aerial-view-of-the-pur-heeran-kitchen.webp",
+        "alt": {
+          "en": "Aerial view of the Pur Heeran kitchen",
+          "pa": "ਪੁਰਹੀਰਾਂ ਰਸੋਈ ਦਾ ਉੱਪਰੋਂ ਦ੍ਰਿਸ਼"
+        }
+      },
+      {
+        "file": "pur-heeran-kitchen-grounds-and-entrance.webp",
+        "alt": {
+          "en": "Pur Heeran kitchen grounds and entrance",
+          "pa": "ਪੁਰਹੀਰਾਂ ਰਸੋਈ ਦਾ ਅਹਾਤਾ ਅਤੇ ਮੁੱਖ ਦਰਵਾਜ਼ਾ"
+        }
+      },
+      {
+        "file": "cooking-hall-with-large-langar-cauldrons.webp",
+        "alt": {
+          "en": "Cooking hall with large Langar cauldrons, Pur Heeran",
+          "pa": "ਪੁਰਹੀਰਾਂ ਰਸੋਈ ਵਿੱਚ ਲੰਗਰ ਦੇ ਵੱਡੇ ਕੜਾਹੇ"
+        }
+      },
+      {
+        "file": "sewadars-of-the-pur-heeran-kitchen-with-.webp",
+        "alt": {
+          "en": "Sewadars of the Pur Heeran kitchen with a Langar vehicle",
+          "pa": "ਪੁਰਹੀਰਾਂ ਰਸੋਈ ਦੇ ਸੇਵਾਦਾਰ ਲੰਗਰ ਗੱਡੀ ਨਾਲ"
+        }
+      }
+    ]
+  },
+  {
+    "id": "madhir",
+    "name": { "en": "Madhir, Sri Muktsar Sahib", "pa": "ਮਧੀਰ, ਸ੍ਰੀ ਮੁਕਤਸਰ ਸਾਹਿਬ" },
+    "description": {
+      "en": "Prepares about 35,000 meals a day for hospitals in the south-west of Punjab.",
+      "pa": "ਪੰਜਾਬ ਦੇ ਦੱਖਣ-ਪੱਛਮੀ ਹਿੱਸੇ ਦੇ ਹਸਪਤਾਲਾਂ ਲਈ ਹਰ ਰੋਜ਼ ਲਗਭਗ 35,000 ਪਲੇਟਾਂ ਤਿਆਰ ਕਰਦੀ ਹੈ।"
+    },
+    "photoCount": { "en": "5 photos", "pa": "5 ਤਸਵੀਰਾਂ" },
+    "photos": [
+      {
+        "file": "front-of-the-madhir-kitchen-sri-muktsar-.webp",
+        "alt": {
+          "en": "Front of the Madhir kitchen, Sri Muktsar Sahib",
+          "pa": "ਮਧੀਰ ਰਸੋਈ, ਸ੍ਰੀ ਮੁਕਤਸਰ ਸਾਹਿਬ ਦਾ ਸਾਹਮਣਾ"
+        }
+      },
+      {
+        "file": "aerial-view-of-the-madhir-kitchen.webp",
+        "alt": { "en": "Aerial view of the Madhir kitchen", "pa": "ਮਧੀਰ ਰਸੋਈ ਦਾ ਉੱਪਰੋਂ ਦ੍ਰਿਸ਼" }
+      },
+      {
+        "file": "langar-vehicles-at-the-madhir-kitchen-at.webp",
+        "alt": {
+          "en": "Langar vehicles at the Madhir kitchen at sunset",
+          "pa": "ਸ਼ਾਮ ਵੇਲੇ ਮਧੀਰ ਰਸੋਈ ਵਿਖੇ ਲੰਗਰ ਦੀਆਂ ਗੱਡੀਆਂ"
+        }
+      },
+      {
+        "file": "langar-vehicles-at-the-madhir-kitchen.webp",
+        "alt": {
+          "en": "Langar vehicles at the Madhir kitchen",
+          "pa": "ਮਧੀਰ ਰਸੋਈ ਵਿਖੇ ਲੰਗਰ ਦੀਆਂ ਗੱਡੀਆਂ"
+        }
+      },
+      {
+        "file": "roti-machines-at-the-madhir-kitchen.webp",
+        "alt": { "en": "Roti machines at the Madhir kitchen", "pa": "ਮਧੀਰ ਰਸੋਈ ਵਿੱਚ ਰੋਟੀ ਮਸ਼ੀਨਾਂ" }
+      }
+    ]
+  }
+]

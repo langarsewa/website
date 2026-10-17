@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "our-story",
+    "image": "aerial-view-of-the-pur-heeran-kitchen.webp",
+    "alt": {
+      "en": "Aerial view of the Pur Heeran kitchen",
+      "pa": "ਪੁਰਹੀਰਾਂ ਰਸੋਈ ਦਾ ਉੱਪਰੋਂ ਦ੍ਰਿਸ਼"
+    },
+    "title": { "en": "Our Story", "pa": "ਸਾਡੀ ਕਹਾਣੀ" },
+    "description": {
+      "en": "How it began in 2019, and the values behind every meal.",
+      "pa": "2019 ਵਿੱਚ ਸ਼ੁਰੂਆਤ ਕਿਵੇਂ ਹੋਈ, ਅਤੇ ਹਰ ਪਲੇਟ ਪਿੱਛੇ ਦੀਆਂ ਕਦਰਾਂ-ਕੀਮਤਾਂ।"
+    }
+  },
+  {
+    "slug": "our-work",
+    "image": "a-sewadar-stirring-a-large-pot-of-langar.webp",
+    "alt": {
+      "en": "A sewadar stirring a large pot of Langar",
+      "pa": "ਲੰਗਰ ਦੇ ਵੱਡੇ ਪਤੀਲੇ ਨੂੰ ਹਿਲਾਉਂਦਾ ਸੇਵਾਦਾਰ"
+    },
+    "title": { "en": "Our Work", "pa": "ਸਾਡਾ ਕੰਮ" },
+    "description": {
+      "en": "Daily Langar at 31 hospitals, two kitchens and eight programs.",
+      "pa": "31 ਹਸਪਤਾਲਾਂ ਵਿੱਚ ਰੋਜ਼ਾਨਾ ਲੰਗਰ, ਦੋ ਰਸੋਈਆਂ ਅਤੇ ਅੱਠ ਪ੍ਰੋਗਰਾਮ।"
+    }
+  },
+  {
+    "slug": "impact",
+    "image": "sewadars-standing-with-the-langar-delive.webp",
+    "alt": {
+      "en": "Sewadars standing with the Langar delivery vehicles at Pur Heeran",
+      "pa": "ਪੁਰਹੀਰਾਂ ਵਿਖੇ ਲੰਗਰ ਦੀਆਂ ਗੱਡੀਆਂ ਨਾਲ ਖੜ੍ਹੇ ਸੇਵਾਦਾਰ"
+    },
+    "title": { "en": "Impact", "pa": "ਪ੍ਰਭਾਵ" },
+    "description": {
+      "en": "Milestones, crisis relief and voices of the sangat.",
+      "pa": "ਪ੍ਰਾਪਤੀਆਂ, ਸੰਕਟ ਵਿੱਚ ਰਾਹਤ ਅਤੇ ਸੰਗਤ ਦੇ ਵਿਚਾਰ।"
+    }
+  },
+  {
+    "slug": "future-vision",
+    "image": "inside-the-pur-heeran-kitchen.webp",
+    "alt": { "en": "Inside the Pur Heeran kitchen", "pa": "ਪੁਰਹੀਰਾਂ ਰਸੋਈ ਦਾ ਅੰਦਰਲਾ ਹਿੱਸਾ" },
+    "title": { "en": "Future Vision", "pa": "ਭਵਿੱਖ ਦੀ ਸੋਚ" },
+    "description": {
+      "en": "A dairy farm, patient meals and the 2034 hospital.",
+      "pa": "ਡੇਅਰੀ ਫਾਰਮ, ਮਰੀਜ਼ਾਂ ਲਈ ਖਾਣਾ ਅਤੇ 2034 ਦਾ ਹਸਪਤਾਲ।"
+    }
+  }
+]

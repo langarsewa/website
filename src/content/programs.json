@@ -1,0 +1,127 @@
+[
+  {
+    "title": {
+      "en": "Charitable Medical Care",
+      "pa": "ਚੈਰੀਟੇਬਲ ਮੈਡੀਕਲ ਸੇਵਾ"
+    },
+    "text": {
+      "en": "Free laboratory tests and medicines — about 250–300 patient visits each day.",
+      "pa": "ਮੁਫ਼ਤ ਲੈਬ ਟੈਸਟ ਅਤੇ ਦਵਾਈਆਂ — ਹਰ ਰੋਜ਼ ਲਗਭਗ 250–300 ਮਰੀਜ਼।"
+    },
+    "image": "a-patient-consultation-at-the-free-clini.webp",
+    "alt": {
+      "en": "A patient consultation at the free clinic",
+      "pa": "ਮੁਫ਼ਤ ਕਲੀਨਿਕ ਵਿੱਚ ਮਰੀਜ਼ ਦੀ ਜਾਂਚ"
+    }
+  },
+  {
+    "title": {
+      "en": "School Nutrition",
+      "pa": "ਸਕੂਲ ਵਿੱਚ ਭੋਜਨ"
+    },
+    "text": {
+      "en": "Daily milk, biscuits and lunch for about 250 students at Government Elementary School, Ajjowal.",
+      "pa": "ਸਰਕਾਰੀ ਐਲੀਮੈਂਟਰੀ ਸਕੂਲ ਅੱਜੋਵਾਲ ਦੇ ਲਗਭਗ 250 ਵਿਦਿਆਰਥੀਆਂ ਲਈ ਰੋਜ਼ਾਨਾ ਦੁੱਧ, ਬਿਸਕੁਟ ਅਤੇ ਦੁਪਹਿਰ ਦਾ ਖਾਣਾ।"
+    },
+    "image": "children-sharing-a-langar-meal.webp",
+    "alt": {
+      "en": "Children sharing a Langar meal",
+      "pa": "ਲੰਗਰ ਛਕਦੇ ਬੱਚੇ"
+    }
+  },
+  {
+    "title": {
+      "en": "Ambulance Service",
+      "pa": "ਐਂਬੂਲੈਂਸ ਸੇਵਾ"
+    },
+    "text": {
+      "en": "Five ambulances: four based in Hoshiarpur and one in Madhir. Ambulance Sewa:",
+      "pa": "ਪੰਜ ਐਂਬੂਲੈਂਸਾਂ: ਚਾਰ ਹੁਸ਼ਿਆਰਪੁਰ ਵਿੱਚ ਅਤੇ ਇੱਕ ਮਧੀਰ ਵਿੱਚ। ਐਂਬੂਲੈਂਸ ਸੇਵਾ:"
+    },
+    "image": "ambulances-of-the-sewa.webp",
+    "alt": {
+      "en": "Ambulances of the sewa",
+      "pa": "ਸੇਵਾ ਦੀਆਂ ਐਂਬੂਲੈਂਸਾਂ"
+    },
+    "link": {
+      "href": "tel:+917508877717",
+      "text": "+91 75088 77717",
+      "after": "."
+    }
+  },
+  {
+    "title": {
+      "en": "Monthly Ration",
+      "pa": "ਮਹੀਨਾਵਾਰ ਰਾਸ਼ਨ"
+    },
+    "text": {
+      "en": "Essential ration for about 200 people or families each month.",
+      "pa": "ਹਰ ਮਹੀਨੇ ਲਗਭਗ 200 ਲੋਕਾਂ ਜਾਂ ਪਰਿਵਾਰਾਂ ਲਈ ਜ਼ਰੂਰੀ ਰਾਸ਼ਨ।"
+    },
+    "image": "monthly-ration-supplies-at-the-kitchen.webp",
+    "alt": {
+      "en": "Monthly ration supplies at the kitchen",
+      "pa": "ਰਸੋਈ ਵਿੱਚ ਮਹੀਨਾਵਾਰ ਰਾਸ਼ਨ"
+    }
+  },
+  {
+    "title": {
+      "en": "Eye & Blood Donation Camps",
+      "pa": "ਅੱਖਾਂ ਅਤੇ ਖ਼ੂਨਦਾਨ ਕੈਂਪ"
+    },
+    "text": {
+      "en": "Two eye camps each year and blood donation camps every October.",
+      "pa": "ਹਰ ਸਾਲ ਅੱਖਾਂ ਦੇ ਦੋ ਕੈਂਪ ਅਤੇ ਹਰ ਅਕਤੂਬਰ ਖ਼ੂਨਦਾਨ ਕੈਂਪ।"
+    },
+    "image": "blood-donation-camp.webp",
+    "alt": {
+      "en": "Blood donation camp",
+      "pa": "ਖ਼ੂਨਦਾਨ ਕੈਂਪ"
+    }
+  },
+  {
+    "title": {
+      "en": "Education & Family Support",
+      "pa": "ਸਿੱਖਿਆ ਅਤੇ ਪਰਿਵਾਰਕ ਮਦਦ"
+    },
+    "text": {
+      "en": "Help for needy students, elderly people and families, and medicines for cancer patients.",
+      "pa": "ਲੋੜਵੰਦ ਵਿਦਿਆਰਥੀਆਂ, ਬਜ਼ੁਰਗਾਂ ਅਤੇ ਪਰਿਵਾਰਾਂ ਦੀ ਮਦਦ, ਅਤੇ ਕੈਂਸਰ ਦੇ ਮਰੀਜ਼ਾਂ ਲਈ ਦਵਾਈਆਂ।"
+    },
+    "image": "gur-aasra-gardiwal.webp",
+    "alt": {
+      "en": "Gur Aasra, Gardiwal",
+      "pa": "ਗੁਰ ਆਸਰਾ, ਗੜ੍ਹਦੀਵਾਲਾ"
+    }
+  },
+  {
+    "title": {
+      "en": "Sunday Pizza Langar",
+      "pa": "ਐਤਵਾਰ ਪੀਜ਼ਾ ਲੰਗਰ"
+    },
+    "text": {
+      "en": "Pizza Langar prepared every Sunday in Hoshiarpur.",
+      "pa": "ਹੁਸ਼ਿਆਰਪੁਰ ਵਿੱਚ ਹਰ ਐਤਵਾਰ ਪੀਜ਼ਾ ਲੰਗਰ।"
+    },
+    "image": "young-sewadars-topping-pizzas-for-sunday.webp",
+    "alt": {
+      "en": "Young sewadars topping pizzas for Sunday Pizza Langar",
+      "pa": "ਐਤਵਾਰ ਦੇ ਪੀਜ਼ਾ ਲੰਗਰ ਲਈ ਪੀਜ਼ੇ ਤਿਆਰ ਕਰਦੇ ਨੌਜਵਾਨ ਸੇਵਾਦਾਰ"
+    }
+  },
+  {
+    "title": {
+      "en": "Martyrdom Days",
+      "pa": "ਸ਼ਹੀਦੀ ਦਿਹਾੜੇ"
+    },
+    "text": {
+      "en": "Langar, chhabeel and milk Langar at Fatehgarh Sahib and kitchen locations.",
+      "pa": "ਫ਼ਤਹਿਗੜ੍ਹ ਸਾਹਿਬ ਅਤੇ ਰਸੋਈ ਸਥਾਨਾਂ 'ਤੇ ਲੰਗਰ, ਛਬੀਲ ਅਤੇ ਦੁੱਧ ਦਾ ਲੰਗਰ।"
+    },
+    "image": "a-sewadar-serving-water-during-langar.webp",
+    "alt": {
+      "en": "A sewadar serving water during Langar",
+      "pa": "ਲੰਗਰ ਦੌਰਾਨ ਪਾਣੀ ਦੀ ਸੇਵਾ ਕਰਦਾ ਸੇਵਾਦਾਰ"
+    }
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "equality",
+    "title": { "en": "Equality", "pa": "ਬਰਾਬਰੀ" },
+    "body": {
+      "en": "Langar is served without distinction. Every person is welcomed with dignity.",
+      "pa": "ਲੰਗਰ ਬਿਨਾਂ ਭੇਦਭਾਵ ਵਰਤਾਇਆ ਜਾਂਦਾ ਹੈ। ਹਰ ਇਨਸਾਨ ਦਾ ਸਤਿਕਾਰ ਨਾਲ ਸਵਾਗਤ ਹੁੰਦਾ ਹੈ।"
+    }
+  },
+  {
+    "id": "consistency",
+    "title": { "en": "Consistency", "pa": "ਨਿਰੰਤਰਤਾ" },
+    "body": {
+      "en": "Daily preparation, fixed schedules and dedicated routes make service dependable.",
+      "pa": "ਰੋਜ਼ਾਨਾ ਤਿਆਰੀ, ਪੱਕਾ ਸਮਾਂ ਅਤੇ ਤੈਅ ਰਸਤੇ ਸੇਵਾ ਨੂੰ ਭਰੋਸੇਯੋਗ ਬਣਾਉਂਦੇ ਹਨ।"
+    }
+  },
+  {
+    "id": "stewardship",
+    "title": { "en": "Stewardship", "pa": "ਜ਼ਿੰਮੇਵਾਰੀ" },
+    "body": {
+      "en": "Food quality, hygiene, vehicles and equipment are treated as responsibilities of sewa.",
+      "pa": "ਭੋਜਨ ਦੀ ਗੁਣਵੱਤਾ, ਸਫ਼ਾਈ, ਗੱਡੀਆਂ ਅਤੇ ਸਾਜ਼ੋ-ਸਮਾਨ ਨੂੰ ਸੇਵਾ ਦੀ ਜ਼ਿੰਮੇਵਾਰੀ ਸਮਝਿਆ ਜਾਂਦਾ ਹੈ।"
+    }
+  },
+  {
+    "id": "growth",
+    "title": { "en": "Growth", "pa": "ਵਿਕਾਸ" },
+    "body": {
+      "en": "New programs are built around real needs, while Langar remains the foundation.",
+      "pa": "ਨਵੇਂ ਪ੍ਰੋਗਰਾਮ ਅਸਲ ਲੋੜਾਂ ਅਨੁਸਾਰ ਬਣਦੇ ਹਨ, ਜਦਕਿ ਲੰਗਰ ਹਮੇਸ਼ਾ ਨੀਂਹ ਰਹਿੰਦਾ ਹੈ।"
+    }
+  }
+]

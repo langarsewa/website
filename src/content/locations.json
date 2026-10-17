@@ -1,0 +1,496 @@
+[
+  {
+    "name": {
+      "en": "PGI Chandigarh",
+      "pa": "ਪੀ.ਜੀ.ਆਈ. ਚੰਡੀਗੜ੍ਹ"
+    },
+    "region": {
+      "en": "Chandigarh",
+      "pa": "ਚੰਡੀਗੜ੍ਹ"
+    },
+    "type": "Hospital",
+    "x": 512,
+    "y": 357.9
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Mohali",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਮੋਹਾਲੀ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 493.6,
+    "y": 381.4
+  },
+  {
+    "name": {
+      "en": "DMC, Ludhiana",
+      "pa": "ਡੀ.ਐਮ.ਸੀ., ਲੁਧਿਆਣਾ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 344.2,
+    "y": 328.6
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Ludhiana",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਲੁਧਿਆਣਾ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 359.3,
+    "y": 342.3
+  },
+  {
+    "name": {
+      "en": "Guru Nanak Dev Hospital, Amritsar",
+      "pa": "ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਹਸਪਤਾਲ, ਅੰਮ੍ਰਿਤਸਰ"
+    },
+    "region": {
+      "en": "Majha",
+      "pa": "ਮਾਝਾ"
+    },
+    "type": "Hospital",
+    "x": 189.7,
+    "y": 191.7
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Tarn Taran",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਤਰਨ ਤਾਰਨ"
+    },
+    "region": {
+      "en": "Majha",
+      "pa": "ਮਾਝਾ"
+    },
+    "type": "Hospital",
+    "x": 198.1,
+    "y": 228.8
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Batala",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਬਟਾਲਾ"
+    },
+    "region": {
+      "en": "Majha",
+      "pa": "ਮਾਝਾ"
+    },
+    "type": "Hospital",
+    "x": 243.4,
+    "y": 156.5
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Gurdaspur",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਗੁਰਦਾਸਪੁਰ"
+    },
+    "region": {
+      "en": "Majha",
+      "pa": "ਮਾਝਾ"
+    },
+    "type": "Hospital",
+    "x": 277,
+    "y": 113.4
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Baba Bakala Sahib",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਬਾਬਾ ਬਕਾਲਾ ਸਾਹਿਬ"
+    },
+    "region": {
+      "en": "Majha",
+      "pa": "ਮਾਝਾ"
+    },
+    "type": "Hospital",
+    "x": 250.1,
+    "y": 213.2
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Hoshiarpur",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਹੁਸ਼ਿਆਰਪੁਰ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Hospital",
+    "x": 360.9,
+    "y": 213.2
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Dasuya",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਦਸੂਹਾ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Hospital",
+    "x": 319,
+    "y": 156.5
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Mukerian",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਮੁਕੇਰੀਆਂ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Hospital",
+    "x": 313.9,
+    "y": 131
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Garhshankar",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਗੜ੍ਹਸ਼ੰਕਰ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Hospital",
+    "x": 401.2,
+    "y": 273.8
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Nawanshahr",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਨਵਾਂਸ਼ਹਿਰ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Hospital",
+    "x": 397.9,
+    "y": 293.4
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Phagwara",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਫਗਵਾੜਾ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Hospital",
+    "x": 339.1,
+    "y": 273.8
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Jalandhar",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਜਲੰਧਰ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Hospital",
+    "x": 307.2,
+    "y": 252.3
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Nakodar",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਨਕੋਦਰ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Hospital",
+    "x": 290.4,
+    "y": 291.4
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Phillaur",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਫਿਲੌਰ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Hospital",
+    "x": 340.8,
+    "y": 312.9
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Anandpur Sahib",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਅਨੰਦਪੁਰ ਸਾਹਿਬ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 461.7,
+    "y": 269.9
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Ropar",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਰੋਪੜ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 466.7,
+    "y": 322.7
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Khanna",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਖੰਨਾ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 414.7,
+    "y": 375.5
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Fatehgarh Sahib",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਫ਼ਤਹਿਗੜ੍ਹ ਸਾਹਿਬ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 443.2,
+    "y": 385.3
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Sangrur",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਸੰਗਰੂਰ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 350.9,
+    "y": 463.5
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Mansa",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਮਾਨਸਾ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 277,
+    "y": 514.4
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Bathinda",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਬਠਿੰਡਾ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 201.5,
+    "y": 471.4
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Balluana",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਬੱਲੂਆਣਾ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 100.7,
+    "y": 459.6
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Gidderbaha",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਗਿੱਦੜਬਾਹਾ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 152.8,
+    "y": 473.3
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Sri Muktsar Sahib",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਸ੍ਰੀ ਮੁਕਤਸਰ ਸਾਹਿਬ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 129.3,
+    "y": 420.5
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Fazilka",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਫ਼ਾਜ਼ਿਲਕਾ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 47,
+    "y": 434.2
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Faridkot",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਫ਼ਰੀਦਕੋਟ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 169.6,
+    "y": 381.4
+  },
+  {
+    "name": {
+      "en": "Civil Hospital, Firozpur",
+      "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਫ਼ਿਰੋਜ਼ਪੁਰ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Hospital",
+    "x": 144.4,
+    "y": 330.5
+  },
+  {
+    "name": {
+      "en": "Pur Heeran Kitchen, Hoshiarpur",
+      "pa": "ਪੁਰਹੀਰਾਂ ਰਸੋਈ, ਹੁਸ਼ਿਆਰਪੁਰ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Kitchen",
+    "x": 377.7,
+    "y": 228.8
+  },
+  {
+    "name": {
+      "en": "Madhir Kitchen, Sri Muktsar Sahib",
+      "pa": "ਮਧੀਰ ਰਸੋਈ, ਸ੍ਰੀ ਮੁਕਤਸਰ ਸਾਹਿਬ"
+    },
+    "region": {
+      "en": "Malwa",
+      "pa": "ਮਾਲਵਾ"
+    },
+    "type": "Kitchen",
+    "x": 142.7,
+    "y": 442
+  },
+  {
+    "name": {
+      "en": "Government Elementary School, Ajjowal",
+      "pa": "ਸਰਕਾਰੀ ਐਲੀਮੈਂਟਰੀ ਸਕੂਲ, ਅੱਜੋਵਾਲ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Community",
+    "x": 379.4,
+    "y": 193.6
+  },
+  {
+    "name": {
+      "en": "Bus Stand & Labour Shed, Hoshiarpur",
+      "pa": "ਬੱਸ ਅੱਡਾ ਅਤੇ ਲੇਬਰ ਸ਼ੈੱਡ, ਹੁਸ਼ਿਆਰਪੁਰ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Community",
+    "x": 345.8,
+    "y": 197.5
+  },
+  {
+    "name": {
+      "en": "Gur Aasra, Gardiwal",
+      "pa": "ਗੁਰ ਆਸਰਾ, ਗੜ੍ਹਦੀਵਾਲਾ"
+    },
+    "region": {
+      "en": "Doaba",
+      "pa": "ਦੋਆਬਾ"
+    },
+    "type": "Community",
+    "x": 334.1,
+    "y": 178
+  },
+  {
+    "name": {
+      "en": "Bus Stand & Railway Station, Amritsar",
+      "pa": "ਬੱਸ ਅੱਡਾ ਅਤੇ ਰੇਲਵੇ ਸਟੇਸ਼ਨ, ਅੰਮ੍ਰਿਤਸਰ"
+    },
+    "region": {
+      "en": "Majha",
+      "pa": "ਮਾਝਾ"
+    },
+    "type": "Community",
+    "x": 179.6,
+    "y": 179.9
+  },
+  {
+    "name": {
+      "en": "Baba Bakala Sahib Ashram",
+      "pa": "ਬਾਬਾ ਬਕਾਲਾ ਸਾਹਿਬ ਆਸ਼ਰਮ"
+    },
+    "region": {
+      "en": "Majha",
+      "pa": "ਮਾਝਾ"
+    },
+    "type": "Community",
+    "x": 266.9,
+    "y": 193.6
+  }
+]

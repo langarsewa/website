@@ -1,0 +1,139 @@
+{
+  "timeline": [
+    {
+      "state": "vt-done",
+      "date": "2019",
+      "title": { "en": "First Langar at civil hospitals", "pa": "ਸਿਵਲ ਹਸਪਤਾਲਾਂ ਵਿੱਚ ਪਹਿਲਾ ਲੰਗਰ" },
+      "items": [
+        {
+          "en": "Hoshiarpur, Jalandhar, Phagwara, Nawanshahr",
+          "pa": "ਹੁਸ਼ਿਆਰਪੁਰ, ਜਲੰਧਰ, ਫਗਵਾੜਾ, ਨਵਾਂਸ਼ਹਿਰ"
+        }
+      ]
+    },
+    {
+      "state": "vt-now",
+      "date": { "en": "Today", "pa": "ਅੱਜ" },
+      "title": { "en": "Serving Punjab today", "pa": "ਅੱਜ ਪੰਜਾਬ ਦੀ ਸੇਵਾ ਵਿੱਚ" },
+      "items": [
+        { "en": "Langar started at 31 hospitals", "pa": "31 ਹਸਪਤਾਲਾਂ ਵਿੱਚ ਲੰਗਰ ਸ਼ੁਰੂ" },
+        { "en": "Free outpatient clinics", "pa": "ਮੁਫ਼ਤ ਓਪੀਡੀ ਕਲੀਨਿਕ" },
+        { "en": "5 ambulances", "pa": "5 ਐਂਬੂਲੈਂਸਾਂ" }
+      ]
+    },
+    {
+      "state": "vt-prog",
+      "date": { "en": "Underway", "pa": "ਚੱਲ ਰਿਹਾ" },
+      "title": { "en": "Dairy farm", "pa": "ਡੇਅਰੀ ਫਾਰਮ" },
+      "items": [
+        { "en": "Flooring completed", "pa": "ਫ਼ਰਸ਼ ਦਾ ਕੰਮ ਪੂਰਾ" },
+        { "en": "Will support 250 cows", "pa": "250 ਗਊਆਂ ਲਈ ਥਾਂ" }
+      ]
+    },
+    {
+      "state": "vt-next",
+      "date": { "en": "Next", "pa": "ਅੱਗੇ" },
+      "title": { "en": "Patient-specific meals", "pa": "ਮਰੀਜ਼ਾਂ ਲਈ ਖ਼ਾਸ ਖਾਣਾ" },
+      "items": [
+        { "en": "Pilot at Civil Hospital, Hoshiarpur", "pa": "ਸਿਵਲ ਹਸਪਤਾਲ ਹੁਸ਼ਿਆਰਪੁਰ ਵਿੱਚ ਪਾਇਲਟ" }
+      ]
+    },
+    {
+      "state": "vt-goal",
+      "date": { "en": "Oct 2034", "pa": "ਅਕਤੂਬਰ 2034" },
+      "title": { "en": "Charitable hospital", "pa": "ਚੈਰੀਟੇਬਲ ਹਸਪਤਾਲ" },
+      "items": [{ "en": "Groundbreaking target", "pa": "ਨੀਂਹ ਰੱਖਣ ਦਾ ਟੀਚਾ" }]
+    }
+  ],
+  "key": [
+    { "class": "k-done", "label": { "en": "Done", "pa": "ਪੂਰਾ" } },
+    { "class": "k-prog", "label": { "en": "In progress", "pa": "ਚੱਲ ਰਿਹਾ" } },
+    { "class": "k-next", "label": { "en": "Planned", "pa": "ਯੋਜਨਾ ਅਧੀਨ" } }
+  ],
+  "projects": [
+    {
+      "id": "dairy-farm",
+      "direction": "row-reverse",
+      "gallery": {
+        "count": { "en": "2 photos", "pa": "2 ਤਸਵੀਰਾਂ" },
+        "photos": [
+          {
+            "image": "construction-at-the-dairy-farm-site.webp",
+            "alt": {
+              "en": "Construction at the dairy farm site",
+              "pa": "ਡੇਅਰੀ ਫਾਰਮ ਦੀ ਥਾਂ 'ਤੇ ਉਸਾਰੀ"
+            }
+          },
+          {
+            "image": "aerial-view-of-the-dairy-farm-site.webp",
+            "alt": {
+              "en": "Aerial view of the dairy farm site",
+              "pa": "ਡੇਅਰੀ ਫਾਰਮ ਦੀ ਥਾਂ ਦਾ ਉੱਪਰੋਂ ਦ੍ਰਿਸ਼"
+            }
+          }
+        ]
+      },
+      "chips": [
+        { "variant": "development", "label": { "en": "In development", "pa": "ਤਿਆਰੀ ਅਧੀਨ" } },
+        { "variant": "tag", "label": { "en": "Food system", "pa": "ਭੋਜਨ ਪ੍ਰਬੰਧ" } }
+      ],
+      "title": { "en": "Dedicated dairy farm", "pa": "ਆਪਣਾ ਡੇਅਰੀ ਫਾਰਮ" },
+      "body": {
+        "en": "A dairy farm is under development as an act of sewa, to provide pure milk and freshly prepared ghee for Langar without commercial compromise.",
+        "pa": "ਸੇਵਾ ਭਾਵਨਾ ਨਾਲ ਇੱਕ ਡੇਅਰੀ ਫਾਰਮ ਤਿਆਰ ਹੋ ਰਿਹਾ ਹੈ, ਤਾਂ ਜੋ ਲੰਗਰ ਲਈ ਬਿਨਾਂ ਕਿਸੇ ਵਪਾਰਕ ਸਮਝੌਤੇ ਦੇ ਸ਼ੁੱਧ ਦੁੱਧ ਅਤੇ ਤਾਜ਼ਾ ਘਿਓ ਮਿਲ ਸਕੇ।"
+      },
+      "note": {
+        "en": "Flooring completed — the farm will support 250 cows",
+        "pa": "ਫ਼ਰਸ਼ ਦਾ ਕੰਮ ਪੂਰਾ — ਫਾਰਮ ਵਿੱਚ 250 ਗਊਆਂ ਲਈ ਥਾਂ ਹੋਵੇਗੀ"
+      }
+    },
+    {
+      "id": "patient-meals",
+      "direction": "row",
+      "image": "meal-preparation-at-the-kitchen.webp",
+      "alt": { "en": "Meal preparation at the kitchen", "pa": "ਰਸੋਈ ਵਿੱਚ ਖਾਣਾ ਤਿਆਰ ਕਰਨਾ" },
+      "chips": [
+        { "variant": "planned", "label": { "en": "Planned", "pa": "ਯੋਜਨਾ ਅਧੀਨ" } },
+        { "variant": "tag", "label": { "en": "Nutrition", "pa": "ਪੋਸ਼ਣ" } }
+      ],
+      "title": { "en": "Patient-specific hospital meals", "pa": "ਮਰੀਜ਼ਾਂ ਲਈ ਖ਼ਾਸ ਹਸਪਤਾਲੀ ਖਾਣਾ" },
+      "body": {
+        "en": "Trained team members receive physician diet orders, kitchens prepare standardized meals for each patient’s needs, and packaged meals reach participating hospitals. Breakfast will be added to hospital meal service.",
+        "pa": "ਸਿੱਖਿਅਤ ਟੀਮ ਡਾਕਟਰਾਂ ਤੋਂ ਖ਼ੁਰਾਕ ਦੀ ਹਦਾਇਤ ਲੈਂਦੀ ਹੈ, ਰਸੋਈਆਂ ਹਰ ਮਰੀਜ਼ ਦੀ ਲੋੜ ਅਨੁਸਾਰ ਮਿਆਰੀ ਖਾਣਾ ਤਿਆਰ ਕਰਦੀਆਂ ਹਨ, ਅਤੇ ਪੈਕ ਖਾਣਾ ਹਸਪਤਾਲਾਂ ਤੱਕ ਪਹੁੰਚਦਾ ਹੈ। ਹਸਪਤਾਲਾਂ ਵਿੱਚ ਸਵੇਰ ਦਾ ਨਾਸ਼ਤਾ ਵੀ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾਵੇਗਾ।"
+      },
+      "note": {
+        "en": "Pilot planned at Civil Hospital, Hoshiarpur",
+        "pa": "ਸਿਵਲ ਹਸਪਤਾਲ ਹੁਸ਼ਿਆਰਪੁਰ ਵਿੱਚ ਪਾਇਲਟ ਦੀ ਯੋਜਨਾ"
+      }
+    },
+    {
+      "id": "ambulances",
+      "direction": "row-reverse",
+      "image": "ambulances-of-the-sewa-ready-for-highway.webp",
+      "alt": {
+        "en": "Ambulances of the sewa ready for highway duty",
+        "pa": "ਹਾਈਵੇਅ ਸੇਵਾ ਲਈ ਤਿਆਰ ਸੇਵਾ ਦੀਆਂ ਐਂਬੂਲੈਂਸਾਂ"
+      },
+      "chips": [
+        { "variant": "service", "label": { "en": "In service", "pa": "ਸੇਵਾ ਜਾਰੀ" } },
+        { "variant": "tag", "label": { "en": "Emergency care", "pa": "ਐਮਰਜੈਂਸੀ ਸੇਵਾ" } }
+      ],
+      "title": {
+        "en": "Ambulances on Punjab’s major highways",
+        "pa": "ਪੰਜਾਬ ਦੇ ਮੁੱਖ ਹਾਈਵੇਅਜ਼ 'ਤੇ ਐਂਬੂਲੈਂਸਾਂ"
+      },
+      "body": {
+        "en": "Our ambulances already provide life-saving emergency cover along Punjab’s major highways.",
+        "pa": "ਸਾਡੀਆਂ ਐਂਬੂਲੈਂਸਾਂ ਪਹਿਲਾਂ ਹੀ ਪੰਜਾਬ ਦੇ ਮੁੱਖ ਹਾਈਵੇਅਜ਼ 'ਤੇ ਜਾਨ ਬਚਾਉਣ ਵਾਲੀ ਐਮਰਜੈਂਸੀ ਸੇਵਾ ਦੇ ਰਹੀਆਂ ਹਨ।"
+      },
+      "note": { "en": "Already serving Punjab’s highways", "pa": "ਪੰਜਾਬ ਦੇ ਹਾਈਵੇਅਜ਼ 'ਤੇ ਸੇਵਾ ਜਾਰੀ" }
+    }
+  ],
+  "hospital": {
+    "image": "aerial-view-of-the-land-for-the-charitab.webp",
+    "alt": {
+      "en": "Aerial view of the land for the charitable hospital",
+      "pa": "ਚੈਰੀਟੇਬਲ ਹਸਪਤਾਲ ਲਈ ਜ਼ਮੀਨ ਦਾ ਉੱਪਰੋਂ ਦ੍ਰਿਸ਼"
+    }
+  }
+}

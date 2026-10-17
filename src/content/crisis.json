@@ -1,0 +1,44 @@
+[
+  {
+    "id": "covid",
+    "chip": "2020",
+    "title": { "en": "COVID-19", "pa": "ਕੋਵਿਡ-19" },
+    "items": [
+      {
+        "dt": { "en": "The need", "pa": "ਲੋੜ" },
+        "dd": {
+          "en": "Lockdowns cut people off from food, especially in hospitals and remote villages.",
+          "pa": "ਲੌਕਡਾਊਨ ਨੇ ਲੋਕਾਂ ਨੂੰ ਭੋਜਨ ਤੋਂ ਵਾਂਝੇ ਕਰ ਦਿੱਤਾ, ਖ਼ਾਸ ਕਰਕੇ ਹਸਪਤਾਲਾਂ ਅਤੇ ਦੂਰ-ਦਰਾਡੇ ਪਿੰਡਾਂ ਵਿੱਚ।"
+        }
+      },
+      {
+        "dt": { "en": "What we did", "pa": "ਅਸੀਂ ਕੀ ਕੀਤਾ" },
+        "dd": {
+          "en": "Food support reached communities across much of Punjab, including remote hilly and forest areas.",
+          "pa": "ਪੰਜਾਬ ਦੇ ਵੱਡੇ ਹਿੱਸੇ ਵਿੱਚ ਭੋਜਨ ਦੀ ਮਦਦ ਪਹੁੰਚੀ, ਦੂਰ-ਦਰਾਡੇ ਪਹਾੜੀ ਅਤੇ ਜੰਗਲੀ ਇਲਾਕਿਆਂ ਸਮੇਤ।"
+        }
+      }
+    ]
+  },
+  {
+    "id": "floods",
+    "chip": { "en": "Floods", "pa": "ਹੜ੍ਹ" },
+    "title": { "en": "Punjab Floods", "pa": "ਪੰਜਾਬ ਦੇ ਹੜ੍ਹ" },
+    "items": [
+      {
+        "dt": { "en": "The need", "pa": "ਲੋੜ" },
+        "dd": {
+          "en": "Severe flooding left communities cut off by road.",
+          "pa": "ਭਾਰੀ ਹੜ੍ਹਾਂ ਕਾਰਨ ਕਈ ਇਲਾਕਿਆਂ ਦਾ ਸੜਕੀ ਸੰਪਰਕ ਟੁੱਟ ਗਿਆ।"
+        }
+      },
+      {
+        "dt": { "en": "What we did", "pa": "ਅਸੀਂ ਕੀ ਕੀਤਾ" },
+        "dd": {
+          "en": "Langar, food and relief supplies were delivered — by boat where roads could not reach.",
+          "pa": "ਲੰਗਰ, ਭੋਜਨ ਅਤੇ ਰਾਹਤ ਸਮੱਗਰੀ ਪਹੁੰਚਾਈ ਗਈ — ਜਿੱਥੇ ਸੜਕਾਂ ਨਹੀਂ ਪਹੁੰਚੀਆਂ, ਉੱਥੇ ਕਿਸ਼ਤੀਆਂ ਰਾਹੀਂ।"
+        }
+      }
+    ]
+  }
+]

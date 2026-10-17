@@ -1,0 +1,16 @@
+{
+  "bank": {
+    "accountName": "Dhan Guru Ramdas Langar Sewa",
+    "bank": "ICICI Bank",
+    "accountNumber": "134005001208",
+    "ifsc": "ICIC0001340"
+  },
+  "cheque": {
+    "payee": "Dhan Guru Ramdas Langar Sewa",
+    "address": {
+      "line1": "Dhan Guru Ramdas Langar Sewa Kitchen",
+      "line2": "Pur Heeran, Hoshiarpur Bypass",
+      "line3": "Hoshiarpur, Punjab"
+    }
+  }
+}

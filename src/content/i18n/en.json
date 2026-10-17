@@ -1,0 +1,547 @@
+{
+  "common": {
+    "skipToContent": "Skip to content",
+    "orgName": "Dhan Guru Ramdas Langar Sewa",
+    "brandLine1": "Dhan Guru Ramdas",
+    "brandLine2": "Langar Sewa",
+    "brandHomeLabel": "Dhan Guru Ramdas Langar Sewa — Home",
+    "logoLabel": "Ik Onkar over a bowl of Langar",
+    "languageGroupLabel": "Language / ਭਾਸ਼ਾ",
+    "language": "Language",
+    "switchLanguage": "Switch language",
+    "mainNav": "Main",
+    "mobileNav": "Mobile",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "next": "Next",
+    "emailUs": "Email us",
+    "call": "Call",
+    "join": "Join",
+    "copy": "Copy",
+    "copied": "Copied",
+    "photoViewer": "Photo viewer",
+    "close": "Close",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "metaDescription": "Dhan Guru Ramdas Langar Sewa serves free, nutritious Langar to hospitals, schools and communities across Punjab, with healthcare and community programs."
+  },
+  "nav": {
+    "home": {
+      "label": "Home",
+      "description": "Langar First"
+    },
+    "ourStory": {
+      "label": "Our Story",
+      "description": "How it began, and where we’re going"
+    },
+    "ourWork": {
+      "label": "Our Work",
+      "description": "Daily Langar, locations and programs"
+    },
+    "impact": {
+      "label": "Impact",
+      "description": "Milestones, crisis response and voices"
+    },
+    "futureVision": {
+      "label": "Future Vision",
+      "description": "Projects underway and the 2034 hospital"
+    },
+    "joinTheSewa": {
+      "label": "Join the Sewa",
+      "description": "Ways to take part and contribute"
+    },
+    "contact": {
+      "label": "Contact",
+      "description": "Reach our team in Punjab"
+    }
+  },
+  "footer": {
+    "tagline": "Serving Punjab through nourishment, healthcare and sewa — since 2019.",
+    "explore": "Explore",
+    "contact": "Contact",
+    "ambulanceSewa": "Ambulance Sewa:",
+    "follow": "Follow the sewa",
+    "youtube": "YouTube",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "whatsapp": "WhatsApp: coming soon",
+    "copyright": "© 2026 Dhan Guru Ramdas Langar Sewa. All rights reserved. · "
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "That page does not exist. The links below lead to the main sections of the site.",
+    "home": "Go to the home page"
+  },
+  "contact": {
+    "meta": {
+      "description": "Visit the kitchen, volunteer, share a story or ask a question — our team in Punjab will respond. Call or email, send a message, or come see the sewa in Pur Heeran, Hoshiarpur."
+    },
+    "hero": {
+      "kicker": "Contact",
+      "title": "We’d love to hear from you.",
+      "lede": "Visit the kitchen, volunteer, share a story or ask a question — our team in Punjab will respond."
+    },
+    "reach": {
+      "kicker": "Reach us directly",
+      "title": "Call or email",
+      "general": {
+        "label": "General",
+        "note": "Visits, volunteering, media and questions"
+      },
+      "director": {
+        "label": "Managing Director",
+        "note": "Gurliakat Singh"
+      },
+      "ambulance": {
+        "label": "Ambulance Sewa",
+        "note": "Hoshiarpur and Madhir"
+      },
+      "whatsapp": {
+        "label": "WhatsApp & USA",
+        "value": "Coming soon",
+        "note": "A dedicated number is being set up"
+      }
+    },
+    "write": {
+      "kicker": "Write to us",
+      "title": "Send a message"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "optional": "(optional)",
+      "topic": "How can we help?",
+      "topics": {
+        "visit": "Visit the kitchen",
+        "volunteer": "Volunteer",
+        "contribute": "Contributing to the sewa",
+        "media": "Media enquiry",
+        "other": "Something else"
+      },
+      "message": "Message",
+      "send": "Send message",
+      "msgInvalid": "Please add your name, a valid email and a message.",
+      "msgSent": "Opening your email app with the message ready to send."
+    },
+    "visit": {
+      "mapLabel": "Map of Punjab showing the Pur Heeran and Madhir kitchens",
+      "mapMadhir": "Madhir kitchen",
+      "mapPurHeeran": "Pur Heeran kitchen",
+      "directions": "Get directions",
+      "kicker": "Visit the kitchen",
+      "title": "Come see the sewa",
+      "address": "Hoshiarpur Bypass, Pur Heeran, Hoshiarpur, Punjab, India",
+      "hours": "Visiting hours: 6:00 AM – 8:00 PM · Please contact us before you come."
+    },
+    "contribute": {
+      "kicker": "Contribute",
+      "title": "Looking to contribute?",
+      "body": "Bank details for India, and how to contribute from abroad, are on one page.",
+      "cta": "Go to Join the Sewa"
+    }
+  },
+  "futureVision": {
+    "meta": {
+      "description": "Langar First. The vision continues. Projects underway: a dedicated dairy farm, patient-specific hospital meals, ambulances on Punjab’s major highways, and a world-class charitable hospital with an October 2034 target."
+    },
+    "hero": {
+      "kicker": "Future vision",
+      "title": "Langar First. The vision continues.",
+      "lede": "Building toward a connected model of nutrition, emergency response and charitable healthcare across Punjab — with Langar always at the centre."
+    },
+    "projects": {
+      "kicker": "Projects underway"
+    },
+    "hospital": {
+      "kicker": "October 2034 target",
+      "title": "A world-class charitable hospital.",
+      "body": "Land has been acquired for a future hospital built around United States-level systems, management and standards of care. Our goal is to break ground in October 2034, commemorating the 550th birth anniversary of Sri Guru Ram Das Ji.",
+      "note": "This vision is still being developed. Clinical scope, architecture, funding and timelines will be shared publicly as they are finalized."
+    },
+    "follow": {
+      "kicker": "Follow the progress",
+      "title": "Watch the vision take shape.",
+      "body": "We share updates on YouTube, Instagram and Facebook as each project moves forward.",
+      "youtube": "Follow on YouTube"
+    },
+    "next": {
+      "title": "Be part of the sewa",
+      "description": "Three simple steps to get involved."
+    }
+  },
+  "home": {
+    "hero": {
+      "kicker": "Serving Punjab since 2019",
+      "title": "Langar First.",
+      "lede": "Every day, fresh Langar from our kitchens in Pur Heeran and Madhir reaches patients, families and students across Punjab — with healthcare and community support beyond the meal.",
+      "ctaWork": "See our work",
+      "ctaStory": "Our journey",
+      "mapLabel": "Map of Punjab: daily Langar routes from the Pur Heeran and Madhir kitchens to 31 hospitals"
+    },
+    "map": {
+      "purHeeran": "Pur Heeran",
+      "madhir": "Madhir",
+      "legendKitchen": "Kitchen",
+      "legendHospital": "Hospital served daily"
+    },
+    "stats": {
+      "kicker": "By the numbers",
+      "title": "The sewa, measured in people.",
+      "lede": "Every figure is a person fed, a patient seen or a family supported — counted the same way, every day.",
+      "note": "Figures as of October 2026"
+    },
+    "explore": {
+      "kicker": "Explore the sewa",
+      "title": "Get to know the sewa.",
+      "cta": "Explore →"
+    },
+    "voices": {
+      "videoCaption": "Video: Message from Giani Pinderpal Singh Ji",
+      "kicker": "Voices of the sangat",
+      "quote": "“[Selected line from Giani Pinderpal Singh Ji’s message]”",
+      "name": "Giani Pinderpal Singh Ji",
+      "cta": "All impact stories →"
+    },
+    "press": {
+      "label": "As featured in"
+    },
+    "cta": {
+      "kicker": "Be part of it",
+      "title": "Want to be part of this sewa?",
+      "lede": "Visit the kitchen, volunteer, or ask how you can help — we’ll guide you.",
+      "join": "How to get involved",
+      "visit": "Visit the kitchen"
+    },
+    "next": {
+      "title": "Start with our story",
+      "description": "How it began in 2019, and where we’re going."
+    }
+  },
+  "impact": {
+    "meta": {
+      "description": "Milestones since 2019, how the sewa responded when Punjab needed it most, and what the sangat has said."
+    },
+    "hero": {
+      "kicker": "Impact",
+      "title": "What the sewa has made possible.",
+      "lede": "Milestones since 2019, how the sewa responded when Punjab needed it most, and what the sangat has said."
+    },
+    "metrics": {
+      "meals": {
+        "value": "~100,000",
+        "label": "meals served every day"
+      },
+      "hospitals": {
+        "value": "31",
+        "label": "hospitals with daily Langar"
+      },
+      "clinic": {
+        "value": "250–300",
+        "label": "free clinic visits a day"
+      },
+      "ration": {
+        "value": "~200",
+        "label": "families receive monthly ration"
+      },
+      "note": "Figures as of October 2026"
+    },
+    "milestones": {
+      "kicker": "Milestones",
+      "title": "Growing, one need at a time."
+    },
+    "crisis": {
+      "kicker": "Serving through crisis",
+      "title": "When normal systems stopped, the Langar kept going."
+    },
+    "voices": {
+      "kicker": "Voices",
+      "title": "From the sangat, officials and visitors.",
+      "main": {
+        "caption": "Video: Message from Giani Pinderpal Singh Ji",
+        "quote": "“[Selected line from Giani Pinderpal Singh Ji’s message]”",
+        "name": "Giani Pinderpal Singh Ji"
+      },
+      "dc": {
+        "caption": "Video: D.C. Varinder Kumar Sharma",
+        "name": "Varinder Kumar Sharma",
+        "role": "Deputy Commissioner, Jalandhar"
+      }
+    },
+    "photos": {
+      "kicker": "Photo stories",
+      "title": "Moments from the sewa.",
+      "more": "More on Instagram →"
+    },
+    "videos": {
+      "kicker": "Video gallery",
+      "title": "Watch the sewa.",
+      "more": "More on YouTube →",
+      "showMore": "Show 5 more videos",
+      "showFewer": "Show fewer videos"
+    },
+    "next": {
+      "title": "Where we’re going",
+      "description": "Projects underway and the 2034 hospital."
+    }
+  },
+  "joinTheSewa": {
+    "meta": {
+      "description": "Contribute directly from within India by bank transfer or cheque, or reach out from anywhere in the world to contribute, volunteer or visit."
+    },
+    "hero": {
+      "kicker": "Join the Sewa",
+      "title": "Be part of the sewa.",
+      "lede": "Contribute directly from within India, or reach out from anywhere in the world — to contribute, volunteer or visit.",
+      "jumpsLabel": "Contributing from",
+      "jumpIndia": {
+        "title": "Within India",
+        "sub": "Bank transfer or cheque"
+      },
+      "jumpOutside": {
+        "title": "Outside India",
+        "sub": "Reach out in 3 steps"
+      }
+    },
+    "india": {
+      "kicker": "Within India",
+      "title": "Contribute directly from India",
+      "lede": "Two simple ways to contribute to the sewa from within India.",
+      "bank": {
+        "title": "Bank transfer",
+        "accountName": "Account name",
+        "bank": "Bank",
+        "accountNumber": "Account number",
+        "ifsc": "IFSC code",
+        "copyAccountName": "Copy Account name",
+        "copyAccountNumber": "Copy Account number",
+        "copyIfsc": "Copy IFSC code",
+        "noteStrong": "For deposits from within India only.",
+        "noteRest": "Please do not send contributions from outside India to this account."
+      },
+      "cheque": {
+        "title": "Cheque",
+        "payableTo": "Make the cheque payable to",
+        "mailTo": "and mail it to our Hoshiarpur office:"
+      },
+      "receipt": {
+        "text": "Need help, or a confirmation receipt? Email us and our team will assist.",
+        "cta": "Email info@langarsewa.org"
+      }
+    },
+    "donateOnline": "Donate online",
+    "steps": {
+      "kicker": "Outside India · volunteering · visits",
+      "title": "Three simple steps.",
+      "lede": "Contributing from outside India, volunteering or planning a visit? Reach out and we’ll guide you from there.",
+      "reach": {
+        "kicker": "Step 1",
+        "title": "Reach out",
+        "lede": "Start a conversation with our team in Punjab — whichever way is easiest for you.",
+        "email": "Email us",
+        "call": "Call",
+        "callSub": "+91 99143 35125 · Managing Director",
+        "whatsapp": "WhatsApp",
+        "whatsappSub": "Coming soon",
+        "tipStrong": "Helpful to include:",
+        "tipRest": "your name, where you are (city and country), and how you’d like to help — even if you’re not sure yet."
+      },
+      "choose": {
+        "kicker": "Step 2",
+        "title": "Choose your sewa",
+        "lede": "Pick what speaks to you. Each option opens an email with the topic filled in.",
+        "ask": "Ask about this →",
+        "notSure": "Not sure? Just reach out — we’ll suggest where help is needed most.",
+        "ways": {
+          "langar": {
+            "title": "Langar",
+            "description": "Help sustain daily meals for patients and families."
+          },
+          "healthcare": {
+            "title": "Healthcare",
+            "description": "Support the free clinic, medicines and medical camps."
+          },
+          "emergency": {
+            "title": "Emergency response",
+            "description": "Support ambulances and disaster relief."
+          },
+          "volunteer": {
+            "title": "Volunteer",
+            "description": "Serve at the kitchen or a hospital near you."
+          },
+          "visit": {
+            "title": "Visit the kitchen",
+            "description": "See the sewa in person at Pur Heeran."
+          }
+        }
+      },
+      "guide": {
+        "kicker": "Step 3",
+        "title": "We’ll guide you",
+        "lede": "We’ll take it from there.",
+        "a": {
+          "title": "We reply with next steps",
+          "description": "Our team responds with details for the sewa you chose — usually within 2–3 days."
+        },
+        "b": {
+          "title": "Contributing from outside India",
+          "description": "We’ll share how you can contribute to the sewa from where you are."
+        },
+        "cta": "Email info@langarsewa.org"
+      }
+    },
+    "questions": {
+      "kicker": "Questions",
+      "title": "Common questions",
+      "faq": {
+        "india": {
+          "q": "How can I contribute from within India?",
+          "a": "Use the bank transfer details or send a cheque to our Hoshiarpur office — both are listed above."
+        },
+        "outside": {
+          "q": "How can I contribute from outside India?",
+          "a": "Please do not use the India account. Email us and our team will guide you."
+        },
+        "receipt": {
+          "q": "Will I get a confirmation receipt?",
+          "a": "Yes — email info@langarsewa.org and our team will send one."
+        },
+        "visit": {
+          "q": "Can I visit the kitchen?",
+          "a": "Yes — visitors are welcome between 6:00 AM and 8:00 PM. Reach out first so we can plan your visit."
+        },
+        "volunteer": {
+          "q": "Can I volunteer at a hospital near me?",
+          "a": "Tell us where you are and we’ll connect you with the nearest service point."
+        }
+      }
+    },
+    "next": {
+      "title": "Still have questions?",
+      "description": "Reach our team in Punjab directly."
+    }
+  },
+  "ourStory": {
+    "meta": {
+      "description": "Our story — Dhan Guru Ramdas Langar Sewa: the tradition of Langar, our journey, our kitchens, and where we’re going."
+    },
+    "hero": {
+      "kicker": "Our story",
+      "title": "Sewa, carried forward.",
+      "body": "Dhan Guru Ramdas Langar Sewa is rooted in the Sikh tradition of Langar: nourishment offered with equality, dignity and devotion. Our mission is to ensure no individual lacks access to adequate nutrition in Punjab.",
+      "photoAlt": "Painting of Sri Guru Ram Das Ji",
+      "caption": "Sri Guru Ram Das Ji"
+    },
+    "journey": {
+      "kicker": "Our journey",
+      "title": "How we got here, and where we’re going.",
+      "body": "Each step grew from a real need — first in hospitals, then wherever people were going without.",
+      "link": "See the impact stories →"
+    },
+    "tradition": {
+      "kicker": "The tradition of Langar",
+      "title": "One kitchen. Every person. No distinction.",
+      "body": "Langar is a community kitchen where anyone — regardless of caste, religion, ethnicity or economic status — is served a free meal. It embodies equality and the oneness of all humanity."
+    },
+    "kitchens": {
+      "kicker": "Our kitchens",
+      "title": "Two kitchens, one daily commitment."
+    },
+    "visit": {
+      "kicker": "An open invitation",
+      "title": "Come see the sewa for yourself.",
+      "body": "Visit our kitchen in Pur Heeran and see the preparation, the hygiene and the people behind every meal.",
+      "cta": "Plan a visit",
+      "photoAlt": "Pur Heeran kitchen grounds and entrance"
+    },
+    "next": {
+      "title": "See our work",
+      "description": "Daily Langar, 31 hospitals and the programs around it."
+    }
+  },
+  "ourWork": {
+    "meta": {
+      "description": "Daily Langar at hospitals is the foundation. Around it, a growing network supports healthcare, education, emergency response and community needs. 31 hospitals, 2 kitchens, one daily route."
+    },
+    "hero": {
+      "kicker": "Our work",
+      "title": "Sewa in action.",
+      "lede": "Daily Langar at hospitals is the foundation. Around it, a growing network supports healthcare, education, emergency response and community needs."
+    },
+    "langar": {
+      "kicker": "Daily Langar",
+      "title": "Two kitchens. One daily commitment.",
+      "body": "About 100,000 meals are served every day: about 65,000 prepared at Pur Heeran, Hoshiarpur and 35,000 at Madhir, Sri Muktsar Sahib.",
+      "imageAlt": "Cooking hall with large Langar cauldrons, Pur Heeran",
+      "steps": {
+        "source": {
+          "title": "Source",
+          "text": "Organic vegetables and pesticide-free wheat."
+        },
+        "prepare": {
+          "title": "Prepare",
+          "text": "Roti machines and commercial kitchens at Pur Heeran and Madhir."
+        },
+        "deliver": {
+          "title": "Deliver",
+          "text": "About 30 vehicles on fixed daily routes, plus a ration truck between kitchens."
+        },
+        "serve": {
+          "title": "Serve",
+          "text": "Two meals plus tea and biscuits, 10:00 AM – 4:00 PM."
+        }
+      }
+    },
+    "locations": {
+      "kicker": "Current network",
+      "title": "31 hospitals, 2 kitchens, one daily route.",
+      "legend": {
+        "hospital": "Hospital",
+        "kitchen": "Kitchen",
+        "community": "School & community"
+      },
+      "mapLabel": "Map of Punjab showing kitchens and service locations",
+      "mapinfo": {
+        "kicker": "Tap a pin or a name",
+        "title": "Explore where Langar is served",
+        "body": "Select a location to see its details."
+      },
+      "mapnote": "Illustrative map — positions approximate",
+      "chips": {
+        "label": "Filter by region",
+        "all": "All",
+        "doaba": "Doaba",
+        "majha": "Majha",
+        "malwa": "Malwa",
+        "chandigarh": "Chandigarh"
+      },
+      "search": {
+        "label": "Search locations",
+        "placeholder": "Search a city or hospital"
+      },
+      "countInitial": "32 locations",
+      "listType": {
+        "kitchen": "Kitchen",
+        "community": "Community"
+      },
+      "showAll": "Show all locations",
+      "labels": {
+        "hospital": "Hospital",
+        "kitchen": "Kitchen",
+        "community": "School & community",
+        "fresh": "Fresh Langar prepared here daily.",
+        "hours": "Langar served 10:00 AM – 4:00 PM",
+        "one": " location",
+        "many": " locations"
+      }
+    },
+    "programs": {
+      "kicker": "Programs",
+      "title": "Beyond daily Langar."
+    },
+    "next": {
+      "title": "Explore our impact",
+      "description": "Milestones, crisis response and voices of the sangat."
+    }
+  }
+}
