@@ -14,66 +14,39 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
+
 jobs:
-  build-and-test:
+  build:
+    # Builds once; every other job tests the same dist/ artifact.
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: pnpm
 
-      - name: Install
-        run: pnpm install --frozen-lockfile
-
-      - name: Typecheck
-        run: pnpm check
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Build
-        run: pnpm build
-
-      - name: Content and i18n parity
-        run: pnpm test:content
-
-      - name: Link check
-        run: pnpm test:links
-
-      - name: Redirects and headers under wrangler pages dev
-        run: pnpm test:redirects
-
-      - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
-
-      - name: Interaction tests
-        run: pnpm test:e2e
-
-      - name: Accessibility (axe)
-        run: pnpm test:a11y
-
-      - name: Visual parity against the reference
-        run: pnpm test:visual
-
-      - name: Lighthouse CI
-        run: pnpm lhci
-
-      - name: Upload reports
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Restore the image cache
+        # Astro keeps the encoded AVIF/WebP renditions here; they only change when a photo changes.
+        uses: actions/cache@v4
         with:
-          name: reports
-          path: |
-            tests/visual/__diff__/
-            playwright-report/
-            .lighthouseci/report/
-          retention-days: 14
+          path: node_modules/.astro
+          key: astro-images-${{ hashFiles('src/assets/images/**', 'pnpm-lock.yaml') }}
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm lint
+      - run: pnpm build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 3
 
       - name: Upload the site for GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -81,10 +54,133 @@ jobs:
         with:
           path: dist
 
+  quick-gates:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Content and i18n parity
+        run: pnpm test:content
+      - name: Link check
+        run: pnpm test:links
+      - name: Redirects and headers under wrangler pages dev
+        run: pnpm test:redirects
+
+  interaction-and-a11y:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - uses: actions/cache@v4
+        id: browsers
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      - if: steps.browsers.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install --with-deps chromium
+      - if: steps.browsers.outputs.cache-hit == 'true'
+        run: pnpm exec playwright install-deps chromium
+      - name: Interaction tests
+        run: pnpm exec playwright test --project=e2e --project=e2e-mobile
+      - name: Accessibility (axe)
+        run: pnpm test:a11y
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+  visual-parity:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - uses: actions/cache@v4
+        id: browsers
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      - if: steps.browsers.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install --with-deps chromium
+      - if: steps.browsers.outputs.cache-hit == 'true'
+        run: pnpm exec playwright install-deps chromium
+      - name: Visual parity against the reference (28 pairs)
+        run: pnpm test:visual
+        env:
+          VISUAL_CONCURRENCY: 4
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diffs
+          path: tests/visual/__diff__/
+          retention-days: 14
+
+  lighthouse:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Lighthouse CI
+        run: pnpm lhci
+        env:
+          # Pull requests measure Home and Our Work; main measures every route.
+          LHCI_SCOPE: ${{ github.event_name == 'pull_request' && 'quick' || 'all' }}
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: .lighthouseci/report/
+          retention-days: 14
+
   deploy:
-    # Production deploy to GitHub Pages, only after every gate above passed on main.
+    # Production deploy to GitHub Pages, only after every gate passed on main.
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: build-and-test
+    needs: [quick-gates, interaction-and-a11y, visual-parity, lighthouse]
     runs-on: ubuntu-latest
     environment:
       name: github-pages

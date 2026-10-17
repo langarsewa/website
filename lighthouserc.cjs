@@ -1,5 +1,6 @@
 // Lighthouse CI budgets from the brief (mobile, median of 3 runs).
-const routes = [
+// LHCI_SCOPE=quick (pull requests) measures Home and Our Work; anything else measures every route.
+const all = [
   '/',
   '/our-story/',
   '/our-work/',
@@ -8,6 +9,8 @@ const routes = [
   '/join-the-sewa/',
   '/contact/',
 ];
+const quick = ['/', '/our-work/'];
+const routes = process.env.LHCI_SCOPE === 'quick' ? quick : all;
 module.exports = {
   ci: {
     collect: {
