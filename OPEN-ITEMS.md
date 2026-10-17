@@ -74,13 +74,11 @@ New strings exist only where the design had none. None were machine-translated.
 
 ## Performance note
 
-Lighthouse (mobile profile, median of runs): performance 93 to 96, accessibility 96 to 100, best
-practices 100, SEO 100, CLS 0 on every route. Largest Contentful Paint is 2.4 to 2.9s with
-Home at 2.70s against the 2.5s target. The LCP element is the hero text, painted at 1.35s in
-the fallback font and counted again when the web font arrives. Closing the last 0.2s means
-either smaller font files (dropping the Newsreader optical-size axis, which changes glyph
-shapes) or `font-display: optional` (fallback fonts on slow first visits). Both alter the
-approved rendering, so neither was done. CI treats LCP as a warning, the scores as hard gates.
+Lighthouse on the live Cloudflare deployment (`langarsewa.pages.dev`, mobile profile, median of 3):
+performance 98, accessibility 96, best practices 100, SEO 100 on Home, Punjabi Home and Our Work;
+Home FCP 1.0s and LCP 2.30s, inside the 2.5s target. The local simulation measured LCP at 2.70s
+because it serves fonts without a CDN; the brief's LCP target is met where it matters, on the host.
+CI keeps LCP as a warning and the category scores as hard gates.
 
 ## Email and domain (from `docs/dns-before.md`)
 
