@@ -4,6 +4,10 @@
  * wrapper, footer, lightbox and the client entry script.
  */
 import '@/styles/global.css';
+import newsreaderLatin from '@/styles/fonts/newsreader-latin-opsz-normal.woff2?url';
+import publicSansLatin from '@/styles/fonts/public-sans-latin-wght-normal.woff2?url';
+import notoSansGurmukhi from '@/styles/fonts/noto-sans-gurmukhi-gurmukhi-wght-normal.woff2?url';
+import notoSerifGurmukhi from '@/styles/fonts/noto-serif-gurmukhi-gurmukhi-wght-normal.woff2?url';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Lightbox from '@/components/Lightbox.astro';
@@ -32,6 +36,11 @@ const enUrl = locale === 'en' ? canonical : alternate;
 const paUrl = locale === 'pa' ? canonical : alternate;
 const title = pageTitle(locale, pageName);
 const analyticsOn = site.analytics.enabled && site.analytics.cloudflareToken.length > 0;
+// The two faces every page paints first; Punjabi pages add the Gurmukhi pair.
+const preloadFonts =
+  locale === 'pa'
+    ? [notoSerifGurmukhi, notoSansGurmukhi, newsreaderLatin, publicSansLatin]
+    : [newsreaderLatin, publicSansLatin];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -66,6 +75,9 @@ const jsonLd = {
     <link rel="alternate" hreflang="en" href={enUrl} />
     <link rel="alternate" hreflang="pa" href={paUrl} />
     <link rel="alternate" hreflang="x-default" href={enUrl} />
+    {preloadFonts.map((href) => (
+      <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />
+    ))}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />

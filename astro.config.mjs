@@ -6,7 +6,7 @@ export default defineConfig({
   site: 'https://langarsewa.org',
   output: 'static',
   trailingSlash: 'always',
-  build: { format: 'directory', inlineStylesheets: 'never' },
+  build: { format: 'directory', inlineStylesheets: 'always' }, // one stylesheet, inlined: removes a render-blocking request on slow mobile
   compressHTML: false, // whitespace between inline elements is part of the approved rendering
   i18n: {
     defaultLocale: 'en',

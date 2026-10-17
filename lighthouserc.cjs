@@ -14,7 +14,16 @@ module.exports = {
       staticDistDir: './dist',
       url: routes.map((r) => `http://localhost/${r.replace(/^\//, '')}`),
       numberOfRuns: 3,
-      settings: { formFactor: 'mobile', screenEmulation: { mobile: true, width: 412, height: 823, deviceScaleFactor: 1.75, disabled: false } },
+      settings: {
+        formFactor: 'mobile',
+        screenEmulation: {
+          mobile: true,
+          width: 412,
+          height: 823,
+          deviceScaleFactor: 1.75,
+          disabled: false,
+        },
+      },
     },
     assert: {
       assertions: {

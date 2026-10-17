@@ -72,6 +72,16 @@ New strings exist only where the design had none. None were machine-translated.
   later clean-up. The CSP therefore allows inline styles (`style-src 'self' 'unsafe-inline'`)
   while scripts remain `'self'` only.
 
+## Performance note
+
+Lighthouse (mobile profile, median of runs): performance 93 to 96, accessibility 96 to 100, best
+practices 100, SEO 100, CLS 0 on every route. Largest Contentful Paint is 2.4 to 2.9s with
+Home at 2.70s against the 2.5s target. The LCP element is the hero text, painted at 1.35s in
+the fallback font and counted again when the web font arrives. Closing the last 0.2s means
+either smaller font files (dropping the Newsreader optical-size axis, which changes glyph
+shapes) or `font-display: optional` (fallback fonts on slow first visits). Both alter the
+approved rendering, so neither was done. CI treats LCP as a warning, the scores as hard gates.
+
 ## Email and domain (from `docs/dns-before.md`)
 
 - `info@langarsewa.org` is Google Workspace. The SPF record authorises only Squarespace mail
