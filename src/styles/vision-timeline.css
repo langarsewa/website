@@ -1,0 +1,20 @@
+.vtl{background:#fff;border-top:1px solid #E6E3DA;border-bottom:1px solid #E6E3DA}.vtl-in{max-width:1200px;margin:0 auto;padding:clamp(36px,5vw,56px) 24px}
+.vt-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;position:relative}
+.vt-track::before{content:"";position:absolute;left:10%;right:10%;top:11px;height:3px;border-radius:3px;background:linear-gradient(90deg,#102B4E 0 25%,#F4C430 25% 100%)}
+.vt-n{position:relative;padding:40px 14px 0;text-align:center;isolation:isolate}
+.vt-dot{position:absolute;top:1px;left:50%;transform:translateX(-50%);width:23px;height:23px;border-radius:50%;background:#fff;border:3px solid #102B4E;box-sizing:border-box}
+.vt-done .vt-dot,.vt-now .vt-dot{background:#102B4E}.vt-now .vt-dot{box-shadow:0 0 0 6px rgba(244,196,48,.45)}
+.vt-prog .vt-dot{border-color:#F4C430;background:#F4C430}.vt-next .vt-dot,.vt-goal .vt-dot{border-color:#F4C430}
+.vt-goal .vt-dot{border-width:5px}
+.vt-d{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 8px;min-height:22px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4A5568}
+.vt-here{font-size:11px;letter-spacing:.04em;background:#F4C430;color:#0A1E37;padding:3px 8px;border-radius:999px}
+.vt-t{font-family:'Newsreader','Noto Serif Gurmukhi',Georgia,serif;font-size:21px;line-height:1.2;margin:8px 0 8px;color:#102B4E}
+.vt-n ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}.vt-n li{font-size:14px;color:#334155;line-height:1.45}
+.vt-now::after{content:"";position:absolute;inset:32px 4px -14px 4px;background:#FBFAF6;border:1px solid #E6E3DA;border-radius:16px;z-index:-1}
+.vt-key{display:flex;justify-content:center;gap:18px;margin-top:30px;font-size:13px;color:#4A5568}.vt-key span{display:flex;align-items:center;gap:6px}.vt-key i{width:12px;height:12px;border-radius:50%;display:inline-block;box-sizing:border-box}
+.k-done{background:#102B4E}.k-prog{background:#F4C430}.k-next{border:2.5px solid #F4C430}
+@media (max-width:900px){.vt-track{grid-template-columns:1fr}.vt-track::before{left:14px;right:auto;top:12px;bottom:12px;width:3px;height:auto;background:linear-gradient(180deg,#102B4E 0 30%,#F4C430 30% 100%)}
+.vt-n{text-align:left;padding:0 0 22px 44px}.vt-dot{left:4px;top:1px;transform:none}.vt-d{justify-content:flex-start}
+.vt-n li{padding-left:14px;position:relative}.vt-n li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:#F4C430}
+.vt-now{margin:4px 0 14px}.vt-now::after{inset:-10px -8px -6px 32px}.vt-key{justify-content:flex-start}}
+.proj-n{font-family:'Newsreader','Noto Serif Gurmukhi',Georgia,serif;font-size:15px;color:#B08A00;margin-right:4px}

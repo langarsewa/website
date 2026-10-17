@@ -1,0 +1,13 @@
+/* Section tabs */
+.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);z-index:20;background:rgba(251,250,246,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+@media (max-width:900px){.subnav{top:calc(env(safe-area-inset-top,0px) + 68px)}}
+.subnav-in{max-width:1200px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}.subnav-in::-webkit-scrollbar{display:none}
+.subnav-label{flex:none;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:8px}
+@media (max-width:600px){.subnav-label{display:none}}
+.subtab{flex:none;text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border-radius:999px;border:1px solid #CBD2DC;background:#fff;color:var(--navy);transition:all .15s}
+.subtab:hover{border-color:var(--navy)}.subtab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.page{animation:fade .25s ease}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.page{animation:none}}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--basant);outline-offset:1px}
+.invalid{border-color:#B23A2A !important}
+.subtab-ext{border-style:dashed}

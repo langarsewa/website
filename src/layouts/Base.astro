@@ -1,0 +1,108 @@
+---
+/**
+ * The page shell shared by every route: <head> metadata, header, the <main class="page">
+ * wrapper, footer, lightbox and the client entry script.
+ */
+import '@/styles/global.css';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Lightbox from '@/components/Lightbox.astro';
+import T from '@/components/T.astro';
+import { alternatePath, getLocale, pageTitle, type Locale } from '@/lib/i18n';
+import type { Slug } from '@/lib/routes';
+import site from '@/content/site.json';
+
+interface Props {
+  slug: Slug;
+  /** Localised page name for <title>; null on Home, which shows the organisation name alone. */
+  pageName: string | null;
+  description: string;
+  ogImage?: string;
+  /** Keep the page out of search results (the 404 page). */
+  noindex?: boolean;
+}
+
+const { slug, pageName, description, ogImage = '/og.png', noindex = false } = Astro.props;
+const locale: Locale = getLocale(Astro.currentLocale);
+const path = Astro.url.pathname;
+const origin = site.url;
+const canonical = `${origin}${path}`;
+const alternate = `${origin}${alternatePath(locale, path)}`;
+const enUrl = locale === 'en' ? canonical : alternate;
+const paUrl = locale === 'pa' ? canonical : alternate;
+const title = pageTitle(locale, pageName);
+const analyticsOn = site.analytics.enabled && site.analytics.cloudflareToken.length > 0;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'NGO',
+  name: site.name.en,
+  alternateName: site.name.pa,
+  url: origin,
+  logo: `${origin}/favicon.svg`,
+  email: site.email,
+  telephone: site.phone.display,
+  foundingDate: String(site.founded),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Hoshiarpur Bypass, Pur Heeran',
+    addressLocality: 'Hoshiarpur',
+    addressRegion: 'Punjab',
+    addressCountry: 'IN',
+  },
+  sameAs: Object.values(site.social),
+};
+---
+
+<!doctype html>
+<html lang={locale} data-lang={locale} data-analytics={analyticsOn ? 'on' : 'off'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport" />
+    <title>{title}</title>
+    <meta content={description} name="description" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="pa" href={paUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name[locale]} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${origin}${ogImage}`} />
+    <meta property="og:locale" content={locale === 'pa' ? 'pa_IN' : 'en_IN'} />
+    <meta property="og:locale:alternate" content={locale === 'pa' ? 'en_IN' : 'pa_IN'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${origin}${ogImage}`} />
+    <meta name="theme-color" content="#102B4E" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {analyticsOn && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: site.analytics.cloudflareToken })}
+      />
+    )}
+  </head>
+  <body>
+    <a class="skip" href="#content">
+      <T k="common.skipToContent" />
+    </a>
+    <Header slug={slug} />
+    <div id="content" tabindex="-1"></div>
+    <main class="page" id={`page-${slug || 'home'}`}>
+      <slot />
+    </main>
+    <Footer />
+    <Lightbox />
+    <script>
+      import '@/scripts/init';
+    </script>
+  </body>
+</html>

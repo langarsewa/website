@@ -1,0 +1,11 @@
+/* Additions on top of the reference CSS. Nothing here changes how the reference renders;
+   these rules only cover elements that are anchors in production where the reference used
+   buttons (language switch), so that language switching works without JavaScript. */
+.langsw a{font:inherit;font-size:13px;font-weight:700;border:0;background:transparent;color:#4A5568;padding:7px 12px;border-radius:999px;cursor:pointer;line-height:1;text-decoration:none}
+.langsw a[lang="pa"]{font-family:'Noto Sans Gurmukhi',sans-serif;font-weight:600}
+.langsw a[aria-current="true"]{background:var(--navy);color:#fff}
+.langsw a:hover:not([aria-current="true"]){color:var(--navy)}
+.langsw-f a{color:#DCE3EC}.langsw-f a[aria-current="true"]{background:#F4C430;color:#0A1E37}
+a.langq{text-decoration:none;display:inline-flex;align-items:center}
+/* Pages are always visible in production; the reference toggled [hidden] with its hash router. */
+.page[hidden]{display:block}

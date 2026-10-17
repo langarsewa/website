@@ -1,0 +1,6 @@
+.nextband{display:block;text-decoration:none;background:#FFFFFF;border-top:1px solid var(--line)}
+.nb-in{max-width:1200px;margin:0 auto;padding:36px 24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 40px}
+.nb-k{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.nb-t{font-family:'Newsreader','Noto Serif Gurmukhi',Georgia,serif;font-size:clamp(30px,4vw,44px);line-height:1.1;margin-top:6px}.nb-t span[aria-hidden]{color:#B08A00;display:inline-block;transition:transform .2s}
+.nb-d{color:#334155;max-width:420px}
+.nextband:hover{background:#FBFAF6}.nextband:hover .nb-t span[aria-hidden]{transform:translateX(6px)}

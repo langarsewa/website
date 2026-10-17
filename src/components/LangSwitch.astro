@@ -1,0 +1,43 @@
+---
+/**
+ * The EN | ਪੰਜਾਬੀ control. Each option is a real link to the same page in the other language,
+ * so it works without JavaScript; scripts/lang.ts adds the current #anchor on click and
+ * remembers the choice in localStorage.
+ */
+import { alternatePath, getLocale, t } from '@/lib/i18n';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const here = Astro.url.pathname;
+const other = alternatePath(locale, here);
+const enHref = locale === 'en' ? here : other;
+const paHref = locale === 'pa' ? here : other;
+---
+
+<div
+  aria-label={t(locale, 'common.languageGroupLabel')}
+  class:list={['langsw', className]}
+  role="group"
+>
+  <a
+    data-setlang="en"
+    lang="en"
+    hreflang="en"
+    href={enHref}
+    aria-current={locale === 'en' ? 'true' : undefined}
+  >
+    EN
+  </a>
+  <a
+    data-setlang="pa"
+    lang="pa"
+    hreflang="pa"
+    href={paHref}
+    aria-current={locale === 'pa' ? 'true' : undefined}
+  >
+    ਪੰਜਾਬੀ
+  </a>
+</div>

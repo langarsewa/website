@@ -1,0 +1,39 @@
+---
+import Base from '@/layouts/Base.astro';
+import T from '@/components/T.astro';
+import { getLocale, localePath, t } from '@/lib/i18n';
+import { pathFor, routes } from '@/lib/routes';
+const locale = getLocale(Astro.currentLocale);
+---
+
+<Base
+  slug=""
+  pageName={t(locale, 'notFound.title')}
+  description={t(locale, 'common.metaDescription')}
+>
+  <section>
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 56px) 24px clamp(44px, 6vw, 72px)">
+      <h1 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.02em; margin: 16px 0 18px">
+        <T k="notFound.title" />
+      </h1>
+      <p style="font-size: clamp(17px, 2vw, 20px); color: #334155; margin: 0 0 28px; max-width: 540px">
+        <T k="notFound.body" />
+      </p>
+      <div class="overview">
+        {routes.map((r) => (
+          <a class="ov" href={localePath(locale, pathFor(r.slug))}>
+            <span class="ovn">→</span>
+            <span>
+              <b>
+                <T k={`nav.${r.key}.label`} />
+              </b>
+              <span>
+                <T k={`nav.${r.key}.description`} />
+              </span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

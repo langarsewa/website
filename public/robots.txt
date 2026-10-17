@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://langarsewa.org/sitemap-index.xml

@@ -1,0 +1,21 @@
+/* Order matters: it mirrors the single <style> block of the approved reference exactly,
+   split into one file per area so a section can be found quickly. Do not reorder. */
+@import './fonts.css';
+@import './tokens.css';
+@import './header.css';
+@import './subnav.css';
+@import './impact-metrics.css';
+@import './vision-timeline.css';
+@import './lightbox.css';
+@import './crisis-voices.css';
+@import './press-doors.css';
+@import './home-stats.css';
+@import './nextband.css';
+@import './locations-map.css';
+@import './join.css';
+@import './join-paths-pay.css';
+@import './contact.css';
+@import './galleries-videos.css';
+@import './arches-hero.css';
+@import './i18n-langsw.css';
+@import './overrides.css';

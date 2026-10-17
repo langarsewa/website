@@ -1,0 +1,28 @@
+---
+/** The Ik Onkar mark used in the header and footer, exactly as drawn in the reference. */
+import { getLocale, t } from '@/lib/i18n';
+
+interface Props {
+  size?: number;
+}
+const { size = 44 } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const label = t(locale, 'common.logoLabel');
+---
+
+<svg aria-label={label} height={size} role="img" viewBox="0 0 64 64" width={size}>
+  <circle cx="32" cy="32" fill="#102B4E" r="32"></circle>
+  <text
+    fill="#F4C430"
+    font-family="'Noto Sans Gurmukhi', 'Mukta Mahee', sans-serif"
+    font-size="21"
+    font-weight="700"
+    text-anchor="middle"
+    x="32"
+    y="33"
+  >
+    ੴ
+  </text>
+  <path d="M14 39h36c0 8.6-8 14-18 14s-18-5.4-18-14z" fill="#FFFFFF"></path>
+  <rect fill="#FFFFFF" height="2.6" rx="1.3" width="11" x="26.5" y="54"></rect>
+</svg>

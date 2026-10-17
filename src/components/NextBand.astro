@@ -1,0 +1,32 @@
+---
+/** The "Next" band at the bottom of every page, linking to the following page. */
+import T from '@/components/T.astro';
+import { getLocale, localePath } from '@/lib/i18n';
+import { pathFor, type Slug } from '@/lib/routes';
+
+interface Props {
+  to: Slug;
+  /** i18n keys for the title and the one-line description. */
+  titleKey: string;
+  descriptionKey: string;
+}
+const { to, titleKey, descriptionKey } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+---
+
+<a class="nextband" href={localePath(locale, pathFor(to))}>
+  <div class="nb-in">
+    <div>
+      <div class="nb-k">
+        <T k="common.next" />
+      </div>
+      <div class="nb-t">
+        <T k={titleKey} />
+        <span aria-hidden="true">→</span>
+      </div>
+    </div>
+    <div class="nb-d">
+      <T k={descriptionKey} />
+    </div>
+  </div>
+</a>

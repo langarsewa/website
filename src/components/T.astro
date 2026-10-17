@@ -1,0 +1,31 @@
+---
+/**
+ * Renders one translated string from src/content/i18n/{en,pa}.json for the current page
+ * language. The wrapper span keeps the reference's `.l-en` / `.l-pa` class so every selector
+ * in the ported CSS (for example `.way span:not(.l-en):not(.l-pa)`) matches exactly as before.
+ *
+ *   <T k="home.hero.title" />          text
+ *   <T k="join.bank.note" html />      string contains inline markup such as <b>
+ */
+import { getLocale, t } from '@/lib/i18n';
+
+interface Props {
+  k: string;
+  html?: boolean;
+  class?: string;
+}
+
+const { k, html = false, class: className } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const text = t(locale, k);
+const cls = [locale === 'pa' ? 'l-pa' : 'l-en', className].filter(Boolean).join(' ');
+const lang = locale === 'pa' ? 'pa' : undefined;
+---
+
+{html ? (
+  <span class={cls} lang={lang} set:html={text} />
+) : (
+  <span class={cls} lang={lang}>
+    {text}
+  </span>
+)}

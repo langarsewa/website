@@ -1,0 +1,130 @@
+---
+/**
+ * Sticky header: brand, desktop tabs, language switch, and the mobile actions + panel.
+ * Markup and class names follow the reference one for one; links are real routes.
+ */
+import Logo from '@/components/Logo.astro';
+import LangSwitch from '@/components/LangSwitch.astro';
+import T from '@/components/T.astro';
+import { alternatePath, getLocale, localePath, t } from '@/lib/i18n';
+import { pathFor, routes, type Slug } from '@/lib/routes';
+import site from '@/content/site.json';
+
+interface Props {
+  slug: Slug;
+}
+const { slug } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const href = (s: Slug) => localePath(locale, pathFor(s));
+const current = (s: Slug) => (s === slug ? 'page' : undefined);
+const tabs = routes.filter((r) => r.slug !== '' && r.slug !== 'join-the-sewa');
+const toggleHref = alternatePath(locale, Astro.url.pathname);
+---
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a aria-label={t(locale, 'common.brandHomeLabel')} class="brand" href={href('')}>
+      <Logo size={44} />
+      <span class="bname">
+        <b>
+          <T k="common.brandLine1" />
+        </b>
+        <span>
+          <T k="common.brandLine2" />
+        </span>
+      </span>
+    </a>
+    <nav aria-label={t(locale, 'common.mainNav')} class="tabs">
+      {tabs.map((r) => (
+        <a class="tab" data-route={r.slug} href={href(r.slug)} aria-current={current(r.slug)}>
+          <T k={`nav.${r.key}.label`} />
+        </a>
+      ))}
+      <span aria-hidden="true" class="sep"></span>
+      <a
+        class="join"
+        data-route="join-the-sewa"
+        href={href('join-the-sewa')}
+        aria-current={current('join-the-sewa')}
+      >
+        <T k="nav.joinTheSewa.label" />
+      </a>
+    </nav>
+    <LangSwitch class="langsw-d" />
+    <div class="m-actions">
+      <a
+        aria-label={t(locale, 'common.switchLanguage')}
+        class="langq"
+        data-togglelang=""
+        href={toggleHref}
+        hreflang={locale === 'pa' ? 'en' : 'pa'}
+      >
+        {locale === 'pa' ? (
+          <span class="l-pa">EN</span>
+        ) : (
+          <span class="l-en" lang="pa">
+            ਪੰਜਾਬੀ
+          </span>
+        )}
+      </a>
+      <a
+        class="mjoin"
+        data-route="join-the-sewa"
+        href={href('join-the-sewa')}
+        aria-current={current('join-the-sewa')}
+      >
+        <T k="common.join" />
+      </a>
+      <button
+        aria-controls="mpanel"
+        aria-expanded="false"
+        aria-label={t(locale, 'common.openMenu')}
+        data-label-open={t(locale, 'common.openMenu')}
+        data-label-close={t(locale, 'common.closeMenu')}
+        class="mbtn"
+        id="mbtn"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="18"
+          stroke="#fff"
+          stroke-linecap="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="18"
+        >
+          <path d="M4 7h16M4 12h16M4 17h16" id="mico"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav aria-label={t(locale, 'common.mobileNav')} class="mpanel" id="mpanel">
+    <div class="mlang">
+      <T k="common.language" />
+      <LangSwitch />
+    </div>
+    {routes.map((r) => (
+      <a class="mtab" data-route={r.slug} href={href(r.slug)} aria-current={current(r.slug)}>
+        <span>
+          <span class="mt">
+            <T k={`nav.${r.key}.label`} />
+          </span>
+          <span class="md">
+            <T k={`nav.${r.key}.description`} />
+          </span>
+        </span>
+        <span class="arr">→</span>
+      </a>
+    ))}
+    <div class="mquick">
+      <a target="_blank" rel="noopener" href={`mailto:${site.email}`}>
+        <T k="common.emailUs" />
+      </a>
+      <a target="_blank" rel="noopener" href={`tel:${site.phone.tel}`}>
+        <T k="common.call" />
+      </a>
+    </div>
+  </nav>
+</header>

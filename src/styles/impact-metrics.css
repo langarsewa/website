@@ -1,0 +1,8 @@
+.imet{background:#FBFAF6}.imet-in{max-width:1200px;margin:0 auto;padding:0 24px clamp(36px,5vw,56px)}
+.imet-card{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#fff;border:1px solid #E6E3DA;border-radius:22px;box-shadow:0 10px 30px rgba(10,30,55,.06);overflow:hidden}
+.imet-t{display:flex;gap:14px;align-items:center;padding:22px 24px;border-left:1px solid #E6E3DA}.imet-t:first-child{border-left:0}
+.imet-n{font-family:'Newsreader','Noto Serif Gurmukhi',Georgia,serif;font-size:clamp(28px,3vw,38px);line-height:1;color:#102B4E;white-space:nowrap}
+.imet-l{font-size:14px;color:#4A5568;margin-top:6px;line-height:1.4}
+.imet-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;margin-top:12px;font-size:13px;color:#4A5568}.imet-foot a{font-weight:600}
+@media (max-width:900px){.imet-card{grid-template-columns:repeat(2,minmax(0,1fr))}.imet-t:nth-child(3){border-left:0}.imet-t:nth-child(n+3){border-top:1px solid #E6E3DA}}
+@media (max-width:420px){.imet-t{padding:16px;flex-direction:column;align-items:flex-start;gap:10px}}
