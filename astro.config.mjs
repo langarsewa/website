@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://www.langarsewa.org',
+  site: 'https://langarsewa.org',
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory', inlineStylesheets: 'always' }, // one stylesheet, inlined: removes a render-blocking request on slow mobile

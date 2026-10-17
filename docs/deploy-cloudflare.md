@@ -32,11 +32,10 @@ resources limited to `langarsewa.org`.
    in `public/_redirects`; `?lang=pa`; a test email to `info@langarsewa.org`; `dig MX` matches
    `docs/dns-before.md`.
 7. Enable HSTS in `public/_headers` (uncomment the line), push, confirm the header.
-8. Switch the canonical host back to the apex in `astro.config.mjs` and `src/content/site.json`
-   (done in the cutover commit), remove the GitHub Pages deploy job and `public/CNAME`.
+8. Canonical host is the apex already; nothing else to switch at cutover.
 
 ## Rollback
 
 Set the nameservers at Squarespace back to the eight recorded in `docs/dns-before.md`
 (`ns01-04.squarespacedns.com`, `dns1-4.p07.nsone.net`). Propagation is minutes to a few hours.
-Until then, the GitHub Pages deployment at `www` keeps serving as a fallback.
+Until then, Squarespace keeps serving the old site as before.

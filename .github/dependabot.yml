@@ -2,6 +2,7 @@ version: 2
 updates:
   - package-ecosystem: npm
     directory: /
+    target-branch: dev
     schedule:
       interval: monthly
     groups:
@@ -11,5 +12,6 @@ updates:
         patterns: ['eslint*', 'typescript*', 'prettier*', '@playwright/*', '@axe-core/*', '@lhci/*']
   - package-ecosystem: github-actions
     directory: /
+    target-branch: dev
     schedule:
       interval: monthly

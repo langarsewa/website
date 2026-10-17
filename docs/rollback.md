@@ -35,3 +35,13 @@ It reverses the switch only; nothing at Cloudflare needs to be deleted first.
 
 Nothing is required. The zone simply shows "Pending" again. The Pages project, its custom domains
 and the records stay ready for a second attempt.
+
+## Rollback: a bad production deploy (not DNS)
+
+Production is whatever the last green `main` deploy produced. To undo a change:
+
+1. `git revert <merge commit>` on `main` through a pull request from `dev`, or directly if urgent.
+2. CI redeploys the reverted site within about six minutes.
+3. Faster, without a commit: Cloudflare dashboard → Workers & Pages → `langarsewa` → Deployments →
+   the previous production deployment → "Rollback to this deployment". Then still land the revert
+   so the next deploy does not reintroduce the problem.
