@@ -1,0 +1,14 @@
+reference/
+dist/
+node_modules/
+.astro/
+pnpm-lock.yaml
+public/_headers
+public/_redirects
+
+# Verbatim port of the approved stylesheet; formatting it would obscure the diff against the reference
+src/styles/*.css
+# Page markup mirrors the approved reference; whitespace between inline elements is significant
+src/components/pages/
+src/components/home/
+src/components/our-work/

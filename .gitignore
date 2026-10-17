@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+test-results/
+playwright-report/
+tests/visual/__diff__/
+.lighthouseci/
+.DS_Store
+*.log
+
+# Private build brief and setup notes: never published
+/BRIEF.md
+/SETUP-GUIDE.md
