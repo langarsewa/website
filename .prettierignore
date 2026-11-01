@@ -1,4 +1,5 @@
 reference/
+control-room/
 dist/
 node_modules/
 .astro/

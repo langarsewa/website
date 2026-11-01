@@ -9,6 +9,7 @@ export default tseslint.config(
       '.astro/**',
       'node_modules/**',
       'reference/**',
+      'control-room/**',
       'tests/visual/__diff__/**',
       '.lighthouseci/**',
     ],
