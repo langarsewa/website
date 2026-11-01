@@ -43,7 +43,7 @@
     "@types/pngjs": "^6.0.5",
     "eslint": "^10.13.0",
     "eslint-plugin-astro": "^3.2.1",
-    "node-html-parser": "^9.0.4",
+    "node-html-parser": "^9.0.5",
     "pixelmatch": "^8.0.0",
     "pngjs": "^7.0.0",
     "prettier": "^3.9.10",
