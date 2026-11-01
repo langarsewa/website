@@ -1,0 +1,212 @@
+---
+/**
+ * App shell: navy header (home or sub-page variant) and bottom bar on the phone, sidebar on a
+ * laptop (>= 900px), the shared error banner and the 403 screen. Pages put their content in the
+ * default slot and an optional sticky action bar in the `footer` slot.
+ */
+import '../styles/global.css';
+import BackIcon from '../components/BackIcon.astro';
+
+type Section = 'home' | 'change' | 'history';
+
+interface Props {
+  /** Document title; also the sub-page heading. */
+  title: string;
+  /** Which bottom-bar / sidebar item is current. */
+  active: Section;
+  /** 'home' shows the org kicker and avatar; 'sub' shows a back arrow and the title. */
+  variant?: 'home' | 'sub';
+  /** Where the back arrow goes (sub variant). */
+  back?: string;
+  /** Narrower reading column on a laptop. */
+  narrow?: boolean;
+  /** Laptop-only heading row. Defaults to the title. */
+  deskTitle?: string;
+  description?: string;
+}
+
+const {
+  title,
+  active,
+  variant = 'sub',
+  back = '/',
+  narrow = true,
+  deskTitle = title,
+  description = 'Sewa Control Room: see the website, change it, publish it, restore it.',
+} = Astro.props;
+
+const nav: { key: Section; label: string; href: string }[] = [
+  { key: 'home', label: 'Home', href: '/' },
+  { key: 'change', label: 'Change', href: '/change/' },
+  { key: 'history', label: 'History', href: '/history/' },
+];
+const pageTitle = variant === 'home' ? 'Sewa Control Room' : `${title} · Sewa Control Room`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#102B4E" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content="noindex" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Control Room" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icons/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;600&display=swap"
+    />
+  </head>
+  <body data-section={active}>
+    <a class="sr-only" href="#main">
+      Skip to content
+    </a>
+    <div class="shell">
+      <aside class="sidebar">
+        <div>
+          <span class="kicker">Dhan Guru Ramdas Langar Sewa</span>
+          <p class="sidebar__title">Control Room</p>
+        </div>
+        <nav class="sidebar__nav" aria-label="Sections">
+          {nav.map((item) => (
+            <a
+              class="sidebar__link"
+              href={item.href}
+              aria-current={item.key === active ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <div class="sidebar__foot">
+          <span data-me-line>Signed in</span>
+          <span id="mock-badge" hidden></span>
+          <a href="https://langarsewa.org">langarsewa.org</a>
+        </div>
+      </aside>
+
+      <div class="main-column">
+        {variant === 'home' ? (
+          <header class="topbar topbar--home">
+            <div class="topbar__titles">
+              <span class="kicker">Dhan Guru Ramdas Langar Sewa</span>
+              <p class="topbar__title">Control Room</p>
+            </div>
+            <div class="avatar" data-me-initials aria-label="Signed in">
+              <span class="sr-only">Signed in</span>
+            </div>
+          </header>
+        ) : (
+          <header class="topbar topbar--sub">
+            <a class="topbar__back" href={back} aria-label="Back to home">
+              <BackIcon />
+            </a>
+            <h1 class="topbar__title">{title}</h1>
+          </header>
+        )}
+
+        <main id="main" class:list={['content', { 'content--narrow': narrow }]} data-page>
+          <div class="desk-title">
+            {variant === 'home' ? (
+              <h1 id="desk-greeting">Control Room</h1>
+            ) : (
+              <h1 aria-hidden="true">{deskTitle}</h1>
+            )}
+            <span class="sub" id="desk-clock"></span>
+          </div>
+          <div class="phone-only" id="mock-badge-phone" hidden></div>
+
+          <div class="banner" id="error-banner" role="alert" hidden>
+            <span id="error-banner-text">Could not reach the control room.</span>
+            <button class="btn btn--sm" type="button" id="error-banner-retry">
+              Try again
+            </button>
+          </div>
+
+          <slot />
+        </main>
+
+        <section class="forbidden" id="forbidden" hidden aria-labelledby="forbidden-title">
+          <span class="label label--bad">Not on the list</span>
+          <h2 class="headline headline--lg" id="forbidden-title">
+            This account is not on the list
+          </h2>
+          <p class="lede">
+            You signed in as <code id="forbidden-email">this account</code>, and that address is not
+            one of the people who can use the Control Room.
+          </p>
+          <p class="lede">
+            If it should be, ask Hardeep to add it. Then sign out of Cloudflare Access and sign in
+            again with the right Google account.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href="https://langarsewa.org">
+              Open langarsewa.org
+            </a>
+            <a class="btn btn--primary" href="/cdn-cgi/access/logout">
+              Sign out
+            </a>
+          </div>
+        </section>
+
+        <div data-page-footer>
+          <slot name="footer" />
+        </div>
+
+        <nav class="bottom-nav" aria-label="Sections">
+          {nav.map((item) => (
+            <a
+              class="bottom-nav__link"
+              href={item.href}
+              aria-current={item.key === active ? 'page' : undefined}
+            >
+              <span class="bottom-nav__mark" />
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+
+    <script>
+      import { whoAmI } from '../lib/shell';
+      import { append } from '../lib/dom';
+      import { firstName } from '../lib/people';
+      import { formatWhen, greeting } from '../lib/time';
+
+      const clock = document.getElementById('desk-clock');
+      if (clock) clock.textContent = formatWhen(new Date());
+
+      // The greeting on the laptop home title needs the person's name.
+      void whoAmI().then((me) => {
+        const el = document.getElementById('desk-greeting');
+        if (el && me) el.textContent = `${greeting()}, ${firstName(me.email)}`;
+      });
+
+      // Mirror the mock badge to the phone layout (the sidebar is hidden there).
+      const badge = document.getElementById('mock-badge');
+      const phoneBadge = document.getElementById('mock-badge-phone');
+      if (badge && phoneBadge) {
+        const sync = () => {
+          phoneBadge.innerHTML = '';
+          if (!badge.hidden && badge.firstChild) {
+            append(phoneBadge, badge.firstChild.cloneNode(true));
+            phoneBadge.hidden = false;
+          }
+        };
+        new MutationObserver(sync).observe(badge, { childList: true, attributes: true });
+        sync();
+      }
+    </script>
+  </body>
+</html>

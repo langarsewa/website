@@ -1,0 +1,303 @@
+---
+import App from '../layouts/App.astro';
+import Skeleton from '../components/Skeleton.astro';
+---
+
+<App title="Home" active="home" variant="home" narrow={false}>
+  <div class="home">
+    <section class="card card--bad home__problem" id="problem" hidden aria-live="polite">
+      <div class="card__row">
+        <span class="label label--bad">Needs attention</span>
+        <span class="sub" id="problem-when"></span>
+      </div>
+      <h2 class="headline" id="problem-title"></h2>
+      <span class="sub" id="problem-body"></span>
+      <div class="btn-row">
+        <a class="btn btn--primary" id="problem-primary" href="/change/">
+          Fix the change
+        </a>
+        <a class="btn" id="problem-secondary" href="/history/">
+          Ask for help
+        </a>
+      </div>
+    </section>
+
+    <section class="card home__live" aria-labelledby="live-label">
+      <div class="card__row">
+        <span class="label" id="live-label">
+          Live site
+        </span>
+        <span class="status badge badge--muted" id="live-status">
+          <span class="dot dot--muted"></span>Checking
+        </span>
+      </div>
+      <div id="live-skeleton">
+        <Skeleton lines={1} />
+      </div>
+      <div id="live-body" hidden>
+        <h2 class="headline" id="live-host">
+          langarsewa.org
+        </h2>
+        <div class="sub" id="live-sub"></div>
+        <a class="link" id="live-link" href="https://langarsewa.org">
+          Open the live site
+        </a>
+      </div>
+    </section>
+
+    <section class="card card--warn home__waiting" aria-labelledby="waiting-label">
+      <div class="card__row">
+        <span class="label" id="waiting-label">
+          Waiting to publish
+        </span>
+        <span class="badge badge--warn" id="waiting-count"></span>
+      </div>
+      <div id="waiting-skeleton">
+        <Skeleton title={false} lines={2} />
+      </div>
+      <h2 class="headline desk-only" id="waiting-headline" hidden></h2>
+      <span class="sub desk-only" id="waiting-summary" hidden></span>
+      <ul class="plain-list" id="waiting-list" hidden></ul>
+      <p class="sub" id="waiting-empty" hidden>
+        Nothing is waiting. Changes saved to the test site show up here.
+      </p>
+      <div class="btn-row" id="waiting-actions" hidden>
+        <a class="btn" id="waiting-test" href="https://dev.langarsewa.pages.dev">
+          See test site
+        </a>
+        <a class="btn btn--primary" href="/review/">
+          Review and publish
+        </a>
+      </div>
+    </section>
+
+    <section class="card desk-only home__visitors" aria-labelledby="visitors-label">
+      <span class="label" id="visitors-label">
+        Visitors this week
+      </span>
+      <h2 class="headline">[when analytics is on]</h2>
+      <span class="sub">Cloudflare Web Analytics, privacy-safe</span>
+    </section>
+
+    <a class="cta-card phone-only" href="/change/">
+      <span class="cta-card__text">
+        <b>Make a change</b>
+        <span>Words, numbers, pictures, or anything else. Pick the page, then say what.</span>
+      </span>
+      <span class="cta-card__arrow" aria-hidden="true">
+        →
+      </span>
+    </a>
+
+    <section class="card card--flush desk-only home__pending" aria-labelledby="pending-label">
+      <div
+        class="change-row"
+        style="flex-direction: row; align-items: center; justify-content: space-between"
+      >
+        <span class="label" id="pending-label">
+          On the test site, not yet live
+        </span>
+        <a class="link link--sm" id="pending-test" href="https://dev.langarsewa.pages.dev">
+          Open test site
+        </a>
+      </div>
+      <div id="pending-rows"></div>
+      <div
+        class="change-row"
+        style="flex-direction: row; justify-content: flex-end; margin-top: auto"
+      >
+        <a
+          class="btn btn--accent btn--sm"
+          style="min-height: 44px; font-size: 14px"
+          href="/review/"
+        >
+          Review and publish
+        </a>
+      </div>
+    </section>
+
+    <section class="card card--tight home__recent" aria-labelledby="recent-label">
+      <span class="label" id="recent-label">
+        Recent
+      </span>
+      <div id="recent-skeleton">
+        <Skeleton title={false} lines={3} />
+      </div>
+      <div id="recent-list" hidden></div>
+      <a class="link link--sm desk-only" href="/history/" style="margin-top: auto">
+        All history and restore
+      </a>
+    </section>
+
+    <section class="card desk-only home__links" aria-label="Shortcuts">
+      <a class="quick-link" href="/change/">
+        <b>Make a change</b>
+        <span>Words, pictures, or anything else: pick the page, then say what</span>
+      </a>
+      <a class="quick-link" href="/history/">
+        <b>History</b>
+        <span>Every publish; restore any</span>
+      </a>
+      <a class="quick-link" href="/review/">
+        <b>Review and publish</b>
+        <span>See what is waiting on the test site</span>
+      </a>
+    </section>
+  </div>
+</App>
+
+<script>
+  import { api } from '../lib/api';
+  import { boot } from '../lib/shell';
+  import { attention, countLabel, needsAttention, siteHealth, summarizeCi } from '../lib/derive';
+  import { byId, h, replaceChildren, show } from '../lib/dom';
+  import { firstName } from '../lib/people';
+  import { dayWord, formatWhen, relativeTime } from '../lib/time';
+  import type { Pending, Status } from '../lib/types';
+
+  function paintStatus(status: Status): void {
+    // Needs attention
+    const problem = byId('problem');
+    if (needsAttention(status)) {
+      const a = attention(status);
+      if (a) {
+        byId('problem-title').textContent = a.title;
+        byId('problem-body').textContent = a.body;
+        byId('problem-when').textContent = relativeTime(a.at);
+        const primary = byId<HTMLAnchorElement>('problem-primary');
+        primary.textContent = a.primary.label;
+        primary.href = a.primary.href;
+        const secondary = byId<HTMLAnchorElement>('problem-secondary');
+        secondary.textContent = a.secondary.label;
+        secondary.href = a.secondary.href;
+        show(problem);
+      }
+    } else {
+      show(problem, false);
+    }
+
+    // Live site
+    const health = siteHealth(status);
+    const statusEl = byId('live-status');
+    const tone = health === 'healthy' ? 'ok' : health === 'attention' ? 'bad' : 'muted';
+    const text =
+      health === 'healthy'
+        ? 'Healthy'
+        : health === 'attention'
+          ? 'Not answering'
+          : 'Not checked yet';
+    statusEl.className = `status badge badge--${tone}`;
+    replaceChildren(statusEl, h('span', { class: `dot dot--${tone}` }), text);
+    const ci = summarizeCi(status.ci.main);
+    const checksLine =
+      ci.tone === 'ok' ? 'All checks passed.' : ci.tone === 'bad' ? 'The last check failed.' : '';
+    const who = firstName(status.production.by);
+    byId('live-sub').textContent =
+      `Last published ${formatWhen(status.production.at)}${who ? ` by ${who}` : ''}. ${checksLine}`.trim();
+    try {
+      byId('live-host').textContent = new URL(status.production.url).host;
+    } catch {
+      byId('live-host').textContent = status.production.url;
+    }
+    byId<HTMLAnchorElement>('live-link').href = status.production.url;
+    byId<HTMLAnchorElement>('waiting-test').href = status.test.url;
+    byId<HTMLAnchorElement>('pending-test').href = status.test.url;
+    show(byId('live-skeleton'), false);
+    show(byId('live-body'));
+  }
+
+  function paintPending(pending: Pending): void {
+    byId('waiting-count').textContent = countLabel(pending.count);
+    const list = byId('waiting-list');
+    replaceChildren(
+      list,
+      pending.changes.map((c) =>
+        h(
+          'li',
+          { class: 'bullet' },
+          h('span', {}, `${c.title} (${firstName(c.author)}, ${dayWord(c.at)})`),
+        ),
+      ),
+    );
+    const headline = byId('waiting-headline');
+    headline.textContent = countLabel(pending.count);
+    byId('waiting-summary').textContent = pending.changes.map((c) => c.title).join('; ');
+    show(headline);
+    show(byId('waiting-summary'));
+    show(byId('waiting-skeleton'), false);
+    show(list, pending.count > 0);
+    show(byId('waiting-empty'), pending.count === 0);
+    show(byId('waiting-actions'));
+
+    replaceChildren(
+      byId('pending-rows'),
+      pending.changes.length === 0
+        ? h('div', { class: 'change-row sub' }, 'Nothing waiting on the test site.')
+        : pending.changes.map((c) =>
+            h(
+              'div',
+              { class: 'change-row' },
+              h(
+                'div',
+                { class: 'change-row__head' },
+                h('b', {}, c.title),
+                h(
+                  'span',
+                  { class: 'change-row__meta' },
+                  `${firstName(c.author)}, ${dayWord(c.at)}`,
+                ),
+              ),
+            ),
+          ),
+    );
+  }
+
+  function paintRecent(status: Status, pending: Pending): void {
+    type Row = { text: string; at: string | null };
+    const rows: Row[] = [];
+    if (status.check.at) {
+      rows.push({
+        text: status.check.ok ? 'Site check ran: all good' : 'Site check failed',
+        at: status.check.at,
+      });
+    }
+    for (const c of pending.changes) {
+      rows.push({ text: `${firstName(c.author)} saved: ${c.title}`, at: c.at });
+    }
+    const dev = summarizeCi(status.ci.dev);
+    if (status.ci.dev.at) {
+      rows.push({ text: `Test site checks: ${dev.label.toLowerCase()}`, at: status.ci.dev.at });
+    }
+    const main = summarizeCi(status.ci.main);
+    if (main.tone === 'bad' && status.ci.main.at) {
+      rows.push({ text: 'A publish did not go through', at: status.ci.main.at });
+    }
+    rows.push({
+      text: `Published${status.production.by ? ` by ${firstName(status.production.by)}` : ''}`,
+      at: status.production.at,
+    });
+    rows.sort((a, b) => (b.at ? Date.parse(b.at) : 0) - (a.at ? Date.parse(a.at) : 0));
+    replaceChildren(
+      byId('recent-list'),
+      rows
+        .slice(0, 5)
+        .map((r) =>
+          h(
+            'div',
+            { class: 'recent-row' },
+            h('span', {}, r.text),
+            h('time', { datetime: r.at ?? undefined, title: formatWhen(r.at) }, relativeTime(r.at)),
+          ),
+        ),
+    );
+    show(byId('recent-skeleton'), false);
+    show(byId('recent-list'));
+  }
+
+  void boot(async () => {
+    const [status, pending] = await Promise.all([api.status(), api.pending()]);
+    paintStatus(status);
+    paintPending(pending);
+    paintRecent(status, pending);
+  });
+</script>

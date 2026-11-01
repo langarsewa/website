@@ -1,0 +1,25 @@
+---
+/** Loading placeholder: a title line plus `lines` body lines. Hidden by the page once data lands. */
+interface Props {
+  lines?: number;
+  title?: boolean;
+  id?: string;
+}
+const { lines = 2, title = true, id } = Astro.props;
+---
+
+<div class="skeleton-group" id={id} aria-hidden="true">
+  {title && <span class="skeleton skeleton--title"></span>}
+  {Array.from({ length: lines }).map((_, i) => (
+    <span class={`skeleton ${i === lines - 1 ? 'skeleton--short' : 'skeleton--line'}`}></span>
+  ))}
+</div>
+
+<style>
+  .skeleton-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 2px 0;
+  }
+</style>

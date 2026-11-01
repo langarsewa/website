@@ -1,0 +1,48 @@
+{
+  "name": "control-room",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Sewa Control Room: a phone-first console over the langarsewa.org pipeline",
+  "packageManager": "pnpm@10.34.3",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "dev:functions": "astro build && wrangler pages dev dist --port 8788",
+    "build": "astro build",
+    "check": "astro check && tsc --noEmit -p tsconfig.functions.json",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "deploy": "wrangler pages deploy dist --project-name control"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "esbuild",
+      "workerd"
+    ]
+  },
+  "dependencies": {
+    "@octokit/auth-app": "^8.3.1",
+    "@octokit/request": "^10.0.16",
+    "astro": "^7.4.0",
+    "hono": "^4.13.13",
+    "jose": "^6.2.12"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@cloudflare/workers-types": "^5.20261016.1",
+    "@types/node": "^24.19.2",
+    "eslint": "^10.13.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.151.1"
+  }
+}

@@ -1,0 +1,12 @@
+# Cloudflare Pages project for the Control Room. Secrets are set in the dashboard or with
+# `wrangler pages secret put`, never here. See docs/architecture.md for the list.
+name = "control"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+SITE_REPO = "langarsewa/website"
+SITE_PRODUCTION_URL = "https://langarsewa.org"
+SITE_TEST_URL = "https://dev.langarsewa.pages.dev"
+SITE_PAGES_PROJECT = "langarsewa"

@@ -1,0 +1,10 @@
+# Copy to .dev.vars for local `wrangler pages dev`. Never commit .dev.vars.
+GITHUB_APP_ID=
+GITHUB_APP_PRIVATE_KEY=
+GITHUB_APP_INSTALLATION_ID=
+CLOUDFLARE_PAGES_TOKEN=
+CLOUDFLARE_ACCOUNT_ID=f79431adca1961ad274059c18f629c20
+ACCESS_TEAM_DOMAIN=
+ACCESS_AUD=
+# Local only: skip Access verification and act as this email
+DEV_BYPASS_EMAIL=

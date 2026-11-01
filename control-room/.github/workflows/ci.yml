@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 3
+
+  deploy:
+    # Production: main → Pages project "control". Pull requests get a preview URL.
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+      url: ${{ steps.cf.outputs.deployment-url }}
+    steps:
+      - id: secrets
+        run: echo "present=${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}" >> "$GITHUB_OUTPUT"
+      - if: steps.secrets.outputs.present == 'true'
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            wrangler.toml
+            functions
+          sparse-checkout-cone-mode: false
+      - if: steps.secrets.outputs.present == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Create the Pages project on first run
+        if: steps.secrets.outputs.present == 'true'
+        uses: cloudflare/wrangler-action@v3
+        continue-on-error: true
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: npm
+          wranglerVersion: '4.151.1'
+          command: pages project create control --production-branch main --force
+      - if: steps.secrets.outputs.present == 'true'
+        id: cf
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: npm
+          wranglerVersion: '4.151.1'
+          command: pages deploy dist --project-name=control --branch=${{ github.head_ref || github.ref_name }} --commit-hash=${{ github.sha }}
+      - if: steps.secrets.outputs.present != 'true'
+        run: echo "Cloudflare secrets not configured; skipping deploy."
