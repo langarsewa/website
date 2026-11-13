@@ -1,5 +1,5 @@
 ---
-/** The four "Get to know the sewa" door cards. Content from src/content/home-doors.json. */
+/** The four "Explore the sewa" door cards. Content from src/content/home-doors.json. */
 import T from '@/components/T.astro';
 import Photo from '@/components/Photo.astro';
 import Bi from '@/components/home/Bi.astro';
@@ -32,10 +32,7 @@ const locale = getLocale(Astro.currentLocale);
         <h3 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.2; margin: 0 0 8px; color: #102B4E">
           <Bi v={d.title} />
         </h3>
-        <p style="margin: 0; color: #334155; font-size: 15px; flex: 1">
-          <Bi v={d.description} />
-        </p>
-        <span style="font-weight: 600; color: #B08A00">
+        <span style="font-weight: 600; color: #B08A00; margin-top: auto">
           <T k="home.explore.cta" />
         </span>
       </div>

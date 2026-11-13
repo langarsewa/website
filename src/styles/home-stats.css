@@ -20,3 +20,9 @@
 .is-split{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
 @media (max-width:420px){.is-split{grid-template-columns:1fr}}
 .is-note{margin:18px 0 0;font-size:13px;color:#B9C4D2}
+
+/* Split figures under the feature number: each label stays on one line; the two figures stack when the card is too narrow for both side by side. */
+.is-feature{container-type:inline-size}
+.is-split{grid-template-columns:auto auto;justify-content:space-between}
+.is-split .is-l{white-space:nowrap}
+@container (max-width:400px){.is-split{grid-template-columns:1fr;gap:0}}

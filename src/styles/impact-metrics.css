@@ -6,3 +6,8 @@
 .imet-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;margin-top:12px;font-size:13px;color:#4A5568}.imet-foot a{font-weight:600}
 @media (max-width:900px){.imet-card{grid-template-columns:repeat(2,minmax(0,1fr))}.imet-t:nth-child(3){border-left:0}.imet-t:nth-child(n+3){border-top:1px solid #E6E3DA}}
 @media (max-width:420px){.imet-t{padding:16px;flex-direction:column;align-items:flex-start;gap:10px}}
+
+/* Impact milestones: chronological down each column, then across. */
+.ms-cols{display:grid;gap:28px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:600px){.ms-cols{grid-auto-flow:column;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(var(--ms-r2),auto)}}
+@media (min-width:900px){.ms-cols{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(var(--ms-r3),auto)}}

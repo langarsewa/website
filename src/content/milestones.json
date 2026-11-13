@@ -10,7 +10,7 @@
         "pa": "ਪਹਿਲਾ ਲੰਗਰ ਸਿਵਲ ਹਸਪਤਾਲਾਂ ਵਿੱਚ ਪਹੁੰਚਿਆ"
       },
       "body": {
-        "en": "Hoshiarpur, Jalandhar, Phagwara and Nawanshahr — where patients and families had little access to affordable, nutritious food.",
+        "en": "Hoshiarpur, Jalandhar, Phagwara, and Nawanshahr — where patients and families had little access to affordable, nutritious food.",
         "pa": "ਹੁਸ਼ਿਆਰਪੁਰ, ਜਲੰਧਰ, ਫਗਵਾੜਾ ਅਤੇ ਨਵਾਂਸ਼ਹਿਰ — ਜਿੱਥੇ ਮਰੀਜ਼ਾਂ ਅਤੇ ਪਰਿਵਾਰਾਂ ਲਈ ਸਸਤਾ, ਪੌਸ਼ਟਿਕ ਭੋਜਨ ਮਿਲਣਾ ਔਖਾ ਸੀ।"
       },
       "highlight": false
@@ -40,7 +40,7 @@
         "pa": "ਅੰਮ੍ਰਿਤਸਰ ਤੱਕ ਪਹੁੰਚ"
       },
       "body": {
-        "en": "Guru Nanak Dev Hospital, the Amritsar bus stand and the railway station.",
+        "en": "Guru Nanak Dev Hospital, the Amritsar bus stand, and the railway station.",
         "pa": "ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਹਸਪਤਾਲ, ਅੰਮ੍ਰਿਤਸਰ ਬੱਸ ਅੱਡਾ ਅਤੇ ਰੇਲਵੇ ਸਟੇਸ਼ਨ।"
       },
       "highlight": false
@@ -85,23 +85,8 @@
         "pa": "31 ਹਸਪਤਾਲ ਅਤੇ ਵਧ ਰਹੇ ਹਾਂ"
       },
       "body": {
-        "en": "A free clinic, five ambulances, school nutrition, monthly ration and medical camps.",
+        "en": "A free clinic, five ambulances, school nutrition, monthly ration, and medical camps.",
         "pa": "ਮੁਫ਼ਤ ਕਲੀਨਿਕ, ਪੰਜ ਐਂਬੂਲੈਂਸਾਂ, ਸਕੂਲ ਵਿੱਚ ਭੋਜਨ, ਮਹੀਨਾਵਾਰ ਰਾਸ਼ਨ ਅਤੇ ਮੈਡੀਕਲ ਕੈਂਪ।"
-      },
-      "highlight": true
-    },
-    {
-      "date": {
-        "en": "Oct 2034",
-        "pa": "ਅਕਤੂਬਰ 2034"
-      },
-      "title": {
-        "en": "A charitable hospital",
-        "pa": "ਇੱਕ ਚੈਰੀਟੇਬਲ ਹਸਪਤਾਲ"
-      },
-      "body": {
-        "en": "Groundbreaking planned for the 550th birth anniversary of Sri Guru Ram Das Ji.",
-        "pa": "ਸ੍ਰੀ ਗੁਰੂ ਰਾਮਦਾਸ ਜੀ ਦੇ 550ਵੇਂ ਪ੍ਰਕਾਸ਼ ਪੁਰਬ 'ਤੇ ਨੀਂਹ ਰੱਖਣ ਦੀ ਯੋਜਨਾ।"
       },
       "highlight": true
     }

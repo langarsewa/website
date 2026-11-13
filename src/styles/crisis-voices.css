@@ -10,3 +10,10 @@
 .vo-cap{position:absolute;left:16px;right:16px;bottom:12px;font-size:13px;color:#DCE3EC}
 .vo figcaption{padding-top:12px;display:flex;flex-direction:column;gap:2px}.vo figcaption span{color:#4A5568;font-size:15px}
 .vo-q{font-family:'Newsreader','Noto Serif Gurmukhi',Georgia,serif;font-size:clamp(20px,2.4vw,26px);line-height:1.3;margin:0 0 6px;color:#102B4E}
+
+/* Video tiles that link out to YouTube: thumbnail fills the tile, play button and caption sit on top. */
+.vtile{position:relative;overflow:hidden;text-decoration:none;color:#fff}
+.vtile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.vtile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,30,55,.85),rgba(10,30,55,0) 55%)}
+.vtile>span{position:relative;z-index:1}.vtile>.vo-cap,.vtile>.vt-cap{position:absolute;z-index:1}
+.vtile:hover img{transform:scale(1.03)}.vtile:focus-visible{outline:3px solid #F4C430;outline-offset:3px}

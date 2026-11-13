@@ -1,4 +1,19 @@
 {
+  "featured": {
+    "giani": {
+      "id": "hE4Vrpvb_YQ",
+      "url": "https://www.youtube.com/watch?v=hE4Vrpvb_YQ",
+      "thumb": "message-from-giani-pinderpal-singh-ji.webp",
+      "label": {
+        "en": "Watch the message from Giani Pinderpal Singh Ji on YouTube",
+        "pa": "ਯੂਟਿਊਬ 'ਤੇ ਗਿਆਨੀ ਪਿੰਦਰਪਾਲ ਸਿੰਘ ਜੀ ਦਾ ਸੁਨੇਹਾ ਦੇਖੋ"
+      },
+      "alt": {
+        "en": "Giani Pinderpal Singh Ji speaking with sewadars at Pur Heeran",
+        "pa": "ਪੁਰਹੀਰਾਂ ਵਿਖੇ ਸੇਵਾਦਾਰਾਂ ਨਾਲ ਗਿਆਨੀ ਪਿੰਦਰਪਾਲ ਸਿੰਘ ਜੀ"
+      }
+    }
+  },
   "gallery": [
     {
       "n": 1,

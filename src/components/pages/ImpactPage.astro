@@ -36,6 +36,10 @@ const metrics = [
   { key: 'clinic', rect: true, paths: ['M12 8v8M8 12h8'] },
   { key: 'ration', paths: ['M6 8h12l1 12H5z', 'M9 8V6a3 3 0 0 1 6 0v2'] },
 ] as const;
+
+/** Milestones read top to bottom, column by column; rows per column for the 2- and 3-column layouts. */
+const msCount = milestones.impact.length;
+const msRows = `--ms-r2: ${Math.ceil(msCount / 2)}; --ms-r3: ${Math.ceil(msCount / 3)}`;
 ---
 
 <Base slug="impact" pageName={t(locale, 'nav.impact.label')} description={t(locale, 'impact.meta.description')}>
@@ -97,15 +101,12 @@ const metrics = [
 
   <section id="milestones">
     <div style={wrap}>
-      <div style={kicker}>
-        <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span><T k="impact.milestones.kicker" />
-      </div>
       <h2
-        style={`font-family: ${serif}; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 12px 0 28px; max-width: 760px; color: #102B4E`}
+        style={`font-family: ${serif}; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 0 0 28px; max-width: 760px; color: #102B4E`}
       >
         <T k="impact.milestones.title" />
       </h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 28px">
+      <div class="ms-cols" style={msRows}>
         {
           milestones.impact.map((m) => (
             <div style={`border-left: 3px solid ${accent[m.accent as keyof typeof accent]}; padding: 4px 0 4px 18px`}>
@@ -193,11 +194,18 @@ const metrics = [
       </h2>
       <div class="vo-row">
         <figure class="vo vo-main">
-          <div class="vo-v">
+          <a
+            class="vo-v vtile"
+            href={videos.featured.giani.url}
+            target="_blank"
+            rel="noopener"
+            aria-label={bi(videos.featured.giani.label)}
+          >
+            <Photo src={image(videos.featured.giani.thumb)} alt={bi(videos.featured.giani.alt)} />
             <span aria-hidden="true" class="vo-play"
               ><svg fill="#0A1E37" height="24" viewBox="0 0 24 24" width="24"><path d="M8 5v14l11-7z"></path></svg></span
             ><span class="vo-cap"><T k="impact.voices.main.caption" /></span>
-          </div>
+          </a>
           <figcaption>
             <p class="vo-q"><T k="impact.voices.main.quote" /></p>
             <b><T k="impact.voices.main.name" /></b>

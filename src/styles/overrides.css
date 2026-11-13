@@ -5,7 +5,6 @@
 .langsw a[lang="pa"]{font-family:'Noto Sans Gurmukhi',sans-serif;font-weight:600}
 .langsw a[aria-current="true"]{background:var(--navy);color:#fff}
 .langsw a:hover:not([aria-current="true"]){color:var(--navy)}
-.langsw-f a{color:#DCE3EC}.langsw-f a[aria-current="true"]{background:#F4C430;color:#0A1E37}
 a.langq{text-decoration:none;display:inline-flex;align-items:center}
 /* Pages are always visible in production; the reference toggled [hidden] with its hash router. */
 .page[hidden]{display:block}

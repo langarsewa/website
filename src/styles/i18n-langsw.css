@@ -13,5 +13,4 @@ html[data-lang="pa"] h1{font-size:clamp(40px,6.4vw,68px)!important}
 .mjoin{white-space:nowrap}
 .langq{font:inherit;font-family:'Noto Sans Gurmukhi','Public Sans',sans-serif;font-size:13px;font-weight:700;border:1.5px solid var(--navy);background:#fff;color:var(--navy);padding:8px 12px;border-radius:999px;cursor:pointer;line-height:1}
 .mlang{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0 6px;font-size:13px;font-weight:700;color:var(--muted)}
-.langsw-f{background:#173453;border-color:#2B4A6C}.langsw-f button{color:#DCE3EC}.langsw-f button[aria-pressed="true"]{background:#F4C430;color:#0A1E37}
 @media (max-width:900px){.langsw-d{display:none}}
