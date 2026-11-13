@@ -20,7 +20,7 @@
 .acc dd{margin:0;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
 .acc-v{font-weight:700;font-size:16px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .copy{font:inherit;font-size:12px;font-weight:700;border:1px solid #CBD2DC;background:#fff;color:#102B4E;padding:6px 10px;border-radius:999px;cursor:pointer;flex:none}
-.copy:hover{border-color:#102B4E}.copy.done{background:#102B4E;color:#fff;border-color:#102B4E}
+.copy:hover,.copy:focus-visible{background:#102B4E;color:#fff;border-color:#102B4E}.copy.done{background:#102B4E;color:#fff;border-color:#102B4E}
 .pay-note{background:#FFF6D6;border-radius:12px;padding:12px 14px;font-size:14px;color:#334155}
 .addr{font-style:normal;background:#fff;border:1px solid #E6E3DA;border-radius:14px;padding:14px 16px;font-weight:600;line-height:1.6}
 .receipt{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;border:1px dashed #CBD2DC;border-radius:18px;padding:16px 20px;color:#334155}

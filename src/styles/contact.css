@@ -28,3 +28,9 @@
 .cmap{display:block;width:100%;max-height:300px;height:auto}
 .dir{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#F4C430;color:#0A1E37;font-weight:700;font-size:14px;padding:10px 16px;border-radius:999px;box-shadow:0 4px 14px rgba(10,30,55,.15)}
 .dir:hover{background:#E5B422;color:#0A1E37}
+
+/* Form fields: navy hover and focus; the topic select gets a custom chevron in place of the browser arrow. */
+.fgrid input,.fgrid select,.fgrid textarea{transition:border-color .15s,box-shadow .15s}
+.fgrid input:hover,.fgrid select:hover,.fgrid textarea:hover{border-color:#102B4E}
+.fgrid input:focus-visible,.fgrid select:focus-visible,.fgrid textarea:focus-visible{outline:none;border-color:#102B4E;box-shadow:0 0 0 3px rgba(244,196,48,.55)}
+.fgrid select{appearance:none;-webkit-appearance:none;cursor:pointer;line-height:1.4;padding-right:44px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23102B4E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:16px}

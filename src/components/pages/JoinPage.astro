@@ -48,11 +48,7 @@ const ledeStyle = 'font-size: 17px; color: #334155; margin: 0 0 28px; max-width:
 >
   <section class="jhero">
     <div style="max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 56px) 24px clamp(24px, 3.5vw, 40px)">
-      <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #F4C430">
-        <span style={barStyle}></span>
-        <T k="joinTheSewa.hero.kicker" />
-      </div>
-      <h1 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(44px, 7.5vw, 80px); line-height: 1.03; letter-spacing: -0.02em; margin: 16px 0 18px; max-width: 900px; color: #FFFFFF">
+      <h1 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(44px, 7.5vw, 80px); line-height: 1.03; letter-spacing: -0.02em; margin: 0 0 18px; max-width: 900px; color: #FFFFFF">
         <T k="joinTheSewa.hero.title" />
       </h1>
       <p style="font-size: clamp(17px, 2vw, 20px); color: #DCE3EC; margin: 0 0 28px; max-width: 660px">
@@ -348,7 +344,7 @@ const ledeStyle = 'font-size: 17px; color: #334155; margin: 0 0 28px; max-width:
                 </span>
               </span>
             </a>
-            <div class="ract ract-off">
+            <a target="_blank" rel="noopener" class="ract" href={site.whatsapp.url}>
               <span class="ri">
                 <svg
                   fill="none"
@@ -368,10 +364,10 @@ const ledeStyle = 'font-size: 17px; color: #334155; margin: 0 0 28px; max-width:
                   <T k="joinTheSewa.steps.reach.whatsapp" />
                 </b>
                 <span>
-                  <T k="joinTheSewa.steps.reach.whatsappSub" />
+                  {site.whatsapp.display}
                 </span>
               </span>
-            </div>
+            </a>
           </div>
           <div class="tip">
             <b>
@@ -482,11 +478,7 @@ const ledeStyle = 'font-size: 17px; color: #334155; margin: 0 0 28px; max-width:
 
   <section id="questions" style="background: #FFFFFF; border-top: 1px solid #E6E3DA">
     <div style="max-width: 1000px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
-      <div style={kickerStyle}>
-        <span style={barStyle}></span>
-        <T k="joinTheSewa.questions.kicker" />
-      </div>
-      <h2 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 14px 0 24px; max-width: 760px; color: #102B4E">
+      <h2 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin: 0 0 24px; max-width: 760px; color: #102B4E">
         <T k="joinTheSewa.questions.title" />
       </h2>
       {faq.map((key) => (

@@ -3,22 +3,22 @@
     "chip": { "en": "Every day", "pa": "ਹਰ ਰੋਜ਼" },
     "big": {
       "icon": "bowl",
-      "value": "~100,000",
+      "value": "100,000+",
       "label": { "en": "meals served", "pa": "ਪਲੇਟਾਂ ਲੰਗਰ" }
     },
     "note": {
-      "en": "Across 31 hospitals, a school, a care home and city service points",
-      "pa": "31 ਹਸਪਤਾਲਾਂ, ਇੱਕ ਸਕੂਲ, ਇੱਕ ਆਸਰਾ ਘਰ ਅਤੇ ਸ਼ਹਿਰ ਦੇ ਸੇਵਾ ਸਥਾਨਾਂ ਵਿੱਚ"
+      "en": "Reaching hospital patients, schoolchildren, care-home residents, and city service points across Punjab",
+      "pa": "ਪੰਜਾਬ ਭਰ ਵਿੱਚ ਹਸਪਤਾਲਾਂ ਦੇ ਮਰੀਜ਼ਾਂ, ਸਕੂਲੀ ਬੱਚਿਆਂ, ਆਸਰਾ ਘਰ ਦੇ ਨਿਵਾਸੀਆਂ ਅਤੇ ਸ਼ਹਿਰ ਦੇ ਸੇਵਾ ਸਥਾਨਾਂ ਤੱਕ"
     },
     "split": [
       {
         "icon": "clinic",
-        "value": "250–300",
+        "value": "250+",
         "label": { "en": "free clinic visits", "pa": "ਮੁਫ਼ਤ ਕਲੀਨਿਕ ਵਿੱਚ ਮਰੀਜ਼" }
       },
       {
         "icon": "book",
-        "value": "~250",
+        "value": "250",
         "label": { "en": "students fed at Ajjowal", "pa": "ਅੱਜੋਵਾਲ ਵਿੱਚ ਵਿਦਿਆਰਥੀਆਂ ਨੂੰ ਭੋਜਨ" }
       }
     ]
@@ -28,11 +28,6 @@
       "chip": { "en": "Across Punjab", "pa": "ਪੰਜਾਬ ਭਰ ਵਿੱਚ" },
       "rows": [
         {
-          "icon": "hospital",
-          "value": "31",
-          "label": { "en": "hospitals served daily", "pa": "ਹਸਪਤਾਲਾਂ ਵਿੱਚ ਰੋਜ਼ਾਨਾ ਲੰਗਰ" }
-        },
-        {
           "icon": "pot",
           "value": "2",
           "label": { "en": "large-scale kitchens", "pa": "ਵੱਡੀਆਂ ਰਸੋਈਆਂ" }
@@ -41,6 +36,11 @@
           "icon": "ambulance",
           "value": "5",
           "label": { "en": "ambulances on call", "pa": "ਐਂਬੂਲੈਂਸਾਂ ਤਿਆਰ" }
+        },
+        {
+          "icon": "hospital",
+          "value": "31",
+          "label": { "en": "hospitals served daily", "pa": "ਹਸਪਤਾਲਾਂ ਵਿੱਚ ਰੋਜ਼ਾਨਾ ਲੰਗਰ" }
         }
       ]
     },
@@ -48,9 +48,12 @@
       "chip": { "en": "Every month & year", "pa": "ਹਰ ਮਹੀਨੇ ਅਤੇ ਹਰ ਸਾਲ" },
       "rows": [
         {
-          "icon": "bag",
-          "value": "~200",
-          "label": { "en": "families receive monthly ration", "pa": "ਪਰਿਵਾਰਾਂ ਨੂੰ ਮਹੀਨਾਵਾਰ ਰਾਸ਼ਨ" }
+          "icon": "drop",
+          "value": "1",
+          "label": {
+            "en": "annual blood donation camp, held every October",
+            "pa": "ਸਾਲਾਨਾ ਖ਼ੂਨਦਾਨ ਕੈਂਪ, ਹਰ ਅਕਤੂਬਰ"
+          }
         },
         {
           "icon": "eye",
@@ -58,9 +61,9 @@
           "label": { "en": "free eye camps a year", "pa": "ਸਾਲ ਵਿੱਚ ਅੱਖਾਂ ਦੇ ਮੁਫ਼ਤ ਕੈਂਪ" }
         },
         {
-          "icon": "drop",
-          "value": { "en": "Every Oct", "pa": "ਹਰ ਅਕਤੂਬਰ" },
-          "label": { "en": "blood donation camp", "pa": "ਖ਼ੂਨਦਾਨ ਕੈਂਪ" }
+          "icon": "bag",
+          "value": "200",
+          "label": { "en": "families receive monthly ration", "pa": "ਪਰਿਵਾਰਾਂ ਨੂੰ ਮਹੀਨਾਵਾਰ ਰਾਸ਼ਨ" }
         }
       ]
     }
