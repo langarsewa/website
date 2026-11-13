@@ -30,7 +30,7 @@ const pages = [
   {
     lang: 'en',
     path: '/contact/',
-    invalid: 'Please add your name, a valid email and a message.',
+    invalid: 'Please add your name, a valid email, and a message.',
     sent: 'Opening your email app with the message ready to send.',
   },
   {
