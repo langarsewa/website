@@ -38,3 +38,18 @@ a.ract-y:hover{border-color:#0A1E37;background:#F7CF4D}
 .ract-n{background:#102B4E;border-color:#102B4E}.ract-n b{color:#FFFFFF}.ract-n>span:last-child span:not(.l-en):not(.l-pa){color:#DCE3EC !important}.ract-n .ri{background:#F4C430}a.ract-n:hover{background:#0A1E37;border-color:#0A1E37}
 .way{border-top:4px solid #F4C430 !important}
 .cbtn-y{background:#F4C430;color:#0A1E37}.cbtn-y:hover{background:#E5B422;color:#0A1E37}
+
+/* Location-aware Join page. public/_worker.js sets html[data-region] from the visitor's country
+   (or ?from=in|us). Without it nothing is hidden and the page shows both regions, as before. */
+html[data-region="in"] [data-region-only="us"],html[data-region="us"] [data-region-only="in"]{display:none!important}
+/* With a region, the hero's jump row becomes a two-option toggle; the current region is filled. */
+.rtoggle{display:none;flex-wrap:wrap;align-items:center;gap:10px 14px}
+html[data-region] .jumps{display:none}html[data-region] .rtoggle{display:flex}
+.rt-seg{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.28)}
+.rt-opt{display:flex;flex-direction:column;justify-content:center;min-height:44px;box-sizing:border-box;padding:8px 20px;border-radius:999px;text-decoration:none;color:#FFFFFF;line-height:1.25;transition:background .15s,color .15s}
+.rt-opt b{font-size:15px;font-weight:700}.rt-opt span{font-size:12.5px;color:#DCE3EC}
+.rt-opt:hover{background:rgba(244,196,48,.16);color:#FFFFFF}
+.rt-opt:focus-visible{outline:2px solid #F4C430;outline-offset:2px}
+html[data-region="in"] .rt-opt[data-region-opt="in"],html[data-region="us"] .rt-opt[data-region-opt="us"]{background:#F4C430;color:#0A1E37}
+html[data-region="in"] .rt-opt[data-region-opt="in"] span,html[data-region="us"] .rt-opt[data-region-opt="us"] span{color:#0A1E37}
+@media (max-width:520px){.rtoggle .jump-l{width:100%}.rt-seg{display:flex;width:100%}.rt-opt{flex:1;padding:8px 12px}}

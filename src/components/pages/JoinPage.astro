@@ -28,6 +28,8 @@ const ways = [
 ] as const;
 
 const faq = ['india', 'outside', 'receipt', 'visit', 'volunteer'] as const;
+/** Region-specific answers; the rest show everywhere. public/_worker.js sets the region. */
+const regionOf: Partial<Record<(typeof faq)[number], 'in' | 'us'>> = { india: 'in', outside: 'us' };
 
 const kickerStyle =
   'display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568';
@@ -101,10 +103,33 @@ const ledeStyle = 'font-size: 17px; color: #334155; margin: 0 0 28px; max-width:
           </svg>
         </a>
       </div>
+      <nav aria-labelledby="rt-label" class="rtoggle">
+        <span class="jump-l" id="rt-label">
+          <T k="joinTheSewa.hero.jumpsLabel" />
+        </span>
+        <div class="rt-seg">
+          <a class="rt-opt" data-region-opt="in" href="?from=in#india">
+            <b>
+              <T k="joinTheSewa.hero.jumpIndia.title" />
+            </b>
+            <span>
+              <T k="joinTheSewa.hero.jumpIndia.sub" />
+            </span>
+          </a>
+          <a class="rt-opt" data-region-opt="us" href="?from=us#reach">
+            <b>
+              <T k="joinTheSewa.hero.jumpOutside.title" />
+            </b>
+            <span>
+              <T k="joinTheSewa.hero.jumpOutside.sub" />
+            </span>
+          </a>
+        </div>
+      </nav>
     </div>
   </section>
 
-  <section id="india" style="background: #FFFFFF; border-bottom: 1px solid #E6E3DA">
+  <section id="india" data-region-only="in" style="background: #FFFFFF; border-bottom: 1px solid #E6E3DA">
     <div style="max-width: 1100px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
       <div style={kickerStyle}>
         <span style={barStyle}></span>
@@ -263,7 +288,7 @@ const ledeStyle = 'font-size: 17px; color: #334155; margin: 0 0 28px; max-width:
     </div>
   </section>
 
-  <section id="steps" style="background: #FBFAF6">
+  <section id="steps" data-region-only="us" style="background: #FBFAF6">
     <div style="max-width: 1000px; margin: 0 auto; padding: clamp(44px, 6vw, 76px) 24px">
       <div style={kickerStyle}>
         <span style={barStyle}></span>
@@ -482,7 +507,7 @@ const ledeStyle = 'font-size: 17px; color: #334155; margin: 0 0 28px; max-width:
         <T k="joinTheSewa.questions.title" />
       </h2>
       {faq.map((key) => (
-        <details class="qa">
+        <details class="qa" data-region-only={regionOf[key]}>
           <summary>
             <T k={`joinTheSewa.questions.faq.${key}.q`} />
           </summary>

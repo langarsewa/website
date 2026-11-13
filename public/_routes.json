@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "include": ["/join-the-sewa", "/join-the-sewa/*", "/pa/join-the-sewa", "/pa/join-the-sewa/*"],
+  "exclude": []
+}

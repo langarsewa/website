@@ -82,4 +82,44 @@ test('legacy paths redirect (301) and security headers are served under wrangler
 
   const missing = await fetch(`${base}/no-such-page/`);
   assert.equal(missing.status, 404, 'custom 404 is served with a 404 status');
+
+  // Location-aware Join page (public/_worker.js, limited by public/_routes.json).
+  const regionOf = (html) => /<html[^>]*\sdata-region="(in|us)"/.exec(html)?.[1];
+  for (const path of ['/join-the-sewa/', '/pa/join-the-sewa/']) {
+    const auto = await fetch(base + path);
+    assert.equal(auto.status, 200, `${path} status`);
+    assert.ok(regionOf(await auto.text()), `${path} is tagged with a region`);
+    assert.match(
+      auto.headers.get('content-security-policy') || '',
+      /default-src 'self'/,
+      `${path} keeps _headers`,
+    );
+    assert.match(
+      auto.headers.get('cache-control') || '',
+      /private/,
+      `${path} is not shared-cached`,
+    );
+
+    const india = await fetch(`${base}${path}?from=in`);
+    const indiaHtml = await india.text();
+    assert.equal(regionOf(indiaHtml), 'in', `${path}?from=in`);
+    assert.match(
+      indiaHtml,
+      /<a[^>]*data-region-opt="in"[^>]*aria-current="true"|<a[^>]*aria-current="true"[^>]*data-region-opt="in"/,
+      `${path} marks the current region in the toggle`,
+    );
+    assert.match(
+      india.headers.get('set-cookie') || '',
+      /dgrls-region=in/,
+      `${path}?from=in remembers the choice`,
+    );
+
+    const us = await fetch(`${base}${path}?from=us`);
+    assert.equal(regionOf(await us.text()), 'us', `${path}?from=us`);
+
+    const remembered = await fetch(base + path, { headers: { cookie: 'dgrls-region=in' } });
+    assert.equal(regionOf(await remembered.text()), 'in', `${path} honours the cookie`);
+  }
+  const homeHtml = await (await fetch(`${base}/`)).text();
+  assert.equal(regionOf(homeHtml), undefined, 'other pages are untouched by the worker');
 });
