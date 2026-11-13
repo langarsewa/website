@@ -4,8 +4,8 @@ Route `/` and `/pa/`. Page component `src/components/pages/HomePage.astro`.
 
 ## Bracketed placeholders (copied as is)
 
-| Where                        | English                                                     | Punjabi                                                | Key                 |
-| ---------------------------- | ----------------------------------------------------------- | ------------------------------------------------------ | ------------------- |
+| Where                        | English                                                     | Punjabi                                      | Key                 |
+| ---------------------------- | ----------------------------------------------------------- | -------------------------------------------- | ------------------- |
 | "Voices of the sangat" quote | `“[Selected line from Giani Pinderpal Singh Ji’s message]”` | `“[ਗਿਆਨੀ ਪਿੰਦਰਪਾਲ ਸਿੰਘ ਜੀ ਦੇ ਸੁਨੇਹੇ ਵਿੱਚੋਂ ਇੱਕ ਲਾਈਨ]”` | `home.voices.quote` |
 
 ## Ambiguous or not reproducible

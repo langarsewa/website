@@ -31,26 +31,27 @@
     "@fontsource-variable/noto-sans-gurmukhi": "^5.3.0",
     "@fontsource-variable/noto-serif-gurmukhi": "^5.3.0",
     "@fontsource-variable/public-sans": "^5.3.0",
-    "astro": "^7.4.0",
+    "astro": "^7.4.11",
     "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "^0.9.12",
     "@axe-core/playwright": "^4.14.0",
-    "@lhci/cli": "^0.15.1",
-    "@playwright/test": "^1.64.1",
+    "@emnapi/runtime": "^1.11.3",
+    "@lhci/cli": "^0.16.1",
+    "@playwright/test": "^1.65.0",
     "@types/node": "^24.19.2",
     "@types/pngjs": "^6.0.5",
-    "eslint": "^10.13.0",
+    "eslint": "^10.14.0",
     "eslint-plugin-astro": "^3.2.1",
-    "node-html-parser": "^9.0.4",
+    "node-html-parser": "^9.0.7",
     "pixelmatch": "^8.0.0",
     "pngjs": "^7.0.0",
-    "prettier": "^3.9.10",
-    "prettier-plugin-astro": "^1.1.1",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.71.2",
-    "wrangler": "^4.151.1"
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2",
+    "wrangler": "^4.161.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
