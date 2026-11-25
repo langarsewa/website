@@ -1,0 +1,188 @@
+<!doctype html>
+<!--
+  Tri-fold brochure, US Letter landscape (11 x 8.5 in), two pages:
+    page 1 = outside (inner flap | back | cover), page 2 = inside (who we are | journey | what's next).
+  Figures match the site as of Nov 24, 2026 (src/content). Export: node reference/brochure/export.mjs
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Langar Sewa Brochure</title>
+<style>
+@font-face{font-family:'Newsreader';src:url('../../src/styles/fonts/newsreader-latin-opsz-normal.woff2') format('woff2');font-weight:200 800}
+@font-face{font-family:'Public Sans';src:url('../../src/styles/fonts/public-sans-latin-wght-normal.woff2') format('woff2');font-weight:100 900}
+@font-face{font-family:'Noto Sans Gurmukhi';src:url('../../src/styles/fonts/noto-sans-gurmukhi-gurmukhi-wght-normal.woff2') format('woff2');font-weight:100 900}
+@page{size:11in 8.5in;margin:0}
+:root{--y:#FFF200;--navy:#102B4E;--ink:#0A1E37;--gold:#F4C430}
+*{box-sizing:border-box}
+html,body{margin:0;background:#888}
+body{font-family:'Public Sans',sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet{width:11in;height:8.5in;background:var(--y);display:grid;grid-template-columns:repeat(3,1fr);margin:0 auto 24px;page-break-after:always;overflow:hidden}
+@media print{html,body{background:none}.sheet{margin:0}}
+.p{padding:.42in .36in .36in;display:flex;flex-direction:column;border-right:1px dashed rgba(10,30,55,.18);min-height:0}
+.p:last-child{border-right:0}
+.k{display:flex;align-items:center;gap:10px;font-size:9.5pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.k::before{content:"";width:32px;height:2.5px;background:var(--ink)}
+h2{font-family:'Newsreader',serif;font-weight:700;font-size:24pt;line-height:1.02;letter-spacing:-.01em;margin:8px 0 12px;color:var(--ink)}
+p{font-size:9.6pt;line-height:1.42;margin:0 0 9px}
+.ph{border-radius:14px;overflow:hidden;background:#E7E3D8}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.box{background:var(--navy);color:#fff;border-radius:14px;padding:14px 18px}
+.box .bk{font-size:9pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.box .bt{font-family:'Newsreader',serif;font-size:16pt;line-height:1.15;margin-top:4px}
+.box p{color:#E6ECF3;font-size:9pt;margin:6px 0 0}
+/* journey */
+.tl{position:relative;margin:2px 0 10px;padding-left:24px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:10px;width:2px;background:var(--navy)}
+.ti{position:relative;margin-bottom:7px}
+.ti::before{content:"";position:absolute;left:-24px;top:2px;width:13px;height:13px;border-radius:50%;background:var(--navy)}
+.ti.open::before{background:var(--y);border:2.5px solid #fff;box-sizing:border-box}
+.ti.now::before{background:#fff;width:17px;height:17px;left:-26px;top:0}
+.td{font-size:8.6pt;font-weight:800;letter-spacing:.08em}
+.tt{font-size:9.2pt;line-height:1.32}
+/* future list */
+.fi{font-size:9.2pt;line-height:1.36;padding:7px 0;border-bottom:2px solid rgba(255,255,255,.85)}
+.fi:first-of-type{padding-top:2px}.fi:last-of-type{border-bottom:0}
+.fi b{font-weight:800}
+.close{font-family:'Newsreader',serif;font-weight:700;font-size:13.5pt;line-height:1.2;margin-top:auto}
+/* outside */
+.cover{background:var(--navy);color:#fff;padding:0;border-right:0}
+.cover .top{padding:.42in .36in .2in;display:flex;flex-direction:column;gap:14px}
+.org{display:flex;align-items:center;gap:12px}
+.org .n{font-family:'Newsreader',serif;font-size:15pt;line-height:1.1;font-weight:600}
+.org .n small{display:block;font-family:'Public Sans',sans-serif;font-size:8pt;letter-spacing:.18em;font-weight:700;color:#C9D3E0;margin-top:3px}
+.cover h1{font-family:'Newsreader',serif;font-weight:600;font-size:38pt;line-height:1;margin:18px 0 6px;letter-spacing:-.02em}
+.cover .mission{font-size:10.5pt;line-height:1.4;color:#E6ECF3;margin:0}
+.slot{margin:auto .36in .2in;height:3.05in;border:2px dashed rgba(255,255,255,.55);border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;color:#C9D3E0;font-size:9.5pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:16px}
+.stats{display:grid;grid-template-columns:1.45fr 1fr 1fr;gap:12px;padding:0 .36in .36in}
+.stats div{border-top:2.5px solid var(--gold);padding-top:6px}
+.stats b{display:block;font-family:'Newsreader',serif;font-size:18pt;line-height:1}
+.stats span{font-size:7.8pt;line-height:1.25;color:#C9D3E0;display:block;margin-top:3px}
+.way{background:rgba(255,255,255,.55);border-radius:12px;padding:10px 13px;margin-bottom:9px}
+.way .wk{font-size:8.6pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+.way p{font-size:9pt;margin:0}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:1px 10px;font-size:9pt;line-height:1.4}
+.dl dt{font-weight:700}.dl dd{margin:0}
+.zelle{background:#fff;border-radius:14px;padding:8px;width:2.35in;margin:2px auto 8px}
+.zelle img{width:100%;display:block}
+.contact{font-size:9.6pt;line-height:1.6}
+.contact b{display:block;font-size:8.6pt;letter-spacing:.1em;text-transform:uppercase;margin-top:8px}
+</style>
+</head>
+<body>
+
+<!-- ===================== OUTSIDE ===================== -->
+<section class="sheet">
+  <!-- inner flap -->
+  <div class="p">
+    <div class="k">How you can help</div>
+    <h2>Join the Sewa</h2>
+    <p>Every meal is made possible by the sangat. Give, volunteer, or come and see the kitchen for yourself.</p>
+    <div class="way">
+      <div class="wk">From the United States: Zelle</div>
+      <p>Scan with your banking app to send with Zelle.</p>
+    </div>
+    <div class="zelle"><img src="Send%20Money%20with%20Zelle%C2%AE.PNG" alt="Zelle QR code for Dhan Guru Ramdas Langar Sewa"></div>
+    <div class="way" style="margin-bottom:0">
+      <div class="wk">Outside India, elsewhere</div>
+      <p>Please don’t use the India account. Email <b>info@langarsewa.org</b> and our team will guide you.</p>
+    </div>
+  </div>
+
+  <!-- back panel -->
+  <div class="p">
+    <div class="k">Within India</div>
+    <h2>Bank transfer or cheque</h2>
+    <div class="way">
+      <div class="wk">Bank transfer</div>
+      <dl class="dl">
+        <dt>Name</dt><dd>Dhan Guru Ramdas Langar Sewa</dd>
+        <dt>Bank</dt><dd>ICICI Bank</dd>
+        <dt>Account</dt><dd>134005001208</dd>
+        <dt>IFSC</dt><dd>ICIC0001340</dd>
+      </dl>
+    </div>
+    <div class="way">
+      <div class="wk">Cheque</div>
+      <p>Payable to <b>Dhan Guru Ramdas Langar Sewa</b>, mailed to Dhan Guru Ramdas Langar Sewa Kitchen, Pur Heeran, Hoshiarpur Bypass, Hoshiarpur, Punjab.</p>
+    </div>
+    <div class="contact">
+      <b>Visit us</b>
+      Pur Heeran, Hoshiarpur Bypass, Hoshiarpur, Punjab. Visitors are welcome at any time of the day.
+      <b>Contact</b>
+      +91 99143 35125 · WhatsApp +1 (661) 213-1313<br>
+      info@langarsewa.org · langarsewa.org
+      <b>Ambulance Sewa</b>
+      +91 75088 77717
+    </div>
+    <p class="close" style="font-size:12pt">Receipts on request: email info@langarsewa.org.</p>
+  </div>
+
+  <!-- cover -->
+  <div class="p cover">
+    <div class="top">
+      <div class="org">
+        <svg height="46" viewBox="0 0 64 64" width="46" aria-hidden="true"><circle cx="32" cy="32" fill="#F4C430" r="32"/><text fill="#102B4E" font-family="'Noto Sans Gurmukhi', sans-serif" font-size="21" font-weight="700" text-anchor="middle" x="32" y="33">ੴ</text><path d="M14 39h36c0 8.6-8 14-18 14s-18-5.4-18-14z" fill="#FFFFFF"/><rect fill="#FFFFFF" height="2.6" rx="1.3" width="11" x="26.5" y="54"/></svg>
+        <div class="n">Dhan Guru Ramdas<small>LANGAR SEWA</small></div>
+      </div>
+      <h1>Langar First.</h1>
+      <p class="mission">Our mission is to ensure no individual lacks access to adequate nutrition in Punjab.</p>
+    </div>
+    <div class="slot">Cover photo goes here<br>(replaces the Punjab map)</div>
+    <div class="stats">
+      <div><b>105,000+</b><span>meals served every day</span></div>
+      <div><b>32</b><span>hospitals with daily Langar</span></div>
+      <div><b>250+</b><span>free clinic visits a day</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INSIDE ===================== -->
+<section class="sheet">
+  <div class="p">
+    <div class="k">Who we are</div>
+    <h2>Two kitchens, one goal: no one in Punjab goes hungry.</h2>
+    <p>Dhan Guru Ramdas Langar Sewa is rooted in the Sikh tradition of Langar: a free community kitchen where everyone is served as equals, regardless of caste, religion, ethnicity, or economic status.</p>
+    <p>Sri Guru Ram Das Ji served in the Langar at Goindwal Sahib before he became Guru. His life of humble service inspires this sewa and the name it carries.</p>
+    <div class="ph" style="height:2.1in;margin:4px 0 14px"><img src="../../src/assets/images/children-sharing-a-langar-meal.webp" alt=""></div>
+    <div class="box" style="margin-top:auto">
+      <div class="bk">Our mission</div>
+      <div class="bt">That no one in Punjab goes without adequate nutrition.</div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="k">Since 2017</div>
+    <h2>The journey thus far</h2>
+    <div class="tl">
+      <div class="ti"><div class="td">2017</div><div class="tt">Ground is broken for our first kitchen, at Pur Heeran, Hoshiarpur</div></div>
+      <div class="ti"><div class="td">FEB 2019</div><div class="tt">Langar begins at five civil hospitals: Hoshiarpur, Dasuya, Mukerian, Batala, and Nawanshahr</div></div>
+      <div class="ti"><div class="td">APR 2019</div><div class="tt">Daily meals begin at a school and a care home</div></div>
+      <div class="ti"><div class="td">OCT 2019</div><div class="tt">Service reaches Amritsar</div></div>
+      <div class="ti"><div class="td">2020</div><div class="tt">COVID-19: up to 300,000 meals a day, cooked around the clock with the local community</div></div>
+      <div class="ti open"><div class="td">OCT 2021</div><div class="tt">Our second kitchen opens at Madhir, Sri Muktsar Sahib</div></div>
+      <div class="ti"><div class="td">2025</div><div class="tt">Our free clinic opens</div></div>
+      <div class="ti now"><div class="td">TODAY</div><div class="tt"><b>32 hospitals</b> served daily, including a new Langar hall at Sector 32, Chandigarh. About <b>105,000 meals</b> a day</div></div>
+    </div>
+    <div class="ph" style="height:1.45in;margin-top:auto"><img src="../../src/assets/images/ambulances-of-the-sewa.webp" alt=""></div>
+  </div>
+
+  <div class="p">
+    <div class="k">What comes next</div>
+    <h2>The future we are building</h2>
+    <div class="fi"><b>A dedicated dairy farm.</b> Underway: flooring is complete, and it will support 250 cows, giving pure milk and fresh ghee for Langar.</div>
+    <div class="fi"><b>Patient-specific hospital meals.</b> Meals prepared to each patient’s diet orders, starting with a pilot at Civil Hospital, Hoshiarpur.</div>
+    <div class="fi"><b>Ambulances on Punjab’s major highways.</b> Emergency cover today; next, the entire GT Road across Punjab within a couple of years.</div>
+    <div class="fi"><b>A third kitchen at Kartarpur.</b> Opening October 2028 on a 7-acre site with a school and hospital complex.</div>
+    <div class="ph" style="height:1.2in;border-radius:14px 14px 0 0;margin-top:8px"><img src="../../src/assets/images/aerial-view-of-the-land-for-the-charitab.webp" alt=""></div>
+    <div class="box" style="border-radius:0 0 14px 14px">
+      <div class="bk">Groundbreaking October 2027</div>
+      <div class="bt">A world-class charitable hospital</div>
+      <p>The land is acquired. Ground breaks in October 2027, with completion by October 2034, the 500th birth anniversary of Sri Guru Ram Das Ji.</p>
+    </div>
+    <p class="close">This vision is built by the sangat. Turn over to see how you can help.</p>
+  </div>
+</section>
+
+</body>
+</html>
