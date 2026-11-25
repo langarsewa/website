@@ -7,7 +7,7 @@ import { initLang } from './lang';
 import { initMenu } from './menu';
 import { initLightbox } from './lightbox';
 import { initCopyButtons } from './copy';
-import { initVideoToggle } from './videos';
+import { initInlineVideos, initVideoToggle } from './videos';
 import { initGalleries } from './gallery';
 import { initContactForm } from './contact-form';
 import { initAnalytics } from './analytics-init';
@@ -18,6 +18,7 @@ if (!redirectLegacyHash() && !initLang()) {
   initLightbox();
   initCopyButtons();
   initVideoToggle();
+  initInlineVideos();
   initGalleries();
   initContactForm();
 }

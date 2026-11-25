@@ -17,3 +17,4 @@
 .vtile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,30,55,.85),rgba(10,30,55,0) 55%)}
 .vtile>span{position:relative;z-index:1}.vtile>.vo-cap,.vtile>.vt-cap{position:absolute;z-index:1}
 .vtile:hover img{transform:scale(1.03)}.vtile:focus-visible{outline:3px solid #F4C430;outline-offset:3px}
+.vembed{position:relative;overflow:hidden;background:#000;display:block;width:100%}.vembed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}

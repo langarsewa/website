@@ -196,6 +196,25 @@ test.describe('galleries and videos', () => {
     await expect.poll(painted).toContain(full!.split('?')[0]!.split('/').pop()!);
   });
 
+  test('the Giani Pinderpal Singh Ji tile plays inline on the clip', async ({ page }) => {
+    await page.route('https://www.youtube-nocookie.com/**', (r) => r.fulfill({ body: '' }));
+    for (const path of ['/', '/impact/']) {
+      await page.goto(path);
+      const tile = page.locator('a[data-yt="pHcA1E8fgWI"]');
+      await tile.scrollIntoViewIfNeeded();
+      await tile.click();
+      const frame = page.locator('.vembed iframe');
+      await expect(frame).toHaveAttribute(
+        'src',
+        /youtube-nocookie\.com\/embed\/pHcA1E8fgWI\?.*start=11061.*end=11145/,
+      );
+      const box = await frame.boundingBox();
+      expect(box!.width, `${path} player width`).toBeGreaterThan(280);
+      expect(box!.height, `${path} player height`).toBeGreaterThan(150);
+      await expect(page).toHaveURL(new RegExp(`${path.replace(/\//g, '\\/')}$`));
+    }
+  });
+
   test('"show more videos" toggles the grid', async ({ page }) => {
     await page.goto('/impact/');
     const grid = page.locator('.vgrid');
@@ -213,6 +232,7 @@ test('security headers and CSP are declared', async ({ request }) => {
   expect(text).toContain("Content-Security-Policy: default-src 'self'");
   expect(text).toContain("script-src 'self'");
   expect(text).toContain("frame-ancestors 'none'");
+  expect(text).toContain('frame-src https://www.youtube-nocookie.com;');
   expect(text).toContain('X-Content-Type-Options: nosniff');
   expect(text).toContain('Referrer-Policy: strict-origin-when-cross-origin');
   expect(text).toMatch(/Permissions-Policy: camera=\(\), microphone=\(\), geolocation=\(\)/);
