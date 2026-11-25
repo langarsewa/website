@@ -1,7 +1,7 @@
 ---
 /**
- * Future Vision: the five-point timeline, the three projects underway (the dairy farm with
- * its kitchen gallery), the October 2034 hospital and the "follow the progress" band.
+ * Future Vision: the seven-point timeline, the projects underway (the dairy farm with
+ * its kitchen gallery), the hospital (groundbreaking October 2027, complete October 2034) and the "follow the progress" band.
  * Markup, class names and inline styles mirror reference/index.html#page-future-vision.
  */
 import { getImage } from 'astro:assets';
@@ -201,9 +201,15 @@ for (const p of data.projects) {
                     ))}
                   </div>
                 </div>
-              ) : (
+              ) : p.image ? (
                 <div class="ph-img" style={photoBox}>
-                  <Photo src={image(p.image!)} alt={p.alt![locale]} style={photoImg} />
+                  <Photo src={image(p.image)} alt={p.alt![locale]} style={photoImg} />
+                </div>
+              ) : (
+                <div class="ksoon" style={photoBox}>
+                  <span class={cls} lang={lang}>
+                    {t(locale, 'futureVision.photoSoon')}
+                  </span>
                 </div>
               )}
             </div>

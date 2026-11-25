@@ -37,6 +37,11 @@ function alternateUrl(): string {
  */
 export function initLang(): boolean {
   const locale = pageLocale();
+  // Punjabi hidden (site.showPunjabi): never send anyone to a /pa/ page and forget an old choice.
+  if (document.documentElement.getAttribute('data-punjabi') === 'off') {
+    store('en');
+    return false;
+  }
   const params = new URLSearchParams(location.search);
   const q = params.get('lang');
 

@@ -35,6 +35,9 @@ const alternate = `${origin}${alternatePath(locale, path)}`;
 const enUrl = locale === 'en' ? canonical : alternate;
 const paUrl = locale === 'pa' ? canonical : alternate;
 const title = pageTitle(locale, pageName);
+// While Punjabi is hidden, the /pa/ pages stay out of search and no page advertises them.
+const showPa = site.showPunjabi;
+const robotsNoindex = noindex || (!showPa && locale === 'pa');
 const analyticsOn = site.analytics.enabled && site.analytics.cloudflareToken.length > 0;
 // The two faces every page paints first; Punjabi pages add the Gurmukhi pair.
 const preloadFonts =
@@ -64,17 +67,22 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang={locale} data-lang={locale} data-analytics={analyticsOn ? 'on' : 'off'}>
+<html
+  lang={locale}
+  data-lang={locale}
+  data-punjabi={showPa ? 'on' : 'off'}
+  data-analytics={analyticsOn ? 'on' : 'off'}
+>
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport" />
     <title>{title}</title>
     <meta content={description} name="description" />
-    {noindex && <meta name="robots" content="noindex" />}
+    {robotsNoindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={enUrl} />
-    <link rel="alternate" hreflang="pa" href={paUrl} />
-    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    {showPa && <link rel="alternate" hreflang="en" href={enUrl} />}
+    {showPa && <link rel="alternate" hreflang="pa" href={paUrl} />}
+    {showPa && <link rel="alternate" hreflang="x-default" href={enUrl} />}
     {preloadFonts.map((href) => (
       <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />
     ))}
@@ -87,7 +95,9 @@ const jsonLd = {
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={`${origin}${ogImage}`} />
     <meta property="og:locale" content={locale === 'pa' ? 'pa_IN' : 'en_IN'} />
-    <meta property="og:locale:alternate" content={locale === 'pa' ? 'en_IN' : 'pa_IN'} />
+    {showPa && (
+      <meta property="og:locale:alternate" content={locale === 'pa' ? 'en_IN' : 'pa_IN'} />
+    )}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

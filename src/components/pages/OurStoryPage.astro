@@ -129,6 +129,16 @@ const dateStyle =
                       {m.body[locale]}
                     </span>
                   </p>
+                  {'video' in m && m.video && (
+                    <a class="jvid" href={m.video} target="_blank" rel="noopener">
+                      <span aria-hidden="true" class="jvid-play">
+                        <svg fill="#0A1E37" height="14" viewBox="0 0 24 24" width="14">
+                          <path d="M8 5v14l11-7z"></path>
+                        </svg>
+                      </span>
+                      <T k="ourStory.journey.watch" />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
@@ -144,10 +154,7 @@ const dateStyle =
         <span style={barStyle}></span>
         <T k="ourStory.tradition.kicker" />
       </div>
-      <h2 style={h2Style('14px 0 12px', '760px')}>
-        <T k="ourStory.tradition.title" />
-      </h2>
-      <p style="font-size: 17px; color: #334155; margin: 0 0 40px">
+      <p style="font-size: 17px; color: #334155; margin: 14px 0 40px; max-width: 760px">
         <T k="ourStory.tradition.body" />
       </p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 24px">
@@ -181,6 +188,13 @@ const dateStyle =
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 24px">
         {galleries.map((k) => (
           <div style="display: flex; flex-direction: column; gap: 16px">
+            {k.photos.length === 0 ? (
+              <div class="ksoon" style="height: 280px; border-radius: 20px">
+                <span class={lcls} lang={llang}>
+                  {t(locale, 'ourStory.kitchens.photoSoon')}
+                </span>
+              </div>
+            ) : (
             <div class="kgal" data-active="0">
               <div
                 class="ph-img kmain"
@@ -218,6 +232,14 @@ const dateStyle =
                 ))}
               </div>
             </div>
+            )}
+            {'status' in k && k.status && (
+              <span class="kstatus">
+                <span class={lcls} lang={llang}>
+                  {k.status[locale]}
+                </span>
+              </span>
+            )}
             <h3 style={kitchenH3Style}>
               <span class={lcls} lang={llang}>
                 {k.name[locale]}

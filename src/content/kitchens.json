@@ -1,12 +1,18 @@
 [
   {
     "id": "pur-heeran",
-    "name": { "en": "Pur Heeran, Hoshiarpur", "pa": "ਪੁਰਹੀਰਾਂ, ਹੁਸ਼ਿਆਰਪੁਰ" },
-    "description": {
-      "en": "Our flagship location prepares about 65,000 meals a day, with roti machines, dough and biscuit equipment, and commercial cooking utensils.",
-      "pa": "ਸਾਡੀ ਪ੍ਰਮੁੱਖ ਰਸੋਈ ਰੋਟੀ ਮਸ਼ੀਨਾਂ, ਆਟਾ ਅਤੇ ਬਿਸਕੁਟ ਮਸ਼ੀਨਾਂ ਅਤੇ ਵੱਡੇ ਭਾਂਡਿਆਂ ਨਾਲ ਹਰ ਰੋਜ਼ ਲਗਭਗ 65,000 ਪਲੇਟਾਂ ਲੰਗਰ ਤਿਆਰ ਕਰਦੀ ਹੈ।"
+    "name": {
+      "en": "Pur Heeran, Hoshiarpur",
+      "pa": "ਪੁਰਹੀਰਾਂ, ਹੁਸ਼ਿਆਰਪੁਰ"
     },
-    "photoCount": { "en": "5 photos", "pa": "5 ਤਸਵੀਰਾਂ" },
+    "description": {
+      "en": "Our flagship location prepares about 75,000 meals a day, with roti machines, dough and biscuit equipment, and commercial cooking utensils.",
+      "pa": "ਸਾਡੀ ਪ੍ਰਮੁੱਖ ਰਸੋਈ ਰੋਟੀ ਮਸ਼ੀਨਾਂ, ਆਟਾ ਅਤੇ ਬਿਸਕੁਟ ਮਸ਼ੀਨਾਂ ਅਤੇ ਵੱਡੇ ਭਾਂਡਿਆਂ ਨਾਲ ਹਰ ਰੋਜ਼ ਲਗਭਗ 75,000 ਪਲੇਟਾਂ ਲੰਗਰ ਤਿਆਰ ਕਰਦੀ ਹੈ।"
+    },
+    "photoCount": {
+      "en": "5 photos",
+      "pa": "5 ਤਸਵੀਰਾਂ"
+    },
     "photos": [
       {
         "file": "front-of-the-pur-heeran-kitchen-hoshiarp.webp",
@@ -47,12 +53,18 @@
   },
   {
     "id": "madhir",
-    "name": { "en": "Madhir, Sri Muktsar Sahib", "pa": "ਮਧੀਰ, ਸ੍ਰੀ ਮੁਕਤਸਰ ਸਾਹਿਬ" },
-    "description": {
-      "en": "Prepares about 35,000 meals a day for hospitals in the south-west of Punjab.",
-      "pa": "ਪੰਜਾਬ ਦੇ ਦੱਖਣ-ਪੱਛਮੀ ਹਿੱਸੇ ਦੇ ਹਸਪਤਾਲਾਂ ਲਈ ਹਰ ਰੋਜ਼ ਲਗਭਗ 35,000 ਪਲੇਟਾਂ ਤਿਆਰ ਕਰਦੀ ਹੈ।"
+    "name": {
+      "en": "Madhir, Sri Muktsar Sahib",
+      "pa": "ਮਧੀਰ, ਸ੍ਰੀ ਮੁਕਤਸਰ ਸਾਹਿਬ"
     },
-    "photoCount": { "en": "5 photos", "pa": "5 ਤਸਵੀਰਾਂ" },
+    "description": {
+      "en": "Prepares about 30,000 meals a day for hospitals in the south-west of Punjab.",
+      "pa": "ਪੰਜਾਬ ਦੇ ਦੱਖਣ-ਪੱਛਮੀ ਹਿੱਸੇ ਦੇ ਹਸਪਤਾਲਾਂ ਲਈ ਹਰ ਰੋਜ਼ ਲਗਭਗ 30,000 ਪਲੇਟਾਂ ਤਿਆਰ ਕਰਦੀ ਹੈ।"
+    },
+    "photoCount": {
+      "en": "5 photos",
+      "pa": "5 ਤਸਵੀਰਾਂ"
+    },
     "photos": [
       {
         "file": "front-of-the-madhir-kitchen-sri-muktsar-.webp",
@@ -63,7 +75,10 @@
       },
       {
         "file": "aerial-view-of-the-madhir-kitchen.webp",
-        "alt": { "en": "Aerial view of the Madhir kitchen", "pa": "ਮਧੀਰ ਰਸੋਈ ਦਾ ਉੱਪਰੋਂ ਦ੍ਰਿਸ਼" }
+        "alt": {
+          "en": "Aerial view of the Madhir kitchen",
+          "pa": "ਮਧੀਰ ਰਸੋਈ ਦਾ ਉੱਪਰੋਂ ਦ੍ਰਿਸ਼"
+        }
       },
       {
         "file": "langar-vehicles-at-the-madhir-kitchen-at.webp",
@@ -81,8 +96,31 @@
       },
       {
         "file": "roti-machines-at-the-madhir-kitchen.webp",
-        "alt": { "en": "Roti machines at the Madhir kitchen", "pa": "ਮਧੀਰ ਰਸੋਈ ਵਿੱਚ ਰੋਟੀ ਮਸ਼ੀਨਾਂ" }
+        "alt": {
+          "en": "Roti machines at the Madhir kitchen",
+          "pa": "ਮਧੀਰ ਰਸੋਈ ਵਿੱਚ ਰੋਟੀ ਮਸ਼ੀਨਾਂ"
+        }
       }
     ]
+  },
+  {
+    "id": "kartarpur",
+    "name": {
+      "en": "Kartarpur, Amritsar",
+      "pa": "ਕਰਤਾਰਪੁਰ, ਅੰਮ੍ਰਿਤਸਰ"
+    },
+    "status": {
+      "en": "Opening October 2028",
+      "pa": "ਅਕਤੂਬਰ 2028 ਵਿੱਚ ਸ਼ੁਰੂ"
+    },
+    "description": {
+      "en": "Our third kitchen will open in October 2028 on a 7-acre site that will also host a school and a hospital complex: the flagship of our future model.",
+      "pa": "ਸਾਡੀ ਤੀਜੀ ਰਸੋਈ ਅਕਤੂਬਰ 2028 ਵਿੱਚ 7 ਏਕੜ ਦੀ ਜ਼ਮੀਨ 'ਤੇ ਸ਼ੁਰੂ ਹੋਵੇਗੀ, ਜਿੱਥੇ ਇੱਕ ਸਕੂਲ ਅਤੇ ਹਸਪਤਾਲ ਕੰਪਲੈਕਸ ਵੀ ਬਣੇਗਾ: ਸਾਡੇ ਭਵਿੱਖ ਦੇ ਮਾਡਲ ਦਾ ਮੁੱਖ ਕੇਂਦਰ।"
+    },
+    "photoCount": {
+      "en": "",
+      "pa": ""
+    },
+    "photos": []
   }
 ]

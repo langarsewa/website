@@ -27,6 +27,7 @@
     "facebook": "https://www.facebook.com/langarsewapunjab"
   },
   "founded": 2019,
+  "showPunjabi": false,
   "copyrightYear": 2026,
   "analytics": {
     "enabled": false,
@@ -39,5 +40,6 @@
     "international": {
       "paymentPageUrl": ""
     }
-  }
+  },
+  "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Dhan+Guru+Ramdas+Langar+Sewa+Kitchen+Pur+Heeran+Hoshiarpur+Bypass+Hoshiarpur+Punjab"
 }

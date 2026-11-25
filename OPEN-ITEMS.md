@@ -101,3 +101,18 @@ configuration.
 Off by default. Turning it on needs the Cloudflare Web Analytics token in `site.json` and
 `https://static.cloudflareinsights.com` added to `script-src` and `connect-src` in
 `public/_headers`.
+
+## Site feedback, Nov 24, 2026
+
+- COVID milestone: the note read "food trucks all over Punjab at request of …". Who asked is
+  missing, so the clause is left out until confirmed.
+- Chandigarh (Sector 32) Langar hall: the Governor's-request video has no link yet. The pin is
+  named "Langar Hall, Sector 32, Chandigarh"; confirm the hospital name (likely GMCH-32).
+- Kartarpur kitchen: the photo of the 7-acre plot is still to come (placeholders on Our Story
+  and Future Vision). Confirm the place name, since the note said "Kartarpur, Amritsar".
+  Confirm whether this is the same land as the charitable hospital.
+- Giani Pinderpal Singh Ji: resolved. No quoted line; the section reads "Message from Giani
+  Pinderpal Singh Ji". The clip link opens at 3:04:21; a watch link cannot stop at 3:05:45.
+- Home stat "250 students fed at Ajjowal" still names the school and count; the school program
+  text no longer does.
+- New Punjabi strings from this round need native-speaker review.

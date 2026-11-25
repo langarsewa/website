@@ -1,9 +1,8 @@
 ---
-/** Home: hero with the Punjab route map, the numbers band, door cards, a voice of the sangat, press and the join CTA. */
+/** Home: photo hero with the organisation name and mission, the numbers band, door cards, a voice of the sangat, press and the join CTA. */
 import Base from '@/layouts/Base.astro';
 import T from '@/components/T.astro';
 import NextBand from '@/components/NextBand.astro';
-import PunjabRouteMap from '@/components/home/PunjabRouteMap.astro';
 import ImpactStats from '@/components/home/ImpactStats.astro';
 import DoorCards from '@/components/home/DoorCards.astro';
 import Photo from '@/components/Photo.astro';
@@ -16,37 +15,35 @@ const giani = videos.featured.giani;
 ---
 
 <Base slug="" pageName={null} description={t(locale, 'common.metaDescription')}>
-  <section style="">
-    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 56px) 24px clamp(24px, 3.5vw, 40px)">
-      <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
-        <div style="flex: 1 1 400px; min-width: 0">
-          <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4A5568">
-            <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
-            <T k="home.hero.kicker" />
-          </div>
-          <h1 style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-weight: 500; font-size: clamp(48px, 8vw, 84px); line-height: 1.02; letter-spacing: -0.02em; margin: 16px 0 18px; max-width: 900px">
-            <T k="home.hero.title" />
-          </h1>
-          <p style="font-size: clamp(17px, 2vw, 20px); color: #334155; margin: 0 0 28px; max-width: 540px">
-            <T k="home.hero.lede" />
-          </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 12px">
-            <a
-              href={href('/our-work/')}
-              class="pill"
-            >
-              <T k="home.hero.ctaWork" />
-            </a>
-            <a
-              href={href('/our-story/')}
-              class="pill"
-            >
-              <T k="home.hero.ctaStory" />
-            </a>
-          </div>
+  <section class="home-hero">
+    <Photo
+      src={image('students-eating-a-school-meal.webp')}
+      alt={t(locale, 'home.hero.photoAlt')}
+      class="home-hero-img"
+      loading="eager"
+      fetchpriority="high"
+      sizes="100vw"
+      widths={[640, 882]}
+    />
+    <div class="home-hero-in">
+      <div class="home-hero-text">
+        <div class="home-hero-org">
+          <span class="home-hero-bar" aria-hidden="true"></span>
+          <T k="common.orgName" />
         </div>
-        <div style="flex: 1 1 400px; min-width: 0">
-          <PunjabRouteMap />
+        <h1 class="home-hero-title">
+          <T k="home.hero.title" />
+        </h1>
+        <p class="home-hero-mission">
+          <T k="home.hero.mission" />
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px">
+          <a href={href('/our-work/')} class="pill pill-light">
+            <T k="home.hero.ctaWork" />
+          </a>
+          <a href={href('/our-story/')} class="pill pill-light">
+            <T k="home.hero.ctaStory" />
+          </a>
         </div>
       </div>
     </div>
@@ -88,12 +85,9 @@ const giani = videos.featured.giani;
             <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span>
             <T k="home.voices.kicker" />
           </div>
-          <p style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-size: clamp(24px, 3vw, 32px); line-height: 1.3; margin: 16px 0 14px">
+          <p style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-size: clamp(24px, 3vw, 32px); line-height: 1.3; margin: 16px 0 0">
             <T k="home.voices.quote" />
           </p>
-          <b style="display: block">
-            <T k="home.voices.name" />
-          </b>
         </div>
       </div>
     </div>

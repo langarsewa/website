@@ -14,6 +14,19 @@
   },
   {
     "name": {
+      "en": "Langar Hall, Sector 32, Chandigarh",
+      "pa": "ਲੰਗਰ ਹਾਲ, ਸੈਕਟਰ 32, ਚੰਡੀਗੜ੍ਹ"
+    },
+    "region": {
+      "en": "Chandigarh",
+      "pa": "ਚੰਡੀਗੜ੍ਹ"
+    },
+    "type": "Hospital",
+    "x": 521,
+    "y": 369
+  },
+  {
+    "name": {
       "en": "Civil Hospital, Mohali",
       "pa": "ਸਿਵਲ ਹਸਪਤਾਲ, ਮੋਹਾਲੀ"
     },

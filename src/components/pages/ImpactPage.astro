@@ -137,10 +137,13 @@ const msRows = `--ms-r2: ${Math.ceil(msCount / 2)}; --ms-r3: ${Math.ceil(msCount
         <span style="width: 32px; height: 3px; background: #F4C430; flex: none"></span><T k="impact.crisis.kicker" />
       </div>
       <h2
-        style={`font-family: ${serif}; font-weight: 500; font-size: clamp(30px, 4.4vw, 44px); line-height: 1.1; margin: 12px 0 24px; max-width: 760px; color: #102B4E`}
+        style={`font-family: ${serif}; font-weight: 500; font-size: clamp(30px, 4.4vw, 44px); line-height: 1.1; margin: 12px 0 14px; max-width: 760px; color: #102B4E`}
       >
         <T k="impact.crisis.title" />
       </h2>
+      <p style="font-size: 17px; color: #334155; margin: 0 0 28px; max-width: 760px">
+        <T k="impact.crisis.lede" />
+      </p>
       <div class="cr-grid">
         {
           crisis.map((c) => (
@@ -208,7 +211,6 @@ const msRows = `--ms-r2: ${Math.ceil(msCount / 2)}; --ms-r3: ${Math.ceil(msCount
           </a>
           <figcaption>
             <p class="vo-q"><T k="impact.voices.main.quote" /></p>
-            <b><T k="impact.voices.main.name" /></b>
           </figcaption>
         </figure>
         <figure class="vo">
@@ -238,7 +240,7 @@ const msRows = `--ms-r2: ${Math.ceil(msCount / 2)}; --ms-r3: ${Math.ceil(msCount
         </h2>
         <a href={site.social.instagram} rel="noopener" style="font-weight: 600" target="_blank"><T k="impact.photos.more" /></a>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 16px">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px">
         {
           photos.map((p) => (
             <div class="ph-img" style="height: 240px; border-radius: 14px; overflow: hidden; background: #e7e3d8">

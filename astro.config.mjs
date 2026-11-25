@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import site from './src/content/site.json' with { type: 'json' };
 
 export default defineConfig({
   site: 'https://langarsewa.org',
@@ -25,8 +26,12 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      i18n: { defaultLocale: 'en', locales: { en: 'en', pa: 'pa' } },
-      filter: (page) => !page.endsWith('/404/'),
+      // While Punjabi is hidden (site.showPunjabi), the /pa/ pages stay out of the sitemap.
+      ...(site.showPunjabi
+        ? { i18n: { defaultLocale: 'en', locales: { en: 'en', pa: 'pa' } } }
+        : {}),
+      filter: (page) =>
+        !page.endsWith('/404/') && (site.showPunjabi || !new URL(page).pathname.startsWith('/pa/')),
     }),
   ],
   vite: { build: { assetsInlineLimit: 0 } },

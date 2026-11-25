@@ -9,3 +9,15 @@
 .hopt-switch{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin-top:22px;font-size:12px;color:#4A5568}
 .hopt-switch button{font:inherit;font-weight:700;border:1px dashed #9AA5B4;background:#fff;color:#102B4E;border-radius:999px;padding:6px 12px;cursor:pointer}
 .hopt-switch button[aria-pressed="true"]{background:#102B4E;color:#fff;border-style:solid;border-color:#102B4E}
+/* Home hero: full-bleed photo with the organisation name and mission over it. */
+.home-hero{position:relative;overflow:hidden;background:#0A1E37;min-height:clamp(520px,72vh,720px);display:flex}
+.home-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block}
+.home-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,30,55,.88) 0%,rgba(10,30,55,.7) 40%,rgba(10,30,55,.15) 75%,rgba(10,30,55,0) 100%)}
+.home-hero-in{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:clamp(36px,5vw,56px) 24px;display:flex}
+.home-hero-text{max-width:600px;display:flex;flex-direction:column;color:#fff}
+.home-hero-org{display:flex;align-items:center;gap:12px;font-family:'Newsreader','Noto Serif Gurmukhi',Georgia,serif;font-size:clamp(20px,2.4vw,26px);font-weight:500;line-height:1.2}
+.home-hero-bar{width:32px;height:3px;background:#F4C430;flex:none}
+.home-hero-title{font-family:'Newsreader','Noto Serif Gurmukhi',Georgia,serif;font-weight:500;font-size:clamp(48px,8vw,84px);line-height:1.02;letter-spacing:-.02em;margin:auto 0 18px;padding-top:clamp(48px,10vh,120px);color:#fff}
+.home-hero-mission{font-size:clamp(18px,2.2vw,22px);line-height:1.45;margin:0 0 28px;color:#F1F4F8;max-width:540px}
+.pill.pill-light{border-color:#fff;color:#fff}.pill.pill-light:hover,.pill.pill-light:focus-visible{background:#fff;color:#102B4E}
+@media (max-width:700px){.home-hero::after{background:linear-gradient(0deg,rgba(10,30,55,.92) 0%,rgba(10,30,55,.75) 55%,rgba(10,30,55,.35) 100%)}.home-hero-img{object-position:65% center}}

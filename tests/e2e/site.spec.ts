@@ -1,8 +1,44 @@
 import { expect, test } from '@playwright/test';
+import site from '../../src/content/site.json' with { type: 'json' };
 
 const pages = ['', 'our-story', 'our-work', 'impact', 'future-vision', 'join-the-sewa', 'contact'];
 
+test.describe('language hidden', () => {
+  test.skip(site.showPunjabi, 'site.showPunjabi is on: the switch is public');
+
+  test('no language control, no Punjabi hreflang, and ?lang=pa stays in English', async ({
+    page,
+  }) => {
+    for (const slug of pages) {
+      await page.goto(slug ? `/${slug}/` : '/');
+      await expect(page.locator('.langsw, .langq, [data-setlang], [data-togglelang]')).toHaveCount(
+        0,
+      );
+      await expect(page.locator('link[rel="alternate"][hreflang="pa"]')).toHaveCount(0);
+    }
+    await page.goto('/impact/?lang=pa');
+    await expect(page).toHaveURL(/\/impact\/(\?lang=pa)?$/);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  });
+
+  test('an old remembered Punjabi choice no longer redirects the front door', async ({ page }) => {
+    await page.goto('/');
+    await page.evaluate(() => localStorage.setItem('dgrls-lang', 'pa'));
+    await page.goto('/');
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  });
+
+  test('Punjabi pages still build but are kept out of search', async ({ page }) => {
+    await page.goto('/pa/our-work/');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'pa');
+    await expect(page.locator('meta[name="robots"][content="noindex"]')).toHaveCount(1);
+  });
+});
+
 test.describe('language', () => {
+  test.skip(!site.showPunjabi, 'site.showPunjabi is off: the switch is hidden');
+
   test('toggle round-trips EN → PA → EN and keeps the anchor', async ({ page }) => {
     await page.goto('/our-work/#programs');
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
@@ -148,11 +184,16 @@ test.describe('galleries and videos', () => {
     const gal = page.locator('.kgal').first();
     await gal.scrollIntoViewIfNeeded();
     const main = gal.locator('.kmain-img');
-    const before = await main.getAttribute('src');
+    // currentSrc is what the browser actually paints; the src attribute alone can change
+    // while a <picture> <source> keeps the old photo on screen.
+    const painted = () => main.evaluate((img: HTMLImageElement) => img.currentSrc);
+    const before = await painted();
     await gal.locator('.kthumb').nth(1).click();
     await expect(gal).toHaveAttribute('data-active', '1');
     await expect(gal.locator('.kthumb').nth(1)).toHaveAttribute('aria-pressed', 'true');
-    expect(await main.getAttribute('src')).not.toBe(before);
+    await expect.poll(painted).not.toBe(before);
+    const full = await gal.locator('.kthumb').nth(1).getAttribute('data-full');
+    await expect.poll(painted).toContain(full!.split('?')[0]!.split('/').pop()!);
   });
 
   test('"show more videos" toggles the grid', async ({ page }) => {

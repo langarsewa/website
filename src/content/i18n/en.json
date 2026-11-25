@@ -130,7 +130,7 @@
       "directions": "Get directions",
       "title": "Come visit us",
       "address": "Hoshiarpur Bypass, Pur Heeran, Hoshiarpur, Punjab, India",
-      "hours": "Visiting hours: 6:00 AM – 8:00 PM · Please contact us before you come."
+      "hours": "Visitors are welcome at any time of the day."
     },
     "contribute": {
       "title": "Looking to contribute?",
@@ -140,7 +140,7 @@
   },
   "futureVision": {
     "meta": {
-      "description": "The future we are building. Projects underway: a dedicated dairy farm, patient-specific hospital meals, ambulances on Punjab’s major highways, and a world-class charitable hospital with an October 2034 target."
+      "description": "The future we are building. Projects underway: a dedicated dairy farm, patient-specific hospital meals, ambulances on Punjab’s major highways, a third kitchen at Kartarpur in October 2028, and a world-class charitable hospital breaking ground in October 2027."
     },
     "hero": {
       "title": "The future we are building.",
@@ -150,9 +150,9 @@
       "kicker": "Projects underway"
     },
     "hospital": {
-      "kicker": "October 2034 target",
+      "kicker": "Groundbreaking October 2027",
       "title": "A world-class charitable hospital.",
-      "body": "Land has been acquired for a future hospital built around United States-level systems, management, and standards of care. Our goal is to break ground in October 2034, commemorating the 550th birth anniversary of Sri Guru Ram Das Ji.",
+      "body": "Land has been acquired for a future hospital built around United States-level systems, management, and standards of care. We plan to break ground in October 2027 and complete the hospital by October 2034, commemorating the 500th birth anniversary of Sri Guru Ram Das Ji.",
       "note": "This vision is still being developed. Clinical scope, architecture, funding, and timelines will be shared publicly as they are finalized."
     },
     "follow": {
@@ -164,22 +164,16 @@
     "next": {
       "title": "Join the Sewa",
       "description": "Three simple steps to get involved."
-    }
+    },
+    "photoSoon": "Coming Soon"
   },
   "home": {
     "hero": {
-      "kicker": "Serving Punjab since 2019",
       "title": "Langar First.",
-      "lede": "Every day, fresh Langar from our kitchens in Pur Heeran and Madhir reaches patients, families, and students across Punjab — with healthcare and community support beyond the meal.",
       "ctaWork": "See our work",
       "ctaStory": "Our journey",
-      "mapLabel": "Map of Punjab: daily Langar routes from the Pur Heeran and Madhir kitchens to 31 hospitals"
-    },
-    "map": {
-      "purHeeran": "Pur Heeran",
-      "madhir": "Madhir",
-      "legendKitchen": "Kitchen",
-      "legendHospital": "Hospital served daily"
+      "mission": "Our mission is to ensure no individual lacks access to adequate nutrition in Punjab.",
+      "photoAlt": "Students eating a school meal"
     },
     "stats": {
       "title": "Our sewa in numbers.",
@@ -191,10 +185,9 @@
       "cta": "Explore →"
     },
     "voices": {
-      "videoCaption": "Video: Message from Giani Pinderpal Singh Ji",
+      "videoCaption": "Video: Message from Giani Pinderpal Singh Ji, Annual Samagam 2025",
       "kicker": "Voices of the sangat",
-      "quote": "“[Selected line from Giani Pinderpal Singh Ji’s message]”",
-      "name": "Giani Pinderpal Singh Ji"
+      "quote": "Message from Giani Pinderpal Singh Ji"
     },
     "cta": {
       "title": "Get involved.",
@@ -218,11 +211,11 @@
     },
     "metrics": {
       "meals": {
-        "value": "100,000+",
+        "value": "105,000+",
         "label": "meals served every day"
       },
       "hospitals": {
-        "value": "31",
+        "value": "32",
         "label": "hospitals with daily Langar"
       },
       "clinic": {
@@ -240,15 +233,15 @@
     },
     "crisis": {
       "kicker": "Serving through crisis",
-      "title": "When normal systems stopped, the Langar kept going."
+      "title": "When normal systems stop, the Langar keeps going.",
+      "lede": "With kitchens, vehicles, and sewadars ready every day, the sewa has earned a reputation with local administration as a reliable organisation to call on when an emergency strikes."
     },
     "voices": {
       "kicker": "Voices",
       "title": "From the sangat, officials, and visitors.",
       "main": {
-        "caption": "Video: Message from Giani Pinderpal Singh Ji",
-        "quote": "“[Selected line from Giani Pinderpal Singh Ji’s message]”",
-        "name": "Giani Pinderpal Singh Ji"
+        "caption": "Video: Message from Giani Pinderpal Singh Ji, Annual Samagam 2025",
+        "quote": "Message from Giani Pinderpal Singh Ji"
       },
       "dc": {
         "caption": "Video: D.C. Varinder Kumar Sharma",
@@ -393,7 +386,8 @@
         },
         "visit": {
           "q": "Can I visit the kitchen?",
-          "a": "We’d love to have you. Visitors are welcome from 6:00 AM to 8:00 PM; just let us know before you come so we can plan your visit."
+          "a": "We’d love to have you. You may visit us at any time of the day.",
+          "link": "Directions to our Pur Heeran kitchen, Hoshiarpur"
         },
         "volunteer": {
           "q": "Can I volunteer at a hospital near me?",
@@ -418,16 +412,17 @@
       "caption": "Sri Guru Ram Das Ji"
     },
     "journey": {
-      "title": "The journey thus far"
+      "title": "The journey thus far",
+      "watch": "Watch the video"
     },
     "tradition": {
       "kicker": "The tradition of Langar",
-      "title": "One kitchen. Every person. No distinction.",
       "body": "Langar is a free community kitchen where everyone is served as equals, regardless of caste, religion, ethnicity, or economic status."
     },
     "kitchens": {
       "kicker": "Our kitchens",
-      "title": "Two kitchens, one goal: no one in Punjab goes hungry."
+      "title": "Two kitchens, one goal: no one in Punjab goes hungry.",
+      "photoSoon": "Coming Soon"
     },
     "visit": {
       "kicker": "An open invitation",
@@ -438,12 +433,12 @@
     },
     "next": {
       "title": "Our Work",
-      "description": "Daily Langar, 31 hospitals, and the programs around it."
+      "description": "Daily Langar, 32 hospitals, and the programs around it."
     }
   },
   "ourWork": {
     "meta": {
-      "description": "Daily Langar at hospitals is the foundation. Around it, a growing network supports healthcare, education, emergency response, and community needs. 31 hospitals, 2 kitchens, one daily route."
+      "description": "Daily Langar at hospitals is the foundation. Around it, a growing network supports healthcare, education, emergency response, and community needs. 32 hospitals, 2 kitchens, one daily route."
     },
     "hero": {
       "kicker": "Our work",
@@ -453,13 +448,9 @@
     "langar": {
       "kicker": "Daily Langar",
       "title": "Two kitchens, one goal: no one in Punjab goes hungry.",
-      "body": "About 100,000 meals are served every day: about 65,000 prepared at Pur Heeran, Hoshiarpur and 35,000 at Madhir, Sri Muktsar Sahib.",
+      "body": "About 105,000 meals are served every day: about 75,000 prepared at Pur Heeran, Hoshiarpur and 30,000 at Madhir, Sri Muktsar Sahib.",
       "imageAlt": "Cooking hall with large Langar cauldrons, Pur Heeran",
       "steps": {
-        "source": {
-          "title": "Source",
-          "text": "Organic vegetables and pesticide-free wheat."
-        },
         "prepare": {
           "title": "Prepare",
           "text": "Roti machines and commercial kitchens at Pur Heeran and Madhir."
@@ -476,7 +467,7 @@
     },
     "locations": {
       "kicker": "Current network",
-      "title": "31 hospitals, 2 kitchens, one daily route.",
+      "title": "32 hospitals, 2 kitchens, one daily route.",
       "legend": {
         "hospital": "Hospital",
         "kitchen": "Kitchen",
@@ -501,7 +492,7 @@
         "label": "Search locations",
         "placeholder": "Search a city or hospital"
       },
-      "countInitial": "32 locations",
+      "countInitial": "39 locations",
       "listType": {
         "kitchen": "Kitchen",
         "community": "Community"

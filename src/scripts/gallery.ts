@@ -8,15 +8,20 @@ export function initGalleries(): void {
     const thumbs = [...g.querySelectorAll<HTMLButtonElement>('.kthumb')];
     if (!main || !thumbs.length) return;
 
-    function set(n: number): void {
+    function set(n: number, swap = true): void {
       const t = thumbs[n]!;
       const img = t.querySelector('img');
       const full = t.dataset.full || img?.currentSrc || img?.src || '';
-      if (main!.getAttribute('src') !== full) {
+      if (swap && main!.getAttribute('src') !== full) {
+        // Photo renders <picture><source type="image/avif">…<img>. The browser paints the
+        // <source>, so changing only img.src leaves the old photo on screen. Drop the sources
+        // once; from then on the <img> alone decides what is shown.
+        main!.parentElement?.querySelectorAll('source').forEach((s) => s.remove());
         main!.removeAttribute('srcset');
+        main!.removeAttribute('sizes');
         main!.src = full;
       }
-      main!.alt = img?.getAttribute('alt') || '';
+      if (swap) main!.alt = img?.getAttribute('alt') || '';
       g.setAttribute('data-active', String(n));
       thumbs.forEach((b, k) => {
         b.classList.toggle('on', k === n);
@@ -24,6 +29,7 @@ export function initGalleries(): void {
       });
     }
     thumbs.forEach((b, n) => b.addEventListener('click', () => set(n)));
-    set(Number(g.getAttribute('data-active') || 0));
+    // On load the server-rendered image is already the active one; only sync the thumb state.
+    set(Number(g.getAttribute('data-active') || 0), false);
   });
 }

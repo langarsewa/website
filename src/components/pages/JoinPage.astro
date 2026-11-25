@@ -513,6 +513,14 @@ const ledeStyle = 'font-size: 17px; color: #334155; margin: 0 0 28px; max-width:
           </summary>
           <p>
             <T k={`joinTheSewa.questions.faq.${key}.a`} />
+            {key === 'visit' && (
+              <>
+                {' '}
+                <a href={site.directionsUrl} target="_blank" rel="noopener">
+                  <T k="joinTheSewa.questions.faq.visit.link" />
+                </a>
+              </>
+            )}
           </p>
         </details>
       ))}

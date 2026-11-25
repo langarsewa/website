@@ -19,6 +19,8 @@ const href = (s: Slug) => localePath(locale, pathFor(s));
 const current = (s: Slug) => (s === slug ? 'page' : undefined);
 const tabs = routes.filter((r) => r.slug !== '' && r.slug !== 'join-the-sewa');
 const toggleHref = alternatePath(locale, Astro.url.pathname);
+// site.showPunjabi off: the language controls are not rendered; the /pa/ pages still build.
+const showLang = site.showPunjabi;
 ---
 
 <header class="hdr" id="hdr">
@@ -50,23 +52,25 @@ const toggleHref = alternatePath(locale, Astro.url.pathname);
         <T k="nav.joinTheSewa.label" />
       </a>
     </nav>
-    <LangSwitch class="langsw-d" />
+    {showLang && <LangSwitch class="langsw-d" />}
     <div class="m-actions">
-      <a
-        aria-label={t(locale, 'common.switchLanguage')}
-        class="langq"
-        data-togglelang=""
-        href={toggleHref}
-        hreflang={locale === 'pa' ? 'en' : 'pa'}
-      >
-        {locale === 'pa' ? (
-          <span class="l-pa">EN</span>
-        ) : (
-          <span class="l-en" lang="pa">
-            ਪੰਜਾਬੀ
-          </span>
-        )}
-      </a>
+      {showLang && (
+        <a
+          aria-label={t(locale, 'common.switchLanguage')}
+          class="langq"
+          data-togglelang=""
+          href={toggleHref}
+          hreflang={locale === 'pa' ? 'en' : 'pa'}
+        >
+          {locale === 'pa' ? (
+            <span class="l-pa">EN</span>
+          ) : (
+            <span class="l-en" lang="pa">
+              ਪੰਜਾਬੀ
+            </span>
+          )}
+        </a>
+      )}
       <a
         class="mjoin"
         data-route="join-the-sewa"
@@ -101,10 +105,12 @@ const toggleHref = alternatePath(locale, Astro.url.pathname);
     </div>
   </div>
   <nav aria-label={t(locale, 'common.mobileNav')} class="mpanel" id="mpanel">
-    <div class="mlang">
-      <T k="common.language" />
-      <LangSwitch />
-    </div>
+    {showLang && (
+      <div class="mlang">
+        <T k="common.language" />
+        <LangSwitch />
+      </div>
+    )}
     {routes.map((r) => (
       <a class="mtab" data-route={r.slug} href={href(r.slug)} aria-current={current(r.slug)}>
         <span>

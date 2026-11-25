@@ -14,8 +14,7 @@ import site from '@/content/site.json';
 const locale = getLocale(Astro.currentLocale);
 const langClass = locale === 'pa' ? 'l-pa' : 'l-en';
 const mapFont = locale === 'pa' ? 'Noto Sans Gurmukhi, sans-serif' : 'Public Sans, sans-serif';
-const directionsUrl =
-  'https://www.google.com/maps/search/?api=1&query=Dhan+Guru+Ramdas+Langar+Sewa+Kitchen+Pur+Heeran+Hoshiarpur+Bypass+Hoshiarpur+Punjab';
+const directionsUrl = site.directionsUrl;
 /** Option values stay English so the mailto subject reads "Website enquiry: <topic>" as in the reference. */
 const topics = [
   { value: 'Visit the kitchen', key: 'visit' },
