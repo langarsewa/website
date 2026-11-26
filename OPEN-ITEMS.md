@@ -116,3 +116,14 @@ Off by default. Turning it on needs the Cloudflare Web Analytics token in `site.
 - Home stat "250 students fed at Ajjowal" still names the school and count; the school program
   text no longer does.
 - New Punjabi strings from this round need native-speaker review.
+
+## Site feedback, Nov 25, 2026
+
+- Meals updated to 115,000 a day (85,000 Pur Heeran, Hoshiarpur; 30,000 Madhir). "Figures as
+  of" now reads November 2026.
+- New Punjabi strings for native-speaker review: `footer.india` ("ਭਾਰਤ:"),
+  `footer.whatsapp` ("ਅੰਤਰਰਾਸ਼ਟਰੀ ਵਟਸਐਪ:"), and the Impact crisis heading, which now reuses
+  the former kicker "ਸੰਕਟ ਵਿੱਚ ਸੇਵਾ".
+- The Feb 2019 milestone has no video link. The journey still supports a `video` field if one
+  is added later.
+- Newsletter section: waiting on materials.

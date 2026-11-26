@@ -40,12 +40,25 @@ const explore = routes.filter((r) => r.slug !== '');
         <a target="_blank" rel="noopener" href={`mailto:${site.email}`} style="color: #FFFFFF">
           {site.email}
         </a>
-        <a target="_blank" rel="noopener" href={`tel:${site.phone.tel}`} style="color: #FFFFFF">
-          {site.phone.display}
-        </a>
+        <span>
+          <T k="footer.india" />
+          <a
+            target="_blank"
+            rel="noopener"
+            href={`tel:${site.phone.tel}`}
+            style="color: #FFFFFF; white-space: nowrap"
+          >
+            {site.phone.display}
+          </a>
+        </span>
         <span>
           <T k="footer.whatsapp" />
-          <a target="_blank" rel="noopener" href={site.whatsapp.url} style="color: #FFFFFF">
+          <a
+            target="_blank"
+            rel="noopener"
+            href={site.whatsapp.url}
+            style="color: #FFFFFF; white-space: nowrap"
+          >
             {site.whatsapp.display}
           </a>
         </span>

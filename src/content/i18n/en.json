@@ -64,7 +64,8 @@
     "youtube": "YouTube",
     "instagram": "Instagram",
     "facebook": "Facebook",
-    "whatsapp": "WhatsApp:",
+    "india": "India:",
+    "whatsapp": "International WhatsApp:",
     "copyright": "© 2026 Dhan Guru Ramdas Langar Sewa. All rights reserved. · "
   },
   "notFound": {
@@ -147,7 +148,7 @@
       "lede": "Building toward a connected model of nutrition, emergency response, and charitable healthcare across Punjab — with Langar always at the centre."
     },
     "projects": {
-      "kicker": "Projects underway"
+      "kicker": "Projects in progress"
     },
     "hospital": {
       "kicker": "Groundbreaking October 2027",
@@ -176,9 +177,9 @@
       "photoAlt": "Students eating a school meal"
     },
     "stats": {
-      "title": "Our sewa in numbers.",
+      "title": "Impact.",
       "lede": "Every figure is a person fed, a patient seen, or a family supported — counted the same way, every day.",
-      "note": "Figures as of October 2026"
+      "note": "Figures as of November 2026"
     },
     "explore": {
       "title": "Explore the sewa.",
@@ -211,7 +212,7 @@
     },
     "metrics": {
       "meals": {
-        "value": "105,000+",
+        "value": "115,000+",
         "label": "meals served every day"
       },
       "hospitals": {
@@ -226,14 +227,13 @@
         "value": "200",
         "label": "families receive monthly ration"
       },
-      "note": "Figures as of October 2026"
+      "note": "Figures as of November 2026"
     },
     "milestones": {
       "title": "Milestones"
     },
     "crisis": {
-      "kicker": "Serving through crisis",
-      "title": "When normal systems stop, the Langar keeps going.",
+      "title": "Serving through crisis.",
       "lede": "With kitchens, vehicles, and sewadars ready every day, the sewa has earned a reputation with local administration as a reliable organisation to call on when an emergency strikes."
     },
     "voices": {
@@ -448,7 +448,7 @@
     "langar": {
       "kicker": "Daily Langar",
       "title": "Two kitchens, one goal: no one in Punjab goes hungry.",
-      "body": "About 105,000 meals are served every day: about 75,000 prepared at Pur Heeran, Hoshiarpur and 30,000 at Madhir, Sri Muktsar Sahib.",
+      "body": "About 115,000 meals are served every day: about 85,000 prepared at Pur Heeran, Hoshiarpur and 30,000 at Madhir, Sri Muktsar Sahib.",
       "imageAlt": "Cooking hall with large Langar cauldrons, Pur Heeran",
       "steps": {
         "prepare": {

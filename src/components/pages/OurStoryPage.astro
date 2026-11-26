@@ -129,7 +129,7 @@ const dateStyle =
                       {m.body[locale]}
                     </span>
                   </p>
-                  {'video' in m && m.video && (
+                  {'video' in m && typeof m.video === 'string' && (
                     <a class="jvid" href={m.video} target="_blank" rel="noopener">
                       <span aria-hidden="true" class="jvid-play">
                         <svg fill="#0A1E37" height="14" viewBox="0 0 24 24" width="14">
