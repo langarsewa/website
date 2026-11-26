@@ -196,23 +196,41 @@ test.describe('galleries and videos', () => {
     await expect.poll(painted).toContain(full!.split('?')[0]!.split('/').pop()!);
   });
 
-  test('the Giani Pinderpal Singh Ji tile plays inline on the clip', async ({ page }) => {
-    await page.route('https://www.youtube-nocookie.com/**', (r) => r.fulfill({ body: '' }));
-    for (const path of ['/', '/impact/']) {
+  test('self-hosted interview tiles play inline', async ({ page, request }) => {
+    const tiles: [string, string][] = [
+      ['/', '/videos/pinderpal-singh-ji.mp4'],
+      ['/impact/', '/videos/pinderpal-singh-ji.mp4'],
+      ['/impact/', '/videos/varinder-kumar-sharma.mp4'],
+    ];
+    for (const [path, src] of tiles) {
+      const head = await request.head(src);
+      expect(head.status(), src).toBe(200);
+      // The local preview server sends octet-stream; the live host reads public/_headers.
+      if (process.env.BASE_URL) expect(head.headers()['content-type'], src).toContain('video/mp4');
       await page.goto(path);
-      const tile = page.locator('a[data-yt="pHcA1E8fgWI"]');
+      const tile = page.locator(`a[data-mp4="${src}"]`);
       await tile.scrollIntoViewIfNeeded();
       await tile.click();
-      const frame = page.locator('.vembed iframe');
-      await expect(frame).toHaveAttribute(
-        'src',
-        /youtube-nocookie\.com\/embed\/pHcA1E8fgWI\?.*start=11061.*end=11145/,
-      );
-      const box = await frame.boundingBox();
+      const video = page.locator(`.vembed video[src="${src}"]`);
+      await expect(video).toHaveAttribute('controls', '');
+      const box = await video.boundingBox();
       expect(box!.width, `${path} player width`).toBeGreaterThan(280);
       expect(box!.height, `${path} player height`).toBeGreaterThan(150);
       await expect(page).toHaveURL(new RegExp(`${path.replace(/\//g, '\\/')}$`));
     }
+  });
+
+  test('the Governor tile plays the YouTube video inline', async ({ page }) => {
+    await page.route('https://www.youtube-nocookie.com/**', (r) => r.fulfill({ body: '' }));
+    await page.goto('/impact/');
+    const tile = page.locator('a[data-yt="J7UEEXBLz_k"]');
+    await tile.scrollIntoViewIfNeeded();
+    await tile.click();
+    const frame = page.locator('.vembed iframe');
+    await expect(frame).toHaveAttribute('src', /youtube-nocookie\.com\/embed\/J7UEEXBLz_k\?/);
+    const box = await frame.boundingBox();
+    expect(box!.width).toBeGreaterThan(280);
+    expect(box!.height).toBeGreaterThan(150);
   });
 
   test('"show more videos" toggles the grid', async ({ page }) => {

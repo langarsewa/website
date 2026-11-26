@@ -5,7 +5,6 @@
     "brandLine1": "Dhan Guru Ramdas",
     "brandLine2": "Langar Sewa",
     "brandHomeLabel": "Dhan Guru Ramdas Langar Sewa — Home",
-    "logoLabel": "Ik Onkar over a bowl of Langar",
     "languageGroupLabel": "Language / ਭਾਸ਼ਾ",
     "language": "Language",
     "switchLanguage": "Switch language",
@@ -160,7 +159,7 @@
       "kicker": "Follow the progress",
       "title": "Watch the vision take shape.",
       "body": "We share updates on YouTube, Instagram, and Facebook as each project moves forward.",
-      "youtube": "Follow on YouTube"
+      "instagram": "Follow on Instagram"
     },
     "next": {
       "title": "Join the Sewa",
@@ -241,12 +240,18 @@
       "title": "From the sangat, officials, and visitors.",
       "main": {
         "caption": "Video: Message from Giani Pinderpal Singh Ji, Annual Samagam 2025",
-        "quote": "Message from Giani Pinderpal Singh Ji"
+        "name": "Bhai Sahib Bhai Pinderpal Singh Ji"
       },
       "dc": {
-        "caption": "Video: D.C. Varinder Kumar Sharma",
+        "caption": "Video: Varinder Kumar Sharma",
         "name": "Varinder Kumar Sharma",
-        "role": "Deputy Commissioner, Jalandhar"
+        "role": "Former Deputy Commissioner, Jalandhar",
+        "role2": "Director of Food, Government of Punjab"
+      },
+      "governor": {
+        "caption": "Video: Governor Gulab Chand Kataria",
+        "name": "Gulab Chand Kataria",
+        "role": "Governor of Punjab and Administrator of Chandigarh"
       }
     },
     "photos": {

@@ -16,6 +16,7 @@ export function initVideoToggle(): void {
  * clip's `data-start` / `data-end` seconds. Nothing loads from YouTube until the click.
  */
 export function initInlineVideos(): void {
+  initSelfHostedVideos();
   document.addEventListener('click', (e) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
       return;
@@ -39,5 +40,37 @@ export function initInlineVideos(): void {
     box.appendChild(frame);
     a.replaceWith(box);
     frame.focus();
+  });
+}
+
+/**
+ * Click-to-play tiles for videos served from this site (`a[data-mp4]`). The link to the file
+ * stays the no-JS fallback; with JS the tile becomes a native player. Nothing downloads until
+ * the click.
+ */
+function initSelfHostedVideos(): void {
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
+      return;
+    const a = (e.target as Element | null)?.closest<HTMLAnchorElement>('a[data-mp4]');
+    if (!a) return;
+    const src = a.dataset.mp4 ?? '';
+    if (!src.startsWith('/videos/')) return;
+    e.preventDefault();
+    const video = document.createElement('video');
+    video.src = src;
+    video.controls = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.setAttribute('aria-label', a.getAttribute('aria-label') ?? 'Video');
+    const poster = a.querySelector('img');
+    if (poster?.currentSrc) video.poster = poster.currentSrc;
+    const box = document.createElement('div');
+    box.className = `${a.className.replace(/\bvtile\b/, '').trim()} vembed`;
+    const style = a.getAttribute('style');
+    if (style) box.setAttribute('style', style);
+    box.appendChild(video);
+    a.replaceWith(box);
+    video.focus();
   });
 }

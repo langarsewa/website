@@ -196,10 +196,8 @@ const msRows = `--ms-r2: ${Math.ceil(msCount / 2)}; --ms-r3: ${Math.ceil(msCount
         <figure class="vo vo-main">
           <a
             class="vo-v vtile"
-            href={videos.featured.giani.url}
-            data-yt={videos.featured.giani.id}
-            data-start={videos.featured.giani.start}
-            data-end={videos.featured.giani.end}
+            href={videos.featured.giani.src}
+            data-mp4={videos.featured.giani.src}
             target="_blank"
             rel="noopener"
             aria-label={bi(videos.featured.giani.label)}
@@ -210,17 +208,45 @@ const msRows = `--ms-r2: ${Math.ceil(msCount / 2)}; --ms-r3: ${Math.ceil(msCount
             ><span class="vo-cap"><T k="impact.voices.main.caption" /></span>
           </a>
           <figcaption>
-            <p class="vo-q"><T k="impact.voices.main.quote" /></p>
+            <b><T k="impact.voices.main.name" /></b>
           </figcaption>
         </figure>
         <figure class="vo">
-          <div class="vo-v">
+          <a
+            class="vo-v vtile"
+            href={videos.featured.dc.src}
+            data-mp4={videos.featured.dc.src}
+            target="_blank"
+            rel="noopener"
+            aria-label={bi(videos.featured.dc.label)}
+          >
+            <Photo src={image(videos.featured.dc.thumb)} alt={bi(videos.featured.dc.alt)} />
             <span aria-hidden="true" class="vo-play"
               ><svg fill="#0A1E37" height="24" viewBox="0 0 24 24" width="24"><path d="M8 5v14l11-7z"></path></svg></span
             ><span class="vo-cap"><T k="impact.voices.dc.caption" /></span>
-          </div>
+          </a>
           <figcaption>
-            <b><T k="impact.voices.dc.name" /></b><span><T k="impact.voices.dc.role" /></span>
+            <b><T k="impact.voices.dc.name" /></b><span><T k="impact.voices.dc.role" /></span><span
+              ><T k="impact.voices.dc.role2" /></span
+            >
+          </figcaption>
+        </figure>
+        <figure class="vo">
+          <a
+            class="vo-v vtile"
+            href={videos.featured.governor.url}
+            data-yt={videos.featured.governor.id}
+            target="_blank"
+            rel="noopener"
+            aria-label={bi(videos.featured.governor.label)}
+          >
+            <Photo src={image(videos.featured.governor.thumb)} alt={bi(videos.featured.governor.alt)} />
+            <span aria-hidden="true" class="vo-play"
+              ><svg fill="#0A1E37" height="24" viewBox="0 0 24 24" width="24"><path d="M8 5v14l11-7z"></path></svg></span
+            ><span class="vo-cap"><T k="impact.voices.governor.caption" /></span>
+          </a>
+          <figcaption>
+            <b><T k="impact.voices.governor.name" /></b><span><T k="impact.voices.governor.role" /></span>
           </figcaption>
         </figure>
       </div>

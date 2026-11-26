@@ -3,7 +3,6 @@
  * Sticky header: brand, desktop tabs, language switch, and the mobile actions + panel.
  * Markup and class names follow the reference one for one; links are real routes.
  */
-import Logo from '@/components/Logo.astro';
 import LangSwitch from '@/components/LangSwitch.astro';
 import T from '@/components/T.astro';
 import { alternatePath, getLocale, localePath, t } from '@/lib/i18n';
@@ -26,7 +25,6 @@ const showLang = site.showPunjabi;
 <header class="hdr" id="hdr">
   <div class="hdr-in">
     <a aria-label={t(locale, 'common.brandHomeLabel')} class="brand" href={href('')}>
-      <Logo size={44} />
       <span class="bname">
         <b>
           <T k="common.brandLine1" />

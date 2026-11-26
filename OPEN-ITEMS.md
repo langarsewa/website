@@ -127,3 +127,17 @@ Off by default. Turning it on needs the Cloudflare Web Analytics token in `site.
 - The Feb 2019 milestone has no video link. The journey still supports a `video` field if one
   is added later.
 - Newsletter section: waiting on materials.
+
+## Site feedback, Nov 25, 2026 (second round)
+
+- Logo removed from the header and footer. The browser-tab icon (`public/favicon.svg`) still uses it.
+- Impact Voices now has three tiles. Bhai Sahib Bhai Pinderpal Singh Ji (also on Home) and
+  Varinder Kumar Sharma play self-hosted 720p cuts from `public/videos/` (about 21 MB each; Pages
+  caps a file at 25 MB). The Gulab Chand Kataria
+  tile plays the YouTube video `J7UEEXBLz_k` inline (it runs 6 min 57 s, too long to self-host).
+- The Pinderpal Singh Ji caption still reads "Annual Samagam 2025". Confirm that the new cut is
+  from that Samagam.
+- Instagram is now `instagram.com/dhangururamdaslangarsewa` everywhere. Future Vision's button reads
+  "Follow on Instagram"; its body text still mentions YouTube, Instagram and Facebook.
+- New Punjabi for native-speaker review: `impact.voices.main.name`, `dc.role`, `dc.role2`,
+  `governor.*`, `futureVision.follow.instagram`.

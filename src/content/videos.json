@@ -1,18 +1,40 @@
 {
   "featured": {
     "giani": {
-      "id": "pHcA1E8fgWI",
-      "url": "https://www.youtube.com/watch?v=pHcA1E8fgWI&t=11061s",
-      "start": 11061,
-      "end": 11145,
-      "thumb": "message-from-giani-pinderpal-singh-ji.webp",
+      "src": "/videos/pinderpal-singh-ji.mp4",
+      "thumb": "pinderpal-singh-ji-interview.jpg",
       "label": {
-        "en": "Watch the message from Giani Pinderpal Singh Ji on YouTube",
-        "pa": "ਯੂਟਿਊਬ 'ਤੇ ਗਿਆਨੀ ਪਿੰਦਰਪਾਲ ਸਿੰਘ ਜੀ ਦਾ ਸੁਨੇਹਾ ਦੇਖੋ"
+        "en": "Play the message from Bhai Sahib Bhai Pinderpal Singh Ji",
+        "pa": "ਭਾਈ ਸਾਹਿਬ ਭਾਈ ਪਿੰਦਰਪਾਲ ਸਿੰਘ ਜੀ ਦਾ ਸੁਨੇਹਾ ਚਲਾਓ"
       },
       "alt": {
-        "en": "Giani Pinderpal Singh Ji speaking with sewadars at Pur Heeran",
-        "pa": "ਪੁਰਹੀਰਾਂ ਵਿਖੇ ਸੇਵਾਦਾਰਾਂ ਨਾਲ ਗਿਆਨੀ ਪਿੰਦਰਪਾਲ ਸਿੰਘ ਜੀ"
+        "en": "Bhai Sahib Bhai Pinderpal Singh Ji speaking at the microphone",
+        "pa": "ਮਾਈਕ ਉੱਤੇ ਬੋਲਦੇ ਹੋਏ ਭਾਈ ਸਾਹਿਬ ਭਾਈ ਪਿੰਦਰਪਾਲ ਸਿੰਘ ਜੀ"
+      }
+    },
+    "dc": {
+      "src": "/videos/varinder-kumar-sharma.mp4",
+      "thumb": "varinder-kumar-sharma-interview.jpg",
+      "label": {
+        "en": "Play the message from Varinder Kumar Sharma",
+        "pa": "ਵਰਿੰਦਰ ਕੁਮਾਰ ਸ਼ਰਮਾ ਦਾ ਸੁਨੇਹਾ ਚਲਾਓ"
+      },
+      "alt": {
+        "en": "Varinder Kumar Sharma speaking outdoors",
+        "pa": "ਬਾਹਰ ਬੋਲਦੇ ਹੋਏ ਵਰਿੰਦਰ ਕੁਮਾਰ ਸ਼ਰਮਾ"
+      }
+    },
+    "governor": {
+      "id": "J7UEEXBLz_k",
+      "url": "https://www.youtube.com/watch?v=J7UEEXBLz_k",
+      "thumb": "gulab-chand-kataria-interview.jpg",
+      "label": {
+        "en": "Play the message from Gulab Chand Kataria",
+        "pa": "ਗੁਲਾਬ ਚੰਦ ਕਟਾਰੀਆ ਦਾ ਸੁਨੇਹਾ ਚਲਾਓ"
+      },
+      "alt": {
+        "en": "Gulab Chand Kataria in the langar hall",
+        "pa": "ਲੰਗਰ ਹਾਲ ਵਿੱਚ ਗੁਲਾਬ ਚੰਦ ਕਟਾਰੀਆ"
       }
     }
   },

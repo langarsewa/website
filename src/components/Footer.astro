@@ -1,5 +1,4 @@
 ---
-import Logo from '@/components/Logo.astro';
 import T from '@/components/T.astro';
 import { getLocale, localePath } from '@/lib/i18n';
 import { pathFor, routes } from '@/lib/routes';
@@ -14,7 +13,6 @@ const explore = routes.filter((r) => r.slug !== '');
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 36px">
       <div>
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px">
-          <Logo size={40} />
           <div style="font-family: 'Newsreader', 'Noto Serif Gurmukhi', Georgia, serif; font-size: 21px; color: #FFFFFF; line-height: 1.2">
             <T k="common.orgName" />
           </div>

@@ -10,3 +10,7 @@
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+/videos/*
+  Content-Type: video/mp4
+  Cache-Control: public, max-age=604800
