@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import site from './src/content/site.json' with { type: 'json' };
 
 export default defineConfig({
-  site: 'https://langarsewa.org',
+  site: 'https://www.langarsewa.org',
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory', inlineStylesheets: 'always' }, // one stylesheet, inlined: removes a render-blocking request on slow mobile

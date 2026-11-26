@@ -4,7 +4,7 @@ Production website for **Dhan Guru Ramdas Langar Sewa**: free, nutritious Langar
 hospitals, schools and communities across Punjab, with healthcare and community programs.
 English and Punjabi, static, hosted on Cloudflare Pages.
 
-- Production: https://langarsewa.org (Cloudflare Pages)
+- Production: https://www.langarsewa.org (Cloudflare Pages)
 - Test site: https://dev.langarsewa.pages.dev
 - Stack: [Astro](https://astro.build) (static output), TypeScript, plain CSS, self-hosted
   fonts, responsive AVIF/WebP images. No client framework, no third-party runtime calls.
@@ -81,7 +81,7 @@ CI (`.github/workflows/ci.yml`) builds once, runs every gate, and only then depl
 
 | Branch        | Environment                                          |
 | ------------- | ---------------------------------------------------- |
-| `main`        | production, https://langarsewa.org                   |
+| `main`        | production, https://www.langarsewa.org               |
 | `dev`         | test site, https://dev.langarsewa.pages.dev          |
 | pull requests | a preview URL per branch, posted on the pull request |
 

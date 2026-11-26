@@ -4,7 +4,7 @@
 
 | Branch                              | Deploys to                               | Purpose                                                                    |
 | ----------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------- |
-| `main`                              | https://langarsewa.org (production)      | Only changes through a pull request from `dev` with every check green      |
+| `main`                              | https://www.langarsewa.org (production)  | Only changes through a pull request from `dev` with every check green      |
 | `dev`                               | https://dev.langarsewa.pages.dev         | The shared test site. Merge here first, check it, then open `dev` → `main` |
 | any other branch, as a pull request | a preview URL posted on the pull request | Review a single change in isolation                                        |
 

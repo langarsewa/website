@@ -9,7 +9,7 @@ on:
     inputs:
       url:
         description: Site to check
-        default: https://langarsewa.org
+        default: https://www.langarsewa.org
         required: true
 
 permissions:
