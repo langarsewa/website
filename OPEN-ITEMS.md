@@ -91,12 +91,12 @@ Setup and records: `docs/deploy-cloudflare.md`. Undo: `docs/rollback.md`.
 
 - Production is Cloudflare Pages, deployed from CI after every gate. If GitHub Pages is still
   enabled in the repository settings, disable it; the `CNAME` file for it has been removed.
-- **Analytics:** switch on Cloudflare Web Analytics in the dashboard (Pages project → Metrics →
-  Web Analytics → Enable), then redeploy. The CSP already allows the beacon. Steps in
-  `docs/deploy-cloudflare.md`.
-- **Repository hygiene:** stale branches (`chore/deps-nov12`, `content/site-feedback-nov12`,
-  `feat/location-aware-join`, `monorepo/add-control-room`, several Dependabot branches) can be
-  deleted once their pull requests are closed. Protect `main` (README → Releasing a change).
+- **Analytics:** Cloudflare Web Analytics switched on in the dashboard on Nov 26, 2026. It starts
+  counting from the first production deploy that carries the updated CSP.
+- **Repository hygiene:** merged branches were deleted on Nov 26, 2026. Kept on purpose:
+  `docs/events-page-spec` (parked spec), `monorepo/add-control-room` (6 unmerged commits) and the
+  Dependabot `@types/node` 26 bump, which should be closed: the site runs on Node 24. Protect
+  `main` (README → Releasing a change).
 
 ## Site feedback, Nov 24, 2026
 
