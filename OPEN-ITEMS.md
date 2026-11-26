@@ -141,3 +141,6 @@ Off by default. Turning it on needs the Cloudflare Web Analytics token in `site.
   "Follow on Instagram"; its body text still mentions YouTube, Instagram and Facebook.
 - New Punjabi for native-speaker review: `impact.voices.main.name`, `dc.role`, `dc.role2`,
   `governor.*`, `futureVision.follow.instagram`.
+- Mission now reads "...adequate nutrition, healthcare, and education in Punjab" (Home hero and
+  Our Story). The Punjabi line ("ਪੌਸ਼ਟਿਕ ਭੋਜਨ, ਸਿਹਤ ਸੰਭਾਲ ਅਤੇ ਸਿੱਖਿਆ ਤੋਂ ਵਾਂਝਾ ਨਾ ਰਹੇ") needs
+  native-speaker review.
