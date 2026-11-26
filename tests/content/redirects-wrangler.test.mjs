@@ -120,6 +120,28 @@ test('legacy paths redirect (301) and security headers are served under wrangler
     const remembered = await fetch(base + path, { headers: { cookie: 'dgrls-region=in' } });
     assert.equal(regionOf(await remembered.text()), 'in', `${path} honours the cookie`);
   }
+  // Videos answer Range requests (public/_worker.js); Safari needs 206 to play them.
+  const video = `${base}/videos/varinder-kumar-sharma.mp4`;
+  const whole = await fetch(video, { method: 'HEAD' });
+  assert.equal(whole.status, 200, 'video HEAD');
+  assert.equal(whole.headers.get('accept-ranges'), 'bytes', 'video advertises ranges');
+  const first = await fetch(video, { headers: { range: 'bytes=0-1' } });
+  assert.equal(first.status, 206, 'first two bytes');
+  const size = Number(/^bytes 0-1\/(\d+)$/.exec(first.headers.get('content-range') || '')?.[1]);
+  assert.ok(size > 1_000_000, 'Content-Range reports the full size');
+  assert.equal((await first.arrayBuffer()).byteLength, 2);
+  const tail = await fetch(video, { headers: { range: 'bytes=-100' } });
+  assert.equal(tail.status, 206, 'suffix range');
+  assert.equal(tail.headers.get('content-range'), `bytes ${size - 100}-${size - 1}/${size}`);
+  assert.equal((await tail.arrayBuffer()).byteLength, 100);
+  const open = await fetch(video, { headers: { range: `bytes=${size - 10}-` } });
+  assert.equal(open.status, 206, 'open-ended range');
+  assert.equal((await open.arrayBuffer()).byteLength, 10);
+  const past = await fetch(video, { headers: { range: `bytes=${size}-` } });
+  assert.equal(past.status, 416, 'range past the end');
+  await past.arrayBuffer();
+  assert.match(whole.headers.get('content-type') || '', /video\/mp4/, 'video content type');
+
   const homeHtml = await (await fetch(`${base}/`)).text();
   assert.equal(regionOf(homeHtml), undefined, 'other pages are untouched by the worker');
 });

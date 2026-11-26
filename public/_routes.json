@@ -1,5 +1,11 @@
 {
   "version": 1,
-  "include": ["/join-the-sewa", "/join-the-sewa/*", "/pa/join-the-sewa", "/pa/join-the-sewa/*"],
+  "include": [
+    "/join-the-sewa",
+    "/join-the-sewa/*",
+    "/pa/join-the-sewa",
+    "/pa/join-the-sewa/*",
+    "/videos/*"
+  ],
   "exclude": []
 }
