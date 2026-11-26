@@ -1,3 +1,6 @@
+> **Superseded.** This plan was not used. On Nov 26, 2026 the site launched by changing only the
+> `www` record at Squarespace; see `docs/deploy-cloudflare.md`.
+
 # Launch checklist
 
 Everything below the line "Cutover" changes what visitors see. Everything above it can be done

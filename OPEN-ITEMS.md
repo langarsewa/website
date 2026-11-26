@@ -4,25 +4,16 @@ Everything below needs content, a decision or a review from the sewa. Nothing he
 invented to fill a gap: placeholders stay as they were in the approved design, and new strings
 are marked. File paths point at where the change goes.
 
-## Placeholders carried over from the approved design
-
-| Where                         | Text                                                                             | File and key                                                |
-| ----------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Home, "Voices of the sangat"  | `“[Selected line from Giani Pinderpal Singh Ji’s message]”` and the Punjabi twin | `src/content/i18n/en.json`, `pa.json` → `home.voices.quote` |
-| Impact, Voices (first figure) | Same placeholder quote                                                           | `impact.voices.main.quote`                                  |
-
 ## Content the sewa still needs to supply
 
-| #   | Item                                                                                                                                                               | Where it goes                                                                                    |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| 1   | The chosen line from Giani Pinderpal Singh Ji's message, in both languages                                                                                         | the two keys above                                                                               |
-| 2   | YouTube links for the two "Voices" video tiles (Giani Pinderpal Singh Ji's message; D.C. Varinder Kumar Sharma). They are static panels in the design, with no URL | Home and Impact voices sections; once supplied they become outbound links like the gallery cards |
-| 3   | Per-video titles for the ten "Watch the sewa" videos (alt text is the generic "Video from the sewa" for all ten)                                                   | `src/content/videos.json`                                                                        |
-| 4   | Press logos for The Tribune, PTC Punjabi, ABP Sanjha and Ajit. The design has the tile styling for logos but ships none; tiles show the names as text              | `src/content/press.json` + files in `src/assets/images/`                                         |
-| 5   | WhatsApp and USA number (Contact shows "Coming soon / A dedicated number is being set up")                                                                         | `contact.reach.whatsapp.value`, `.note`; footer "WhatsApp: coming soon" in `footer.whatsapp`     |
-| 6   | The year for the Punjab Floods crisis card (COVID-19 shows "2020"; Floods has none)                                                                                | `src/content/crisis.json`                                                                        |
-| 7   | Whether a "more stories coming soon" line is wanted under the crisis cards (`.cr-soon` exists in the CSS, nothing uses it in the design)                           | `src/components/pages/ImpactPage.astro`                                                          |
-| 8   | Owner and refresh cadence for the dated figures ("Figures as of October 2026" on Home and Impact)                                                                  | `home.stats.note`, `impact.metrics.note`, `src/content/impact-stats.json`                        |
+| #   | Item                                                                                                                                                  | Where it goes                                                             |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| 1   | Per-video titles for the ten "Watch the sewa" videos (alt text is the generic "Video from the sewa" for all ten)                                      | `src/content/videos.json`                                                 |
+| 2   | Press logos for The Tribune, PTC Punjabi, ABP Sanjha and Ajit. The design has the tile styling for logos but ships none; tiles show the names as text | press entries + files in `src/assets/images/`                             |
+| 3   | The year for the Punjab Floods crisis card (COVID-19 shows "2020"; Floods has none)                                                                   | `src/content/crisis.json`                                                 |
+| 4   | Whether a "more stories coming soon" line is wanted under the crisis cards (`.cr-soon` exists in the CSS, nothing uses it)                            | `src/components/pages/ImpactPage.astro`                                   |
+| 5   | Owner and refresh cadence for the dated figures ("Figures as of November 2026" on Home and Impact)                                                    | `home.stats.note`, `impact.metrics.note`, `src/content/impact-stats.json` |
+| 6   | Newsletter section: waiting on materials                                                                                                              | new section, page to be decided                                           |
 
 ## Punjabi native-speaker review
 
@@ -80,27 +71,32 @@ Home FCP 1.0s and LCP 2.30s, inside the 2.5s target. The local simulation measur
 because it serves fonts without a CDN; the brief's LCP target is met where it matters, on the host.
 CI keeps LCP as a warning and the category scores as hard gates.
 
-## Email and domain (from `docs/dns-before.md`)
+## Domain and email (live since Nov 26, 2026)
 
-- `info@langarsewa.org` is Google Workspace. The SPF record authorises only Squarespace mail
-  (`include:squarespace-mail.com`), not Google; DMARC is `p=none`; no DKIM record was found at
-  the common selectors. These predate the project. The migration copies the records unchanged;
-  fixing SPF/DKIM is a separate decision for the sewa.
-- A screenshot of Squarespace → Domains → langarsewa.org → DNS is still needed before the
-  nameserver switch, to catch any record `dig` cannot enumerate.
+Setup and records: `docs/deploy-cloudflare.md`. Undo: `docs/rollback.md`.
 
-## Hosting
+- **Done:** www.langarsewa.org serves the site from Cloudflare Pages; bare langarsewa.org
+  redirects to www through Squarespace; email untouched; SPF now includes Google
+  (`include:_spf.google.com`).
+- **Before cancelling the Squarespace website plan:** the bare-domain redirect depends on it.
+  Set up a forward or move the nameservers first.
+- **DKIM for Google Workspace:** not set up. Generate a key in admin.google.com → Apps → Google
+  Workspace → Gmail → Authenticate email, add it at Squarespace as TXT `google._domainkey`, then
+  click Start authentication.
+- **Optional clean-up at Squarespace:** the legacy `MX 0 langarsewa.org.`, `webmail` A and `mail`
+  CNAME rows. Remove only after confirming nobody uses webmail.langarsewa.org.
+- **HSTS:** still off; can be enabled for www (`public/_headers`).
 
-Production is Cloudflare Pages, deployed from CI after every gate. GitHub Pages was used for a
-day as a stop-gap and has been removed from the workflow; disable it in the repository settings
-if it is still enabled there. `public/_headers` and `public/_redirects` are the live
-configuration.
+## Hosting and analytics
 
-## Analytics
-
-Off by default. Turning it on needs the Cloudflare Web Analytics token in `site.json` and
-`https://static.cloudflareinsights.com` added to `script-src` and `connect-src` in
-`public/_headers`.
+- Production is Cloudflare Pages, deployed from CI after every gate. If GitHub Pages is still
+  enabled in the repository settings, disable it; the `CNAME` file for it has been removed.
+- **Analytics:** switch on Cloudflare Web Analytics in the dashboard (Pages project → Metrics →
+  Web Analytics → Enable), then redeploy. The CSP already allows the beacon. Steps in
+  `docs/deploy-cloudflare.md`.
+- **Repository hygiene:** stale branches (`chore/deps-nov12`, `content/site-feedback-nov12`,
+  `feat/location-aware-join`, `monorepo/add-control-room`, several Dependabot branches) can be
+  deleted once their pull requests are closed. Protect `main` (README → Releasing a change).
 
 ## Site feedback, Nov 24, 2026
 

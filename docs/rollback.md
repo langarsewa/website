@@ -1,47 +1,46 @@
-# Rollback: put DNS back on Squarespace
+# Rollback
 
-Use this if anything is wrong after the nameserver switch (site unreachable, email not arriving).
-It reverses the switch only; nothing at Cloudflare needs to be deleted first.
+Two different things can go wrong. Undo the one that went wrong; neither undo touches email.
 
-## Steps (about five minutes, then propagation)
+## A bad change on the site
 
-1. Squarespace → Domains → `langarsewa.org` → DNS settings → Nameservers.
-2. Choose Squarespace's own nameservers (the "use Squarespace nameservers" option). If the
-   screen asks for custom values instead, enter the eight recorded before the switch:
+Production is whatever the last green `main` deploy produced.
 
-   | Nameservers before the switch (from `docs/dns-before.md`) |
-   | --------------------------------------------------------- |
-   | `ns01.squarespacedns.com`                                 |
-   | `ns02.squarespacedns.com`                                 |
-   | `ns03.squarespacedns.com`                                 |
-   | `ns04.squarespacedns.com`                                 |
-   | `dns1.p07.nsone.net`                                      |
-   | `dns2.p07.nsone.net`                                      |
-   | `dns3.p07.nsone.net`                                      |
-   | `dns4.p07.nsone.net`                                      |
+**Fastest, no code (about one minute):** Cloudflare dashboard → Workers & Pages → `langarsewa` →
+Deployments → find the previous **Production** deployment → ⋯ → **Rollback to this deployment**.
 
-3. Save. Squarespace's DNS zone was never changed, so every original record (site, MX, SPF,
-   DMARC, `mail`, `webmail`) comes back exactly as it was.
-4. Check with `dig NS langarsewa.org` and `dig MX langarsewa.org`; resolvers pick the change up
-   within minutes to a few hours.
+**Then make it stick:** revert the commit on `main` so the next deploy does not bring the problem
+back.
 
-## What stays available during rollback
+```bash
+git switch main && git pull
+git revert <commit>          # one commit per bad change
+git push origin main         # CI redeploys in about 7 minutes
+git switch dev && git merge --ff-only main && git push origin dev
+```
 
-- Email: the Google MX records exist identically at Squarespace and Cloudflare, so mail keeps
-  flowing whichever side answers.
-- The new site remains reachable at `https://langarsewa.pages.dev` the whole time.
+## The domain: put www back on Squarespace
 
-## Cloudflare side after a rollback
+Use this only if www.langarsewa.org itself is unreachable (DNS or certificate trouble), not for a
+content problem.
 
-Nothing is required. The zone simply shows "Pending" again. The Pages project, its custom domains
-and the records stay ready for a second attempt.
+1. Squarespace → Domains → `langarsewa.org` → DNS → **Custom records**.
+2. Edit the `CNAME` row `www` and set its data back to `ext-sq.squarespace.com`. Save.
+3. Visitors see the old Squarespace site again within minutes to 4 hours (the record's TTL).
 
-## Rollback: a bad production deploy (not DNS)
+This works only while the Squarespace website plan is active. The new site stays reachable the
+whole time at `https://langarsewa.pages.dev`.
 
-Production is whatever the last green `main` deploy produced. To undo a change:
+To return to the new site, set the `www` row to `langarsewa.pages.dev` again. Pages keeps the
+custom domain attached, so nothing needs redoing at Cloudflare.
 
-1. `git revert <merge commit>` on `main` through a pull request from `dev`, or directly if urgent.
-2. CI redeploys the reverted site within about six minutes.
-3. Faster, without a commit: Cloudflare dashboard → Workers & Pages → `langarsewa` → Deployments →
-   the previous production deployment → "Rollback to this deployment". Then still land the revert
-   so the next deploy does not reintroduce the problem.
+## Checking where www points
+
+```bash
+dig +short @8.8.8.8 www.langarsewa.org            # langarsewa.pages.dev = new site
+dig +short @ns01.squarespacedns.com www.langarsewa.org   # what Squarespace is publishing
+dig +short MX langarsewa.org                      # five Google rows plus "0 langarsewa.org."
+```
+
+If your own computer still shows the old site after a change, its DNS cache is stale. Try a phone
+on mobile data, or wait for the TTL to run out.

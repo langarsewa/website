@@ -1,26 +1,18 @@
 # Editing the site
 
-## Branches and environments
+## Getting a change live
 
-| Branch                              | Deploys to                               | Purpose                                                                    |
-| ----------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------- |
-| `main`                              | https://www.langarsewa.org (production)  | Only changes through a pull request from `dev` with every check green      |
-| `dev`                               | https://dev.langarsewa.pages.dev         | The shared test site. Merge here first, check it, then open `dev` → `main` |
-| any other branch, as a pull request | a preview URL posted on the pull request | Review a single change in isolation                                        |
+Every change goes to the test site first, then to production. The steps, with commands, are in
+[README.md → Releasing a change](./README.md#releasing-a-change).
 
-The flow for a change:
-
-1. Branch from `dev` (`git switch dev && git pull && git switch -c fix/typo-on-impact`).
-2. Commit, push, open a pull request **into `dev`**. CI runs every gate and posts a preview link.
-3. Merge into `dev`. The test site updates within a few minutes. Check it there.
-4. When `dev` looks right, open a pull request **`dev` → `main`**. Merging it deploys production.
-
-Preview and `dev` deployments are served with `noindex`, so search engines never see them.
-Rolling production back is `git revert` of the merge on `main`; the next deploy follows.
+| Branch                | Deploys to                                |
+| --------------------- | ----------------------------------------- |
+| `main`                | https://www.langarsewa.org (production)   |
+| `dev`                 | https://dev.langarsewa.pages.dev          |
+| a pull request branch | a preview link posted on the pull request |
 
 You do not need to touch components to change words, photos or details. Everything a sewadar
-would edit lives under `src/content/`. A pull request builds a preview link automatically;
-`main` deploys to langarsewa.org.
+would edit lives under `src/content/`.
 
 ## Change a sentence
 

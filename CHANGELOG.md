@@ -1,5 +1,15 @@
 # Changelog
 
+## Nov 26, 2026: launch
+
+- www.langarsewa.org now serves the new site from Cloudflare Pages. DNS and email stay at
+  Squarespace and Google; only the `www` record changed. www is the canonical host.
+- Mission widened to nutrition, healthcare and education.
+- Interview videos on Impact (two self-hosted with byte-range support, one YouTube); logo removed;
+  Instagram updated.
+- CSP allows Cloudflare Web Analytics. Docs rewritten for the setup actually used; superseded
+  plans moved to `docs/history/`; GitHub Pages `CNAME` removed.
+
 ## Unreleased
 
 - Production rebuild of langarsewa.org: Astro static site with real routes in English and
